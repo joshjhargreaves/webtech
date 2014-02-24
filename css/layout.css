@@ -1,0 +1,170 @@
+/* 
+ * MaxWallet layout styles
+ * Luke Mitchell, (c) 2014
+ *
+ */
+
+/* Entire page */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+body { background-color: #F0FFFB; }
+
+/* Verdana font, with generic fallbacks
+   as per http://www.w3schools.com/cssref/css_websafe_fonts.asp */
+body { font-family: "Verdana", Geneva, sans-serif; }
+
+/* Coloured bar at screen top */
+#topbar {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  z-index: 0;
+  padding-bottom: 3.5em;
+  background-color: #6A7F7A;
+}
+
+/* Header */
+
+#header {
+  height: 100px;
+  margin: 0 auto;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  background-color: #6A7F7A;
+}
+
+/* Logo */
+
+#logo-header {
+  width: 82.5%;
+  margin: 0 auto;
+  padding: 0;
+  padding-left: 17.5%;
+  position: absolute;
+  z-index: 1;
+  font-size: 5em;
+}
+
+.logo-max {
+  color: black;
+  font-weight: normal;
+}
+
+.logo-wallet {
+  color: #C0CCC9;
+  font-weight: bolder;
+}
+
+.logo-max-monochrome { font-weight: normal; }
+.logo-wallet-monochrome { font-weight: bolder; }
+
+/* Profile */
+
+#profile { 
+  width: 65%;
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 17.5%;
+  position: absolute;
+  z-index: 1;
+  text-align: right;
+}
+
+/* Box */
+
+#container {
+  height: 100%;
+  min-height: 100%;
+}
+
+#box {
+  width: 65%;
+  min-width: 400px;
+  margin: 0 auto;
+  margin-left: 17.5%;
+  position: absolute;
+  z-index: 1;
+  border-top: 0.1em solid #787F7D;
+  border-left: 0.1em solid #787F7D;
+  border-right: 0.15em solid #787F7D;
+  border-bottom: 0.15em solid #787F7D;
+  background-color: white;
+}
+
+/* Menu */
+
+#menu {
+  width: 30%;
+  height: 100%;
+  float: left;
+}
+
+#menu a {
+  color: #787F7D;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  font-weight: bolder;
+}
+
+#menu a:visited { }
+
+#menu ul {
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  padding-right: 0.5em;
+  list-style-type: none;
+}
+
+#menu li {
+  padding: 0.5em;
+}
+
+/* Content */
+
+#content {
+  width: 70%;
+  height: 100%;
+  padding-top: 0.5em;
+  float:right;
+}
+
+h1 #page-title { }
+
+/* Footer */
+
+#footer {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1.5em;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  height: 2em;
+}
+
+/* 'star hack' for IE6 */
+* html #footer { height: 1px; }
+
+/* Misc. */
+
+.indent { margin-left: 0.2em; }
+
+.clear { clear: both; }
+
+.centre { text-align: center; }
+
+.uppercase { text-transform: uppercase; }
+
+.lowercase { text-transform: lowercase; }
+
+.capitalise { text-transform: capitalize; }
