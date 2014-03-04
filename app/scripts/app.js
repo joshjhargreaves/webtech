@@ -12,6 +12,10 @@ angular.module('webtechApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/contact', {
+        templateUrl : 'views/contact.html',
+        controller  : 'contactController'
+      })
       .otherwise({
         redirectTo: '/'
       });
