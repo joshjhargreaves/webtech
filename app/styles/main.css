@@ -16,13 +16,6 @@ body {
 .header {
   border-bottom: 0.2em solid #e5e5e5;
 }
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.6em;
-  padding-bottom: 1.9%;
-}
 
 /* Custom page footer */
 .footer {
