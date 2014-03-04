@@ -18,13 +18,22 @@
     <!-- endbuild -->
     <script src="js/modernizr.custom.js"></script>
   </head>
-  <body data-ng-app="webtechApp">
+  <body ng-app="webtechApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li ui-sref-active="active"><a ui-sref="main">Home</a></li>
+        <li><a ui-sref="main">About</a></li>
+        <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
+        <li><a ui-sref="main">Login</a></li>
+      </ul>
+      <h3 class="text-muted">maxwallet</h3>
+    </div>
 
     <!-- Add your site or application content here -->
-    <div class="container" data-ng-view=""></div>
+    <div class="container" ui-view=""></div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -44,6 +53,8 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <!-- UI-Router -->
+    <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
     <!-- endbuild -->
 </body>
 </html>
