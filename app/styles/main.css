@@ -5,7 +5,6 @@ body {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
 .marketing {
   padding-left: 1.5%;
   padding-right: 1.5%;
@@ -19,15 +18,25 @@ body {
   padding-right: 20%;
 }
 
+/* Give the navbar some shadow */
+.navbar {
+  box-shadow: 0.1em 0 0.2em #888888;
+}
+
 .nav {
   padding-top: 1%;
   padding-bottom: 1%;
 }
 
+/* Ensure the navigation and the logo don't overlap */
+.navbar-brand {
+  position:absolute;
+  left: 20%;
+}
+
 /* Logo */
 .navbar-brand {
-  font-size: 3em;
-  display: block;
+  font-size: 3.6em;
 }
 
 /* Page footer and copyright */
