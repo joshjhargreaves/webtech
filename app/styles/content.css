@@ -2,5 +2,13 @@
 .logo-left { font-weight: normal; }
 .logo-right { font-weight: bold; }
 
-.logo-left-colour { color: black; }
-.logo-right-colour { color: #777; }
+.logo-left-colour { color: #777; }
+.logo-right-colour { color: #e5e5e5; }
+
+/* Features on main page */
+.main-features-title { font-size: 2.5em; }
+
+.main-features {
+  font-size: 1.5em;
+  padding-bottom: 0.2em;
+}
