@@ -1,73 +1,71 @@
 /* Space out content a bit */
 body {
-  padding-top: 2%;
+  padding-top: 80px;
   padding-bottom: 2%;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
-.footer {
+.marketing {
   padding-left: 1.5%;
   padding-right: 1.5%;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 0.2em solid #e5e5e5;
-  background-color: #333333;
-  height: 10%;
-  min-height: 100px;
-}
-
-/* Overload navbar */
+/* Page header and nav */
 .navbar {
+  border-bottom: 0.2em solid #e5e5e5;
+  background-color: #333;
   padding-left: 20%;
   padding-right: 20%;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 1.9%;
+.nav {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+/* Logo */
+.navbar-brand {
+  font-size: 3em;
+  display: block;
+}
+
+/* Page footer and copyright */
+footer {
   color: #777;
   border-top: 0.2em solid #e5e5e5;
+  padding-top: 1.9%;
   padding-bottom: 1em;
   text-align: center;
 }
 
-/* Customize container */
+/* Central column */
 .container {
-  width: 100%;
+  width: 60%;
   padding: 0;
-  padding-top: 5%;
-  padding-bottom: 5%;
 }
 
 .container-narrow > hr {
   margin: 3% 0;
 }
 
-/* Box holding content */
-#central-content-column {
-  max-width: 60%;
-  margin-left: 20%;
-  position: absolute;
-}
-
-/* Main marketing message and sign up button */
+/* Gray area with create wallet button */
 .jumbotron {
   text-align: center;
   border-bottom: 0.2em solid #e5e5e5;
+
 }
+
 .jumbotron .btn {
   font-size: 1.4em;
   padding: 1.4% 2.4%;
 }
 
-/* Supporting marketing content */
+/* Content below jumbotron */
 .marketing {
   margin: 4% 0;
 }
+
 .marketing p + h4 {
   margin-top: 2.8%;
 }
