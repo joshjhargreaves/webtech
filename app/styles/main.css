@@ -1,3 +1,9 @@
+/* Space out content a bit */
+body {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -9,6 +15,15 @@
 /* Custom page header */
 .header {
   border-bottom: 0.2em solid #e5e5e5;
+  background-color: #333333;
+  height: 10%;
+  min-height: 100px;
+}
+
+/* Overload navbar */
+.navbar {
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 /* Custom page footer */
@@ -24,6 +39,8 @@
 .container {
   width: 100%;
   padding: 0;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .container-narrow > hr {
@@ -35,17 +52,6 @@
   max-width: 60%;
   margin-left: 20%;
   position: absolute;
-  z-index: 1;
-}
-
-#header-background {
-  background-color: #333333;
-  width: 100%;
-  min-width: 100%;
-  height: 10%;
-  min-height: 100px;
-  position: absolute;
-  z-index: 0;
 }
 
 /* Main marketing message and sign up button */
@@ -64,23 +70,4 @@
 }
 .marketing p + h4 {
   margin-top: 2.8%;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 3%;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
 }
