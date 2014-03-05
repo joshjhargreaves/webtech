@@ -1,26 +1,5 @@
 //'use strict';
 
-/*angular.module('webtechApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
-])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/contact', {
-        templateUrl : 'views/contact.html',
-        controller  : 'contactController'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });*/
-
   var myapp = angular.module('webtechApp', [
     'ui.router',
     'ngCookies',
@@ -30,7 +9,7 @@
     ])
     myapp.config(function($stateProvider, $urlRouterProvider){
       
-      // For any unmatched url, send to /route1
+      // For any unmatched url, send to /main
       $urlRouterProvider.otherwise("/main")
       
       $stateProvider
