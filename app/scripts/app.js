@@ -16,11 +16,13 @@
       $stateProvider
         .state('main', {
             url: "/main",
-            templateUrl: "views/main.html"
+            templateUrl: "views/main.html",
+            onEnter: function(){ $("html, body").animate({ scrollTop: 0 }, "slow"); }
         })
           
         .state('contact', {
             url: "/contact",
-            templateUrl: "views/contact.html"
+            templateUrl: "views/contact.html",
+            onEnter: function(){ $("html, body").animate({ scrollTop: 0 }, "slow"); }
         })
   })
