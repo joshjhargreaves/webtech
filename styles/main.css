@@ -1,8 +1,3 @@
-/* fill screen height for footer */
-html, body {
-  height: 100%;
-}
-
 /* space content out */
 body {
   padding-top: 50px; /* bootstrap navbar is 50px */
@@ -17,12 +12,6 @@ body {
 .marketing {
   padding-left: 1.5%;
   padding-right: 1.5%;
-}
-
-/* center everything at 60% width */
-.center {
-  width: 60%;
-  margin: 0 auto;
 }
 
 /* page header and nav */
@@ -77,6 +66,8 @@ body {
 /* gray area with create wallet button */
 .jumbotron {
   text-align: center;
+
+  /* 70% opacity */
   border-bottom: 0.2em solid rgba(229, 229, 229, 0.7);
   background-color: rgba(238, 238, 238, 0.7);
 }
