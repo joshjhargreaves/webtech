@@ -1,6 +1,6 @@
 /* Space out content a bit */
 body {
-  padding-top: 80px;
+  padding-top: 50px; /* bootstrap navbar is 50px */
   padding-bottom: 2%;
 }
 
@@ -53,6 +53,15 @@ body {
 
 .container-narrow > hr {
   margin: 3% 0;
+}
+
+/* Ribbon for main page */
+.ribbon {
+  padding-top: 2%;
+  width: 100%;
+  background: url(../img/cc.png) no-repeat;
+  /* CSS3 */
+  background-size: 100% auto;
 }
 
 /* Gray area with create wallet button */
