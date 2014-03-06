@@ -4,6 +4,10 @@ body {
   padding-bottom: 2%;
 }
 
+.spacer {
+  padding-top: 2%;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .marketing {
   padding-left: 1.5%;
@@ -14,10 +18,6 @@ body {
 .center {
   width: 60%;
   margin: 0 auto;
-}
-
-.spacer {
-  padding-top: 2%;
 }
 
 /* Page header and nav */
@@ -61,24 +61,23 @@ body {
   margin: 3% 0;
 }
 
-/* Ribbon for main page */
+/* Ribbon */
 .ribbon {
   padding-top: 2%;
   width: 100%;
   background: url(../img/cc.png) no-repeat;
-  /* CSS3 */
-  background-size: 100% auto;
+  background-size: 100% auto; /* CSS3 */
 }
 
 /* Gray area with create wallet button */
 .jumbotron {
   text-align: center;
-  border-bottom: 0.2em solid #e5e5e5;
+  border-bottom: 0.2em solid rgba(229, 229, 229, 0.7);
+  background-color: rgba(238, 238, 238, 0.7);
 }
 
-.jumbotron .btn {
-  font-size: 1.4em;
-  padding: 1.4% 2.4%;
+.jumbotron .background {
+  opacity: 0.5;
 }
 
 /* Content below jumbotron */

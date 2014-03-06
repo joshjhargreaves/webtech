@@ -1,14 +1,29 @@
-/* Logo display */
+/*** misc. ***/
+
+/* logo display */
 .logo-left { font-weight: normal; }
 .logo-right { font-weight: bold; }
 
 .logo-left-colour { color: #777; }
 .logo-right-colour { color: #e5e5e5; }
 
-/* Features on main page */
+
+/*** main.html ***/
+
+/* features */
 .main-features-title { font-size: 2.5em; }
 
 .main-features {
   font-size: 1.5em;
   padding-bottom: 0.2em;
+}
+
+/* sign up button */
+.sign-up {
+  padding-top: 1%;
+}
+
+.sign-up .btn {
+  font-size: 1.4em;
+  padding: 1.4% 2.4%;
 }
