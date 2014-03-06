@@ -2,32 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
   lang="en-GB" xml:lang="en-GB">
   <head>
+    <!-- meta tags -->
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>maxwallet - your free online MaxCoin wallet</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width" />
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- page title -->
+    <title>maxwallet - your free online MaxCoin wallet</title>
+
+    <!-- cascading style sheets -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css"></link>
     <link rel="stylesheet" href="styles/content.css"></link>
     <!-- endbuild -->
+
+    <!-- detect browser features -->
     <script src="js/modernizr.custom.js"></script>
   </head>
   <body ng-app="webtechApp">
+    <!-- ensure browser compatibility -->
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!-- end of section -->
 
-	  <!-- Navigation -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
+	  <!-- navigation bar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="navbar-header">
+        <!-- logo -->
         <a class="navbar-brand" href="#"><span class="logo-left logo-left-colour">max</span><span class="logo-right logo-right-colour">wallet</span></a>
+        
+        <!-- compact navigation menu for mobiles -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle menu</span>
           <span class="icon-bar"></span>
@@ -35,6 +47,8 @@
           <span class="icon-bar"></span>
         </button>
       </div>
+
+      <!-- page navigation -->
       <nav class="collapse navbar-collapse" role="navigation">
         <ul class="nav nav-pills navbar-right">
           <li ui-sref-active="active"><a ui-sref="main">Home</a></li>
@@ -45,14 +59,17 @@
         </ul>
       </nav>
     </div>
+    <!-- end of section -->
 
-    <!-- Content -->
+    <!-- main page content -->
     <div class="view" ui-view=""></div>
+    <!-- end of section -->
 
-	  <!-- Footer -->
+	  <!-- footer -->
 	  <footer class="center">
 	    <span id="copyright">This website is copyright <span class="logo-left">max</span><span class="logo-right">wallet</span> 2014. All rights are reserved.</span>
 	  </footer>
+    <!-- end of section -->
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
