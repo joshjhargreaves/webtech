@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="well well-sm col-12 col-sm-4 col-lg-4 left">
+      <ul class="nav nav-pills nav-stacked">
+          <!--<li ui-sref-active="active"><a ui-sref="wallet.list">All Contacts</a></li>-->
+          <li class="nav-header">Top Contacts</li>
+          <li ui-sref-active="active"><a ui-sref="wallet.overview">Overview</a></li>
+          <li ui-sref-active="active"><a ui-sref="wallet.send">Send funds</a></li>
+          <li ui-sref-active="active"><a ui-sref="wallet.recieve">Recieve funds</a></li>
+          <li ui-sref-active="active"><a ui-sref="wallet.standingorders">Standing orders</a></li>
+          <li ui-sref-active="active"><a ui-sref="wallet.addressbook">Address book</a></li>
+          <!-- This <li> will only add the 'active' class if 'contacts.detail' or its descendants are active
+               AND if it is the link for the active contact (aka contactId) -->
+          <!--<li ng-repeat="contact in contacts | limitTo:2" ui-sref-active="active">-->
+
+            <!-- Here's a ui-sref that is also providing necessary parameters -->
+            <!--<a ui-sref="contacts.detail({contactId:contact.id})">{{contact.name}}</a>-->
+          <!--</li>-->
+        <hr></hr>
+      </ul>
+    </div>
+      <!-- Another named view -->
+    <div ui-view="" class="col-12 col-sm-8 col-lg-8 main"></div>
+</div>
+<div ui-view="menuTip"></div>
