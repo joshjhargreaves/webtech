@@ -10,6 +10,12 @@ body {
   padding-right: 1.5%;
 }
 
+/* Center everything at 60% width */
+.center {
+  width: 60%;
+  margin: 0 auto;
+}
+
 /* Page header and nav */
 .navbar {
   border-bottom: 0.2em solid #e5e5e5;
@@ -39,20 +45,9 @@ body {
   font-size: 3.6em;
 }
 
-/* Page footer and copyright */
-footer {
-  color: #777;
-  border-top: 0.2em solid #e5e5e5;
-  padding-top: 1.9%;
-  padding-bottom: 1em;
-  text-align: center;
-  width: 60%;
-  margin: 0 auto;
-}
-
 /* Central column */
 .container {
-  width: 60%;
+  width: 100%;
   padding: 0;
 }
 
@@ -64,7 +59,6 @@ footer {
 .jumbotron {
   text-align: center;
   border-bottom: 0.2em solid #e5e5e5;
-
 }
 
 .jumbotron .btn {
@@ -73,10 +67,15 @@ footer {
 }
 
 /* Content below jumbotron */
-.marketing {
-  margin: 4% 0;
-}
-
 .marketing p + h4 {
   margin-top: 2.8%;
+}
+
+/* Page footer and copyright */
+footer {
+  color: #777;
+  border-top: 0.2em solid #e5e5e5;
+  padding-top: 1.9%;
+  padding-bottom: 1em;
+  text-align: center;
 }
