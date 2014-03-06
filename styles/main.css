@@ -1,4 +1,9 @@
-/* Space out content a bit */
+/* fill screen height for footer */
+html, body {
+  height: 100%;
+}
+
+/* space content out */
 body {
   padding-top: 50px; /* bootstrap navbar is 50px */
   padding-bottom: 2%;
@@ -8,19 +13,19 @@ body {
   padding-top: 2%;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+/* everything but the jumbotron gets side spacing for mobile first views */
 .marketing {
   padding-left: 1.5%;
   padding-right: 1.5%;
 }
 
-/* Center everything at 60% width */
+/* center everything at 60% width */
 .center {
   width: 60%;
   margin: 0 auto;
 }
 
-/* Page header and nav */
+/* page header and nav */
 .navbar {
   border-bottom: 0.2em solid #e5e5e5;
   background-color: #333;
@@ -28,7 +33,7 @@ body {
   padding-right: 20%;
 }
 
-/* Give the navbar some shadow */
+/* give the navbar some shadow */
 .navbar {
   box-shadow: 0.1em 0 0.2em #888888;
 }
@@ -38,7 +43,7 @@ body {
   padding-bottom: 1%;
 }
 
-/* Ensure the navigation and the logo don't overlap */
+/* ensure the navigation and the logo don't overlap */
 .navbar-brand {
   position:absolute;
   left: 20%;
@@ -61,7 +66,7 @@ body {
   margin: 3% 0;
 }
 
-/* Ribbon */
+/* ribbon */
 .ribbon {
   padding-top: 2%;
   width: 100%;
@@ -69,23 +74,24 @@ body {
   background-size: 100% auto; /* CSS3 */
 }
 
-/* Gray area with create wallet button */
+/* gray area with create wallet button */
 .jumbotron {
   text-align: center;
   border-bottom: 0.2em solid rgba(229, 229, 229, 0.7);
   background-color: rgba(238, 238, 238, 0.7);
 }
 
-/* Content below jumbotron */
+/* content below jumbotron */
 .marketing p + h4 {
   margin-top: 2.8%;
 }
 
-/* Page footer and copyright */
+/* page footer and copyright */
 footer {
-  color: #777;
+  color: white;
   border-top: 0.2em solid #e5e5e5;
-  padding-top: 1.9%;
-  padding-bottom: 1em;
+  padding-top: 1%;
+  padding-bottom: 1%;
   text-align: center;
+  background-color: #386F80;
 }
