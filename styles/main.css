@@ -76,10 +76,6 @@ body {
   background-color: rgba(238, 238, 238, 0.7);
 }
 
-.jumbotron .background {
-  opacity: 0.5;
-}
-
 /* Content below jumbotron */
 .marketing p + h4 {
   margin-top: 2.8%;
