@@ -1,71 +1,79 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
   lang="en-GB" xml:lang="en-GB">
   <head>
     <meta charset="UTF-8"/>
-    <link href="css/layout.css" rel="stylesheet" type="text/css" />
-    <link href="css/component.css" rel="stylesheet" type="text/css" />
-    <title>Max Wallet - an online wallet for MaxCoin</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>maxwallet - your free online MaxCoin wallet</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css"></link>
+    <link rel="stylesheet" href="styles/content.css"></link>
+    <!-- endbuild -->
     <script src="js/modernizr.custom.js"></script>
   </head>
-  <body>
-  	<!-- All modals added here for the demo. You would of course just have one, dynamically created -->
-		<div class="md-modal md-effect-1" id="modal-1">
-			<div class="md-content">
-				<h3>Login</h3>
-				<div>
-					<p>This is a modal window. You can do the following things with it:</p>
-					<ul>
-						<li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-						<li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
-						<li><strong>Close:</strong> click on the button below to close the modal.</li>
-					</ul>
-					<button class="md-close">Close me!</button>
-				</div>
-			</div>
-		</div>
-  	<div class="md-overlay"></div><!-- the overlay element -->
-    <div id="topbar"></div>
-    <div id="container">
-      <div id="header">
-        <h1 id="logo-header">
-          <span class="logo-max">max</span><span class="logo-wallet">wallet</span>
-        </h1>
-        <div id="profile">
-          <button class="md-trigger" data-modal="modal-1">Login</button> | <span><a href="#signup">Sign up</a></span>
-        </div>
+  <body ng-app="webtechApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+	<!-- Navigation -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span class="logo-left logo-left-colour">max</span><span class="logo-right logo-right-colour">wallet</span></a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-      <div id="box">
-        <div id="menu">
-          <ul>
-            <li><a href="#"><img src="img/icon/overview.png" width="16" alt="Overview" /> Overview</a></li>
-            <li><a href="#"><img src="img/icon/send.png" width="16" alt="Send funds" /> Send funds</a></li>
-            <li><a href="#"><img src="img/icon/receive.png" width="16" alt="Receive funds" /> Receive funds</a></li>
-            <li><a href="#"><img src="img/icon/orders.png" width="16" alt="Standing orders" /> Standing orders</a></li>
-            <li><a href="#"><img src="img/icon/address.png" width="16" alt="Address book" /> Address book</a></li>
-          </ul>
-        </div>
-        <div id="content">
-          <h1 id="page-title">Welcome to your wallet</h1>
-          <ul>
-            <li>Create wallet</li>
-            <li>Login/logout</li>
-            <li>Withdraw/send funds</li>
-            <li>Deposit funds</li>
-            <li># confirmations</li>
-            <li>txid for transactions</li>
-            <li>QR code for maxcoin address</li>
-            <li>QR code for fund request</li>
-          </ul>
-        </div>
-      </div>
-      <div id="footer">
-        <span id="copyright">This website is copyright <span class="logo-max-monochrome">max</span><span class="logo-wallet-monochrome">wallet</span> 2014. All rights are reserved.</span>
-      </div>
-    </div>	
-  </body>
-  <!-- classie.js by @desandro: https://github.com/desandro/classie -->
-		<script src="js/classie.js"></script>
-		<script src="js/modaleffects.js"></script>
+      <nav class="collapse navbar-collapse" role="navigation">
+        <ul class="nav nav-pills navbar-right">
+          <li ui-sref-active="active"><a ui-sref="main">Home</a></li>
+          <li ng-class="{ active: $state.includes('wallet') }"><a ui-sref="wallet.overview">Wallet</a></li>
+          <li ui-sref-active="active"><a ui-sref="about">About</a></li>
+          <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
+          <li ui-sref-active="active"><a ui-sref="login">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Content -->
+    <div class="container" ui-view=""></div>
+
+	<!-- Footer -->
+	<footer>
+	  <span id="copyright">This website is copyright <span class="logo-left">max</span><span class="logo-right">wallet</span> 2014. All rights are reserved.</span>
+	</footer>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <!-- UI-Router -->
+    <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
+</body>
 </html>
