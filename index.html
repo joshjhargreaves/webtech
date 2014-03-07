@@ -77,6 +77,9 @@
       <div class="container">
 	      <span id="copyright">This website is copyright <span class="logo-left">max</span><span class="logo-right">wallet</span> 2014. All rights are reserved.</span>
       </div>
+      <span style="float:right; margin-right: 3%; margin-bottom">
+        <span>^</span>
+      </span>
 	  </footer>
     <!-- end of section -->
 
@@ -99,12 +102,14 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <!-- UI-Router -->
+    <!-- ui-router -->
     <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
-    <!--QI-Code generator-->
+    <!-- qr-code generator-->
     <script src="js/qrcode.js"></script>
     <!-- endbuild -->
     <!-- end of section -->
+
+    <!-- modal dialog (pop up window) -->
     <modal-dialog show='modalShown' width='500px' height='60%'>
       <h1>Login</h1>
       <form class="form-horizontal" role="form">
@@ -136,5 +141,6 @@
         </div>
       </form>
     </modal-dialog>
+    <!-- end of section -->
 </body>
 </html>
