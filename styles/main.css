@@ -104,7 +104,6 @@ footer .legal {
   padding-bottom: 1%;
   background-color: #386f80;
   text-align: center;
-  font-size: 1.2em;
 }
 
 footer h1 {
@@ -114,6 +113,14 @@ footer h1 {
 footer ul {
   padding: 0;
   list-style: none;
+}
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color: #428bca;
 }
 
 /* ensure footer is consistent on
