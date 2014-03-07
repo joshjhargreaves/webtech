@@ -108,6 +108,8 @@ footer .legal {
 
 footer h1 {
   font-size: 2em;
+  color: white;
+  border-bottom: 0.08em dotted black;
 }
 
 footer ul {
@@ -117,10 +119,13 @@ footer ul {
 
 footer a {
   color: white;
+  font-weight: bold;
 }
 
 footer a:hover {
-  color: #428bca;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
 }
 
 /* ensure footer is consistent on
