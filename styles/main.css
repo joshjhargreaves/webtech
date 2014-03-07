@@ -95,7 +95,6 @@ footer {
 }
 
 footer .social {
-  font-size: 1em;
   background-color: #3e7a8c;
   border-top: 0.2em solid #e5e5e5;
 }
@@ -106,6 +105,15 @@ footer .legal {
   background-color: #386f80;
   text-align: center;
   font-size: 1.2em;
+}
+
+footer h1 {
+  font-size: 2em;
+}
+
+footer ul {
+  padding: 0;
+  list-style: none;
 }
 
 /* ensure footer is consistent on
