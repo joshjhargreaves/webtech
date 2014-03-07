@@ -92,11 +92,19 @@ html, body {
 /* page footer and copyright */
 footer {
   color: white;
+}
+
+footer .social {
+  font-size: 1em;
+  background-color: #3e7a8c;
   border-top: 0.2em solid #e5e5e5;
+}
+
+footer .legal {
   padding-top: 1%;
   padding-bottom: 1%;
+  background-color: #386f80;
   text-align: center;
-  background-color: #386F80;
   font-size: 1.2em;
 }
 
@@ -106,71 +114,79 @@ footer {
 /* VGA */
 @media screen and (max-height: 480px) {
   #wrap {
-    margin: 0 auto -40px;
-    padding: 0 0 40px;
+    margin: 0 auto -160px;
+    padding: 0 0 160px;
   }
 
-  footer {
-    height: 40px;
+  footer .social {
+    height: 130px;
+  }
+
+  footer .legal {
+    height: 30px;
   }
 }
 
 /* VGA */
 @media screen and (max-height: 600px) {
   #wrap {
-    margin: 0 auto -50px;
-    padding: 0 0 50px;
+    margin: 0 auto -175px;
+    padding: 0 0 175px;
   }
 
-  footer {
-    height: 50px;
+  footer .social {
+    height: 140px;
+  }
+
+  footer .legal {
+    height: 35px;
   }
 }
 
 /* WVGA */
 @media screen and (max-height: 800px) {
   #wrap {
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+    margin: 0 auto -190px;
+    padding: 0 0 190px;
   }
 
-  footer {
-    height: 60px;
-  }
-}
-
-/* SXGA */
-@media screen and (max-height: 1024px) {
-  #wrap {
-    margin: 0 auto -62px;
-    padding: 0 0 62px;
+  footer .social {
+    height: 150px;
   }
 
-  footer {
-    height: 62px;
+  footer .legal {
+    height: 40px;
   }
 }
 
 /* Full HD */
 @media screen and (max-height: 1080px) {
   #wrap {
-    margin: 0 auto -65px;
-    padding: 0 0 65px;
+    margin: 0 auto -210px;
+    padding: 0 0 210px;
   }
 
-  footer {
-    height: 65px;
+  footer .social {
+    height: 160px;
+  }
+
+  footer .legal {
+    height: 50px;
   }
 }
 
 /* WQXGA */
 @media screen and (max-height: 1600px) {
   #wrap {
-    margin: 0 auto -70px;
-    padding: 0 0 70px;
+    margin: 0 auto -220px;
+    padding: 0 0 220px;
   }
 
-  footer {
-    height: 70px;
+  footer .social {
+    height: 165px;
+  }
+
+  footer .legal {
+    height: 55px;
   }
 }
