@@ -11,7 +11,7 @@ angular.module('webtechApp')
 angular.module('webtechApp')
   .controller('contactController', function ($scope) {
     $scope.message = 'Contact us! JK. This is just a demo.';
-  });
+});
 
 angular.module('webtechApp').controller('qrcode', function($scope) {
   $scope.maxAddress = "maxcoin:mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK";
@@ -37,3 +37,30 @@ angular.module('webtechApp').controller('qrcode', function($scope) {
       console.log('New code :', code);
     });
 });
+angular.module('webtechApp').directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    templateUrl: "views/modalwindow.html"
+  };
+});
+angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.modalShown = !$scope.modalShown;
+  };
+}]);
