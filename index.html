@@ -14,7 +14,7 @@
     <!-- cascading style sheets -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="styles/main.css"></link>
     <link rel="stylesheet" href="styles/content.css"></link>
     <!-- endbuild -->
+
+    <!-- font-awesome iconic web font -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"></link>
 
     <!-- detect browser features -->
     <script src="js/modernizr.custom.js"></script>
@@ -78,8 +81,9 @@
           <div class="col-sm-4">
             <h1>Pages</h1>
             <ul>
+              <p>Find out more at:</p>
               <li><a ui-sref="privacy">Privacy Policy</a></li>
-              <li><a ui-sref="tos ">Terms of Service</a></li>
+              <li><a ui-sref="tos">Terms of Service</a></li>
               <li><a href="sitemap.xml">Sitemap</a></li>
             </ul>
           </div>
@@ -89,6 +93,9 @@
           <div class="col-sm-4">
             <h1>Social</h1>
             <p>Follow us for updates at:</p>
+            <span class="btn"><a target="_blank" href="#" alt="Follow us on Twitter"><i class="fa fa-twitter"></i></a></span>
+            <span class="btn"><a target="_blank" href="#" alt="Like us on Facebook"><i class="fa fa-facebook"></i></a></span>
+            <span class="btn"><a target="_blank" href="#" alt="+1 us on Google+"><i class="fa fa-google-plus"></i></a></span>
           </div>
           <!-- end of section -->
 

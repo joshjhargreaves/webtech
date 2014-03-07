@@ -128,6 +128,10 @@ footer a:hover {
   text-decoration: none;
 }
 
+footer .btn {
+  font-size: 1.5em;
+}
+
 /* ensure footer is consistent on
    mobile and larger devices */
 
