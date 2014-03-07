@@ -70,4 +70,8 @@
                 }]
             }
       })
+      .state('wallet.receive', {
+        url: '/receive',
+        templateUrl: "views/wallet.receive.html"
+      })
   })
