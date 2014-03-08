@@ -128,79 +128,39 @@ footer .btn {
 /* VGA */
 @media screen and (max-height: 480px) {
   #wrap {
-    margin: 0 auto -160px;
-    padding: 0 0 160px;
-  }
-
-  footer .social {
-    height: 130px;
-  }
-
-  footer .legal {
-    height: 30px;
+    margin-bottom: -160px;
+    padding-bottom: 160px;
   }
 }
 
 /* VGA */
 @media screen and (max-height: 600px) {
   #wrap {
-    margin: 0 auto -175px;
-    padding: 0 0 175px;
-  }
-
-  footer .social {
-    height: 140px;
-  }
-
-  footer .legal {
-    height: 35px;
+    margin-bottom: -175px;
+    padding-bottom: 175px;
   }
 }
 
 /* WVGA */
 @media screen and (max-height: 800px) {
   #wrap {
-    margin: 0 auto -190px;
-    padding: 0 0 190px;
-  }
-
-  footer .social {
-    height: 150px;
-  }
-
-  footer .legal {
-    height: 40px;
+    margin-bottom: -190px;
+    padding-bottom: 190px;
   }
 }
 
 /* Full HD */
 @media screen and (max-height: 1080px) {
   #wrap {
-    margin: 0 auto -210px;
-    padding: 0 0 210px;
-  }
-
-  footer .social {
-    height: 160px;
-  }
-
-  footer .legal {
-    height: 50px;
+    margin-bottom: -210px;
+    padding-bottom: 210px;
   }
 }
 
 /* WQXGA */
 @media screen and (max-height: 1600px) {
   #wrap {
-    margin: 0 auto -220px;
-    padding: 0 0 220px;
-  }
-
-  footer .social {
-    height: 165px;
-  }
-
-  footer .legal {
-    height: 55px;
+    margin-bottom: -220px;
+    padding-bottom: 220px;
   }
 }
