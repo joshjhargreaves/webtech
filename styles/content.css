@@ -29,12 +29,6 @@
   min-height: 400px;
 }
 
-/*.container .floating {
-  z-index: 10;
-  position: absolute;
-  margin: 0 auto;
-}*/
-
 .carousel .left,
 .carousel .right {
   display: inline-block;
