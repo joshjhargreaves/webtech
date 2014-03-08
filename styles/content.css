@@ -31,9 +31,10 @@
 
 .carousel .left,
 .carousel .right {
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
+  line-height: 200px;
+  font-size: 5em;
+  padding: 0;
+  margin: 0;
 }
 
 /* sliders for carousel */
@@ -46,19 +47,19 @@
 }
 
 .carousel .slider1 {
-  background: url(../images/cc.png) no-repeat;
+  background: url(../images/slider/1.png) no-repeat;
   width: 100%;
   background-size: 100% auto; /* CSS3 */
 }
 
 .carousel .slider2 {
-  background: url(http://getbootstrap.com/2.3.2/assets/img/examples/slide-02.jpg) no-repeat;
+  background: url(../images/slider/2.png) no-repeat;
   width: 100%;
   background-size: 100% auto; /* CSS3 */
 }
 
 .carousel .slider3 {
-  background: url(http://getbootstrap.com/2.3.2/assets/img/examples/slide-03.jpg) no-repeat;
+  background: url(../images/slider/3.png) no-repeat;
   width: 100%;
   background-size: 100% auto; /* CSS3 */
 }
