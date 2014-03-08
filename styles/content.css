@@ -42,26 +42,89 @@
 .carousel .slider2,
 .carousel .slider3 {
   width: 100%;
-  background-size: 100% auto; /* CSS3 */
   min-height: 400px;
 }
 
-.carousel .slider1 {
-  background: url(../images/slider/1.png) no-repeat;
-  width: 100%;
-  background-size: 100% auto; /* CSS3 */
+/* ensure the carousel works for all screen resolutions */
+
+/* VGA */
+@media (max-width: 640px) {
+  .carousel .slider1 {
+    background: url('../images/slider/1-640.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider2 {
+    background: url('../images/slider/2-640.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider3 {
+    background: url('../images/slider/3-640.png') no-repeat;
+    background-size: auto auto;
+  }
 }
 
-.carousel .slider2 {
-  background: url(../images/slider/2.png) no-repeat;
-  width: 100%;
-  background-size: 100% auto; /* CSS3 */
+/* WVGA */
+@media (max-width: 800px) {
+  .carousel .slider1 {
+    background: url('../images/slider/1-800.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider2 {
+    background: url('../images/slider/2-800.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider3 {
+    background: url('../images/slider/3-800.png') no-repeat;
+    background-size: auto auto;
+  }epeat; }
 }
 
-.carousel .slider3 {
-  background: url(../images/slider/3.png) no-repeat;
-  width: 100%;
-  background-size: 100% auto; /* CSS3 */
+/* XGA */
+@media (max-width: 1024px) {
+  .carousel .slider1 {
+    background: url('../images/slider/1-1024.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider2 {
+    background: url('../images/slider/2-1024.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider3 {
+    background: url('../images/slider/3-1024.png') no-repeat;
+    background-size: auto auto;
+  }
+}
+
+/* Full HD */
+@media (max-width: 1920px) {
+  .carousel .slider1 {
+    background: url('../images/slider/1-1920.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider2 {
+    background: url('../images/slider/2-1920.png') no-repeat;
+    background-size: auto auto;
+  }
+  .carousel .slider3 {
+    background: url('../images/slider/3-1920.png') no-repeat;
+    background-size: auto auto;
+  }
+}
+
+/* Larger - scale horizontally! */
+@media (min-width: 1920px) {
+  .carousel .slider1 {
+    background: url('../images/slider/1.png') no-repeat;
+    background-size: 100% auto;
+  }
+  .carousel .slider2 {
+    background: url('../images/slider/2.png') no-repeat;
+    background-size: 100% auto;
+  }
+  .carousel .slider3 {
+    background: url('../images/slider/3.png') no-repeat;
+    background-size: 100% auto;
+}
 }
 
 /*** modal window ***/
