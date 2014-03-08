@@ -18,6 +18,59 @@
   padding-bottom: 0.2em;
 }
 
+/* ribbon */
+.ribbon {
+  width: 100%;
+}
+
+/* carousel */
+.carousel {
+  width: 100%;
+  min-height: 400px;
+}
+
+/*.container .floating {
+  z-index: 10;
+  position: absolute;
+  margin: 0 auto;
+}*/
+
+.carousel .left,
+.carousel .right {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+/* sliders for carousel */
+.carousel .slider1,
+.carousel .slider2,
+.carousel .slider3 {
+  width: 100%;
+  background-size: 100% auto; /* CSS3 */
+  min-height: 400px;
+}
+
+.carousel .slider1 {
+  background: url(../images/cc.png) no-repeat;
+  width: 100%;
+  background-size: 100% auto; /* CSS3 */
+}
+
+.carousel .slider2 {
+  background: url(http://getbootstrap.com/2.3.2/assets/img/examples/slide-02.jpg) no-repeat;
+  width: 100%;
+  background-size: 100% auto; /* CSS3 */
+}
+
+.carousel .slider3 {
+  background: url(http://getbootstrap.com/2.3.2/assets/img/examples/slide-03.jpg) no-repeat;
+  width: 100%;
+  background-size: 100% auto; /* CSS3 */
+}
+
+/*** modal window ***/
+
 /* sign up button */
 .sign-up {
   padding-top: 1%;

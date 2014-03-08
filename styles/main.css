@@ -67,14 +67,6 @@ html, body {
   margin: 3% 0;
 }
 
-/* ribbon */
-.ribbon {
-  padding-top: 2%;
-  width: 100%;
-  background: url(../img/cc.png) no-repeat;
-  background-size: 100% auto; /* CSS3 */
-}
-
 /* gray area with create wallet button */
 .jumbotron {
   text-align: center;
