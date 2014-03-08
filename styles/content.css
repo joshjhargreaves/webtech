@@ -45,6 +45,19 @@
   min-height: 400px;
 }
 
+.carousel .slider1 {
+  background: url('../images/slider/1.png') no-repeat;
+  background-size: 100% auto;
+}
+.carousel .slider2 {
+  background: url('../images/slider/2.png') no-repeat;
+  background-size: 100% auto;
+}
+.carousel .slider3 {
+  background: url('../images/slider/3.png') no-repeat;
+  background-size: 100% auto;
+}
+
 /* ensure the carousel works for all screen resolutions */
 
 /* VGA */
@@ -109,22 +122,6 @@
     background: url('../images/slider/3-1920.png') no-repeat;
     background-size: auto auto;
   }
-}
-
-/* Larger - scale horizontally! */
-@media (min-width: 1920px) {
-  .carousel .slider1 {
-    background: url('../images/slider/1.png') no-repeat;
-    background-size: 100% auto;
-  }
-  .carousel .slider2 {
-    background: url('../images/slider/2.png') no-repeat;
-    background-size: 100% auto;
-  }
-  .carousel .slider3 {
-    background: url('../images/slider/3.png') no-repeat;
-    background-size: 100% auto;
-}
 }
 
 /*** modal window ***/
