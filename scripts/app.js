@@ -74,4 +74,8 @@
         url: '/receive',
         templateUrl: "views/wallet.receive.html"
       })
+      .state('wallet.send', {
+        url: '/send',
+        templateUrl: "views/wallet.send.html"
+      })
   })
