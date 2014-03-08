@@ -171,29 +171,4 @@
       <!-- end of section -->
     </div>
   </body>
-    <!-- modal dialog (pop up window) -->
-    <modal-dialog show='modalShown' width='500px' height='60%'>
-      <h3>Login</h3>
-    <!-- pass in the variable if our form is valid or invalid -->
-      <form name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="">
-          <!-- USERNAME -->
-          <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }" required="">
-              <label>Email</label>
-              <input type="email" name="email" class="form-control" ng-model="user.email"></input>
-              <p ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
-          </div>
-          <!-- EMAIL -->
-          <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
-              <label>Password</label>
-              <input type="password" name="password" class="form-control" ng-model="user.password" required=""></input>
-              <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
-          </div>
-          <div>
-            <button ng-if="!userForm.$invalid" type="submit" class="btn btn-primary">Submit</button>
-            <button ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
-          </div>
-      </form>
-    </modal-dialog>
-    <!-- end of section -->
-</body>
 </html>
