@@ -15,7 +15,7 @@ angular.module('webtechApp')
 
 angular.module('webtechApp').controller('qrcode', function($scope) {
   $scope.maxAddress = "maxcoin:mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK";
-  $scope.qrcode = new QRCode(document.getElementById("qrcode1"), "http://www.google.com");
+  $scope.qrcode = new QRCode(document.getElementById("qrcode1"), $scope.maxAddress);
   $scope.textinputs = ['label', 'amount']
   $scope.$watchCollection('[label, amount]', function(values) {
       var code = $scope.maxAddress;
@@ -63,4 +63,12 @@ angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
   };
+  $scope.submitForm = function(isValid) {
+    // check to make sure the form is completely valid
+    if (isValid) { 
+      alert('This form has been submitted');
+    }
+  };
+}]);
+angular.module('webtechApp').controller('testtctrl', ['$scope', function($scope) {
 }]);
