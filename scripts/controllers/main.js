@@ -70,5 +70,10 @@ angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
     }
   };
 }]);
-angular.module('webtechApp').controller('testtctrl', ['$scope', function($scope) {
+angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
+  $scope.submitForm = function(isValid) {
+    if (!isValid) { 
+        alert('This form has been submitted');
+    }
+  };
 }]);
