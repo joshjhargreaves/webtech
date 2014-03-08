@@ -65,7 +65,7 @@ angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
   };
   $scope.submitForm = function(isValid) {
     // check to make sure the form is completely valid
-    if (isValid) { 
+    if (!isValid) { 
       alert('This form has been submitted');
     }
   };
