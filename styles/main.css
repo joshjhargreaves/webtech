@@ -70,8 +70,8 @@ html, body {
   text-align: center;
 
   /* 70% opacity */
-  border-bottom: 0.2em solid rgba(229, 229, 229, 0.7);
-  background-color: rgba(238, 238, 238, 0.7);
+  border-bottom: 0.2em solid rgba(33, 33, 33, 0.4);
+  background-color: rgba(33, 33, 33, 0.5);
 }
 
 /* content below jumbotron */
