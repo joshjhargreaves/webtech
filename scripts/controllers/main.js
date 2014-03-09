@@ -80,6 +80,10 @@ angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
 angular.module('webtechApp').controller('maxusdCtrl', ['$scope', 'Poller', function($scope, Poller) {
   $scope.data = Poller.data;
   $scope.amountOfMax = 123481;
+  $scope.visible = true;
+  $scope.showhide=function(){
+    alert('This is a test');
+  }
 }]);
 angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFilter) {
   var data = { response: {}, calls: 0, time: 0};
