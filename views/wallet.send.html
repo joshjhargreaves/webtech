@@ -8,14 +8,17 @@
           <input name="address" class="form-control" ng-model="user.address" required=""></input>
           <p ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter an Address.</p>
       </div>
+
       <!-- AMOUNT -->
-      <!--TODO add number validation as native angular implementation is broken-->
+      <!-- TODO add number validation as native angular implementation is broken
+           This should be a maximum of 8 decimal places -->
       <div class="form-group" ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
           <label>Amount</label>
           <input name="amount" class="form-control" ng-model="user.amount" required=""></input>
           <p ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a amount.</p>
           <p ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter an Amount.</p>
       </div>
+
       <!-- PASSWORD -->
       <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
           <label>Password</label>
