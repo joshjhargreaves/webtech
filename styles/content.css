@@ -18,6 +18,23 @@
   padding-bottom: 0.2em;
 }
 
+.sign-up {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.sign-up .text-input {
+  width: 40%;
+  font-size: 1.4em;
+  padding: 1.4% 2.4% 0 0;
+}
+
+.sign-up .submit-btn {
+  float: right;
+}
+
 /* ribbon */
 .ribbon {
   width: 100%;
@@ -170,6 +187,12 @@
   .email-icon {
     float: left;
   }
+}
+
+/*** wallet.html and associated states ***/
+
+.qrcode-wrapper {
+  height: 256px;
 }
 
 /*** modal window ***/
