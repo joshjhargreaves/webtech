@@ -124,6 +124,34 @@
   }
 }
 
+/*** contact.html ***/
+
+.contact {
+  font-size: 1.5em;
+}
+
+.address {
+  float: left;
+}
+
+.address .phone-number,
+.email .email-address {
+  color: #777;
+}
+
+.address-icon {
+  float: right;
+}
+
+.email {
+  float: right;
+  text-align: right;
+}
+
+.email-icon {
+  float: left;
+}
+
 /*** modal window ***/
 
 /* sign up button */
