@@ -8,29 +8,21 @@
       <!-- wallet navigation -->
       <div class="well well-sm col-12 col-sm-4 col-lg-4 left">
         <ul class="nav nav-pills nav-stacked">
-            <!--<li ui-sref-active="active"><a ui-sref="wallet.list">All Contacts</a></li>-->
-            <li ui-sref-active="active"><a ui-sref="wallet.overview">Overview</a></li>
-            <li ui-sref-active="active"><a ui-sref="wallet.send">Send funds</a></li>
-            <li ui-sref-active="active"><a ui-sref="wallet.receive">Recieve funds</a></li>
-            <li ui-sref-active="active"><a ui-sref="wallet.standingorders">Standing orders</a></li>
-            <li ui-sref-active="active"><a ui-sref="wallet.addressbook">Address book</a></li>
-            <!-- This <li> will only add the 'active' class if 'contacts.detail' or its descendants are active
-                 AND if it is the link for the active contact (aka contactId) -->
-            <!--<li data-ng-repeat="contact in contacts | limitTo:2" ui-sref-active="active">-->
-
-              <!-- Here's a ui-sref that is also providing necessary parameters -->
-              <!--<a ui-sref="contacts.detail({contactId:contact.id})">{{contact.name}}</a>-->
-            <!--</li>-->
-          <hr></hr>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.overview">Overview</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.send">Send funds</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.receive">Recieve funds</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.standingorders">Standing orders</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.addressbook">Address book</a></li>
         </ul>
+        <hr></hr>
       </div>
       <!-- end of section -->
 
       <!-- wallet content -->
-      <div ui-view="" class="col-12 col-sm-8 col-lg-8 main"></div>
+      <div data-ui-view="" class="col-12 col-sm-8 col-lg-8 main"></div>
       <!-- end of section -->
   </div>
-  <div ui-view="menuTip"></div>
+  <div data-ui-view="menuTip"></div>
 </div>
 <!-- end of section -->
 
