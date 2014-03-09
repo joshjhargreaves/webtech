@@ -1,30 +1,41 @@
 
 <div class="well">
-  <h1>Send Max</h1>
-  <form name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="" ng-controler="sendmax">
+  <!-- page introduction -->
+  <h1>Send Funds</h1>
+  <p>To send funds to another wallet, enter the address in the form below. The coins will be received after a small number of <span class="tt">confirmations</span>, usually between 12 and 20. You can track the status of the payment using the <a ui-sref="wallet.transactions">transaction explorer</a>.</p>
+  <hr></hr>
+  <!-- end of page introduction -->
+
+  <form class="form-horizontal" name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="" ng-controler="sendmax">
       <!-- ADDRESS -->
       <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
-          <label>Address</label>
-          <input name="address" class="form-control" ng-model="user.address" required=""></input>
-          <p ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter an Address.</p>
+          <label class="col-sm-3 control-label">Send to address</label>
+          <div class="col-sm-9">
+            <input name="address" class="form-control" ng-model="user.address" required="" placeholder="MaxCoin address i.e. mQ1MSBXTRvV4ArwDksPiUBLWCmt7t9AkDi"></input>
+            <p ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter a valid MaxCoin Address.</p>
+          </div>
       </div>
 
       <!-- AMOUNT -->
       <!-- TODO add number validation as native angular implementation is broken
            This should be a maximum of 8 decimal places -->
       <div class="form-group" ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
-          <label>Amount</label>
-          <input name="amount" class="form-control" ng-model="user.amount" required=""></input>
-          <p ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a amount.</p>
-          <p ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter an Amount.</p>
+          <label class="col-sm-3 control-label">Amount</label>
+          <div class="col-sm-9">
+            <input name="amount" type="number" class="form-control" ng-model="user.amount" required="" placeholder="14.0"></input>
+            <p ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
+            <p ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
+          </div>
       </div>
 
       <!-- PASSWORD -->
       <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
-          <label>Password</label>
-          <input type="number" name="password" class="form-control" ng-model="user.password" required=""></input>
-          <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
-          <p ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a Password.</p>
+          <label class="col-sm-3 control-label">Password</label>
+          <div class="col-sm-9">
+            <input type="password" name="password" class="form-control" ng-model="user.password" required=""></input>
+            <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
+            <p ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
+          </div>
       </div>
       <div>
         <button ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>

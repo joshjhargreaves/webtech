@@ -7,6 +7,14 @@
 .logo-left-colour { color: #777; }
 .logo-right-colour { color: #e5e5e5; }
 
+.horizontal-bar {
+  width: 40%;
+  border-top: 0.2em dotted #e5e5e5;
+  min-height: 1px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 
 /*** main.html ***/
 

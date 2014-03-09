@@ -1,6 +1,10 @@
 
 <div class="well" ng-controller="maxusdCtrl">
+  <!-- page introduction -->
 	<h1>Wallet Overview</h1>
+  <hr></hr>
+  <!-- end of section -->
+
   <!-- toggle balance link -->
 	<div>
 		<p class="text-muted">Current Balance 
@@ -16,7 +20,7 @@
 	<form class="form-horizontal" role="form">
 		<div class="row">
 	    <div class="col-sm-4">
-	      <p ng-show="visible">{{amountOfMax}} = {{data.response.mpusd}}</p>
+	      <p ng-show="visible">{{amountOfMax}} &#8776; {{data.response.mpusd}}</p>
 	    </div>
 	  </div>
 	  <div class="row">
