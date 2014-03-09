@@ -126,7 +126,7 @@ footer .btn {
    mobile and larger devices */
 
 /* VGA */
-@media screen and (max-height: 480px) {
+@media (max-height: 480px) {
   #wrap {
     margin-bottom: -160px;
     padding-bottom: 160px;
@@ -134,7 +134,7 @@ footer .btn {
 }
 
 /* VGA */
-@media screen and (max-height: 600px) {
+@media (max-height: 600px) {
   #wrap {
     margin-bottom: -175px;
     padding-bottom: 175px;
@@ -142,7 +142,7 @@ footer .btn {
 }
 
 /* WVGA */
-@media screen and (max-height: 800px) {
+@media (max-height: 800px) {
   #wrap {
     margin-bottom: -190px;
     padding-bottom: 190px;
@@ -150,7 +150,7 @@ footer .btn {
 }
 
 /* Full HD */
-@media screen and (max-height: 1080px) {
+@media (max-height: 1080px) {
   #wrap {
     margin-bottom: -210px;
     padding-bottom: 210px;
@@ -158,7 +158,7 @@ footer .btn {
 }
 
 /* WQXGA */
-@media screen and (max-height: 1600px) {
+@media (max-height: 1600px) {
   #wrap {
     margin-bottom: -220px;
     padding-bottom: 220px;
