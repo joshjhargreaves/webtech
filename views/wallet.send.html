@@ -6,40 +6,40 @@
   <hr></hr>
   <!-- end of page introduction -->
 
-  <form class="form-horizontal" name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="" ng-controler="sendmax">
+  <form class="form-horizontal" name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="" data-ng-controler="sendmax">
       <!-- ADDRESS -->
-      <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
+      <div class="form-group" data-ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
           <label class="col-sm-3 control-label">Send to address</label>
           <div class="col-sm-9">
-            <input name="address" class="form-control" ng-model="user.address" required="" placeholder="MaxCoin address i.e. mQ1MSBXTRvV4ArwDksPiUBLWCmt7t9AkDi"></input>
-            <p ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter a valid MaxCoin Address.</p>
+            <input name="address" class="form-control" data-ng-model="user.address" required="" placeholder="MaxCoin address i.e. mQ1MSBXTRvV4ArwDksPiUBLWCmt7t9AkDi"></input>
+            <p data-ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter a valid MaxCoin Address.</p>
           </div>
       </div>
 
       <!-- AMOUNT -->
       <!-- TODO add number validation as native angular implementation is broken
            This should be a maximum of 8 decimal places -->
-      <div class="form-group" ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
+      <div class="form-group" data-ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
           <label class="col-sm-3 control-label">Amount</label>
           <div class="col-sm-9">
-            <input name="amount" type="number" class="form-control" ng-model="user.amount" required="" placeholder="14.0"></input>
-            <p ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
-            <p ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
+            <input name="amount" type="number" class="form-control" data-ng-model="user.amount" required="" placeholder="14.0"></input>
+            <p data-ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
+            <p data-ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
           </div>
       </div>
 
       <!-- PASSWORD -->
-      <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
+      <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
           <label class="col-sm-3 control-label">Password</label>
           <div class="col-sm-9">
-            <input type="password" name="password" class="form-control" ng-model="user.password" required=""></input>
-            <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
-            <p ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
+            <input type="password" name="password" class="form-control" data-ng-model="user.password" required=""></input>
+            <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
+            <p data-ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
           </div>
       </div>
       <div>
-        <button ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
-        <button ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
+        <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
+        <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
       </div>
   </form>
 </div>

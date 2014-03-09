@@ -7,19 +7,19 @@
   <!-- end of page introduction -->
 
   <!-- auto-updating qr code generator -->  
-  <div ng-controller="qrcode">
+  <div data-ng-controller="qrcode">
     <form class="form-horizontal" role="form">
       <!-- form elements -->
       <div class="form-group">
         <label class="col-sm-3 control-label">Label <span class="text-muted">(optional)</span></label>
         <div class="col-sm-9">
-          <input class="form-control" id="maxlabel" placeholder="Luke's coins" ng-model="amount">></input>
+          <input class="form-control" id="maxlabel" placeholder="Luke's coins" data-ng-model="amount">></input>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-3 control-label">Amount</label>
         <div class="col-sm-9">
-          <input class="form-control" id="maxamount" placeholder="18.055" ng-model="label"></input>
+          <input class="form-control" id="maxamount" placeholder="18.055" data-ng-model="label"></input>
         </div>
       </div>
       <!-- end of section -->

@@ -1,5 +1,5 @@
 
-<div class="well" ng-controller="maxusdCtrl">
+<div class="well" data-ng-controller="maxusdCtrl">
   <!-- page introduction -->
 	<h1>Wallet Overview</h1>
   <hr></hr>
@@ -8,9 +8,9 @@
   <!-- toggle balance link -->
 	<div>
 		<p class="text-muted">Current Balance 
-			<a href="" ng-click="visible=!visible">
-				<a ng-if="visible">(hide)</a>
-				<a ng-if="!visible">(show)</a>
+			<a href="" data-ng-click="visible=!visible">
+				<a data-ng-if="visible">(hide)</a>
+				<a data-ng-if="!visible">(show)</a>
 			</a>
 		</p>
 	</div>
@@ -20,7 +20,7 @@
 	<form class="form-horizontal" role="form">
 		<div class="row">
 	    <div class="col-sm-4">
-	      <p ng-show="visible">{{amountOfMax}} &#8776; {{data.response.mpusd}}</p>
+	      <p data-ng-show="visible">{{amountOfMax}} &#8776; {{data.response.mpusd}}</p>
 	    </div>
 	  </div>
 	  <div class="row">

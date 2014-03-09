@@ -29,7 +29,7 @@
     <!-- detect browser features -->
     <script src="js/modernizr.custom.js"></script>
   </head>
-  <body ng-app="webtechApp" ng-controller='MyCtrl'>
+  <body data-ng-app="webtechApp" data-ng-controller='MyCtrl'>
       <!-- main content to fill screen -->
       <div id="wrap">
   	    <!-- navigation bar -->
@@ -50,10 +50,10 @@
           <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav nav-pills navbar-right">
               <li ui-sref-active="active"><a ui-sref="main" tabindex="5">Home</a></li>
-              <li ng-class="{ active: $state.includes('wallet') }"><a ui-sref="wallet.overview">Wallet</a></li>
+              <li data-ng-class="{ active: $state.includes('wallet') }"><a ui-sref="wallet.overview">Wallet</a></li>
               <li ui-sref-active="active"><a ui-sref="about" tabindex="6">About</a></li>
               <li ui-sref-active="active"><a ui-sref="contact" tabindex="7">Contact</a></li>
-              <li ui-sref-active="active" ng-click="toggleModal()" tabindex="4"><a href="">Login</a></li>
+              <li ui-sref-active="active" data-ng-click="toggleModal()" tabindex="4"><a href="">Login</a></li>
             </ul>
           </nav>
         </div>
@@ -105,9 +105,9 @@
             <div class="col-sm-4">
               <h1>Social</h1>
               <p>Follow us for updates at:</p>
-              <span class="btn"><a target="_blank" href="#" alt="Follow us on Twitter"><i class="fa fa-twitter"></i></a></span>
-              <span class="btn"><a target="_blank" href="#" alt="Like us on Facebook"><i class="fa fa-facebook"></i></a></span>
-              <span class="btn"><a target="_blank" href="#" alt="+1 us on Google+"><i class="fa fa-google-plus"></i></a></span>
+              <span class="btn"><a target="_blank" href="#"><i class="fa fa-twitter"></i></a></span>
+              <span class="btn"><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></span>
+              <span class="btn"><a target="_blank" href="#"><i class="fa fa-google-plus"></i></a></span>
             </div>
             <!-- end of section -->
           </div>
@@ -120,16 +120,16 @@
 
       <!-- build:js scripts/vendor.js -->
       <!-- bower:js -->
-      <script src="bower_components/jquery/jquery.js"></script>
-      <script src="bower_components/es5-shim/es5-shim.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/jquery/jquery.min.js"></script>
+      <script src="bower_components/es5-shim/es5-shim.min.js"></script>
+      <script src="bower_components/angular/angular.min.js"></script>
       <script src="bower_components/json3/lib/json3.min.js"></script>
-      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+      <script src="bower_components/angular-route/angular-route.min.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
       <!-- endbower -->
       <!-- endbuild -->
 
@@ -138,7 +138,7 @@
       <script src="scripts/app.js"></script>
       <script src="scripts/controllers/main.js"></script>
       <!-- ui-router -->
-      <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+      <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
       <!-- qr-code generator-->
       <script src="js/qrcode.js"></script>
       <!-- endbuild -->
@@ -148,22 +148,22 @@
       <modal-dialog show="modalShown" width="500px" height="60%">
         <h3>Login</h3>
         <!-- pass in the variable if our form is valid or invalid -->
-        <form name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="">
+        <form name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
             <!-- USERNAME -->
-            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }" required="">
+            <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }" required="">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control" ng-model="user.email" required=""></input>
-                <p ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Please enter a valid email.</p>
+                <input type="email" name="email" class="form-control" data-ng-model="user.email" required=""></input>
+                <p data-ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Please enter a valid email.</p>
             </div>
             <!-- EMAIL -->
-            <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
+            <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" ng-model="user.password" required=""></input>
-                <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
+                <input type="password" name="password" class="form-control" data-ng-model="user.password" required=""></input>
+                <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
             </div>
             <div>
-              <button ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
-              <button ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
+              <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
+              <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
             </div>
         </form>
       </modal-dialog>
