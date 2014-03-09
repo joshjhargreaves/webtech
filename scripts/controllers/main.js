@@ -77,20 +77,21 @@ angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
     }
   };
 }]);
-angular.module('webtechApp').controller('maxusdCtrl', ['$scope', function($scope) {
-  $scope.name = 'World';
+angular.module('webtechApp').controller('maxusdCtrl', ['$scope', 'Poller', function($scope, Poller) {
   $scope.data = Poller.data;
+  $scope.amountOfMax = 123481;
 }]);
-angular.module('webtechApp').factory('Poller', function($http, $timeout) {
-  var data = { response: {}, calls: 0 };
+angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFilter) {
+  var data = { response: {}, calls: 0, time: 0};
+  var format = 'd/M/yy h:mm:ss a';
   var poller = function() {
-    $http.get('http://data.bter.com/api/1/ticker/max_btc').then(function(r) {
+    $http.get('http://www.corsproxy.com/maxcointicker.com/stats.php').then(function(r) {
       data.response = r.data;
       data.calls++;
-      console.log(data.calls);
-      $timeout(poller, 1000);
+      data.time = dateFilter(new Date(), format);
+      console.log(data);
+      $timeout(poller, 10000);
     });
-    
   };
   poller();
   
