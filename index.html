@@ -4,7 +4,7 @@
   <head>
     <!-- meta tags -->
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width" />
 
@@ -49,11 +49,11 @@
           <!-- page navigation -->
           <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav nav-pills navbar-right">
-              <li ui-sref-active="active"><a ui-sref="main" tabindex="5">Home</a></li>
-              <li data-ng-class="{ active: $state.includes('wallet') }"><a ui-sref="wallet.overview">Wallet</a></li>
-              <li ui-sref-active="active"><a ui-sref="about" tabindex="6">About</a></li>
-              <li ui-sref-active="active"><a ui-sref="contact" tabindex="7">Contact</a></li>
-              <li ui-sref-active="active" data-ng-click="toggleModal()" tabindex="4"><a href="">Login</a></li>
+              <li data-ui-sref-active="active"><a data-ui-sref="main" tabindex="5">Home</a></li>
+              <li data-ng-class="{ active: $state.includes('wallet') }"><a data-ui-sref="wallet.overview">Wallet</a></li>
+              <li data-ui-sref-active="active"><a data-ui-sref="about" tabindex="6">About</a></li>
+              <li data-ui-sref-active="active"><a data-ui-sref="contact" tabindex="7">Contact</a></li>
+              <li data-ui-sref-active="active" data-ng-click="toggleModal()" tabindex="4"><a href="">Login</a></li>
             </ul>
           </nav>
         </div>
@@ -66,7 +66,7 @@
         <!-- end of section -->
 
         <!-- main page content -->
-        <div class="view" ui-view=""></div>
+        <div class="view" data-ui-view=""></div>
         <!-- end of section -->
         
         <div class="spacer"></div>
@@ -80,11 +80,11 @@
             <!-- secondary page nav -->
             <div class="col-sm-4">
               <h1>Pages</h1>
+              <p>Find out more at:</p>
               <ul>
-                <p>Find out more at:</p>
-              <li><a ui-sref="press">Press</a></li>
-                <li><a ui-sref="privacy">Privacy Policy</a></li>
-                <li><a ui-sref="tos">Terms of Service</a></li>
+                <li><a data-ui-sref="press">Press</a></li>
+                <li><a data-ui-sref="privacy">Privacy Policy</a></li>
+                <li><a data-ui-sref="tos">Terms of Service</a></li>
             </ul>
           </div>
           <!-- end of section -->
@@ -92,11 +92,11 @@
           <!-- Resources -->
           <div class="col-sm-4">
             <h1>Resources</h1>
+            <p>The following resources are available:</p>
             <ul>
-              <p>The following resources are available:</p>
-              <li><a ui-sref="api">API</a></li>
-              <li><a ui-sref="support">Support</a></li>
-                <li><a href="sitemap.xml">Sitemap</a></li>
+              <li><a data-ui-sref="api">API</a></li>
+              <li><a data-ui-sref="support">Support</a></li>
+              <li><a href="sitemap.xml">Sitemap</a></li>
               </ul>
             </div>
             <!-- end of section -->
@@ -145,20 +145,20 @@
       <!-- end of section -->
 
       <!-- modal dialog (pop up window) -->
-      <modal-dialog show="modalShown" width="500px" height="60%">
+      <modal-dialog data-show="modalShown" data-width="500px" data-height="60%">
         <h3>Login</h3>
         <!-- pass in the variable if our form is valid or invalid -->
         <form name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
             <!-- USERNAME -->
-            <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }" required="">
+            <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control" data-ng-model="user.email" required=""></input>
+                <input type="email" name="email" class="form-control" data-ng-model="user.email"></input>
                 <p data-ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Please enter a valid email.</p>
             </div>
             <!-- EMAIL -->
             <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" data-ng-model="user.password" required=""></input>
+                <input type="password" name="password" class="form-control" data-ng-model="user.password"></input>
                 <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
             </div>
             <div>
