@@ -28,11 +28,13 @@
     'ngSanitize',
     'ngRoute'
     ]);
-  myapp.run(function ($rootScope, $state, $stateParams) {
+  myapp.run(function ($rootScope, $state, $stateParams, Poller) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
   });
-  myapp.config(function($stateProvider, $urlRouterProvider){
+  myapp.config(function($stateProvider, $urlRouterProvider, $httpProvider){
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     
     // For any unmatched url, send to /main
     $urlRouterProvider

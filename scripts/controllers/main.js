@@ -77,3 +77,24 @@ angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
     }
   };
 }]);
+angular.module('webtechApp').controller('maxusdCtrl', ['$scope', function($scope) {
+  $scope.name = 'World';
+  $scope.data = Poller.data;
+}]);
+angular.module('webtechApp').factory('Poller', function($http, $timeout) {
+  var data = { response: {}, calls: 0 };
+  var poller = function() {
+    $http.get('http://data.bter.com/api/1/ticker/max_btc').then(function(r) {
+      data.response = r.data;
+      data.calls++;
+      console.log(data.calls);
+      $timeout(poller, 1000);
+    });
+    
+  };
+  poller();
+  
+  return {
+    data: data
+  };
+});
