@@ -20,7 +20,8 @@
 	<form class="form-horizontal" role="form">
 		<div class="row">
 	    <div class="col-sm-4">
-	      <p data-ng-show="visible">{{amountOfMax}} &#8776; {{data.response.mpusd}}</p>
+        <!-- approximate conversion between MAX and USD -->
+	      <p data-ng-show="visible">{{amountOfMax}} &#8776; &#36;{{data.response.mpusd}}</p>
 	    </div>
 	  </div>
 	  <div class="row">

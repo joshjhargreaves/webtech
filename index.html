@@ -94,8 +94,8 @@
             <h1>Resources</h1>
             <p>The following resources are available:</p>
             <ul>
-              <li><a data-ui-sref="api">API</a></li>
-              <li><a data-ui-sref="support">Support</a></li>
+              <li><a href="" data-ui-sref="api">API</a></li>
+              <li><a href="" data-ui-sref="support">Support</a></li>
               <li><a href="sitemap.xml">Sitemap</a></li>
               </ul>
             </div>
@@ -145,25 +145,26 @@
       <!-- end of section -->
 
       <!-- modal dialog (pop up window) -->
-      <modal-dialog data-show="modalShown" data-width="500px" data-height="60%">
-        <h3>Login</h3>
+      <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
+        <h1>Login</h1>
+        <p>Enter your email address and password to log into your wallet. <a href="" data-ui-sref="password-reset">Forgotten your password?</a></p>
+        <hr></hr>
         <!-- pass in the variable if our form is valid or invalid -->
         <form name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
             <!-- USERNAME -->
             <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" data-ng-model="user.email"></input>
+                <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email"></input>
                 <p data-ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Please enter a valid email.</p>
             </div>
             <!-- EMAIL -->
             <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" data-ng-model="user.password"></input>
+                <input type="password" name="password" class="form-control" data-ng-model="user.password" placeholder="Password"></input>
                 <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
             </div>
-            <div>
-              <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
-              <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
+            <div style="width: 100%; margin: 0 auto; text-align: center;">
+              <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-lg btn-success">Submit</button>
+              <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-lg btn-success" disabled="true">Submit</button>
+              <button type="button" class="btn btn-lg btn-primary">Cancel</button>
             </div>
         </form>
       </modal-dialog>
