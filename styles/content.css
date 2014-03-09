@@ -26,6 +26,10 @@
   padding-bottom: 0.2em;
 }
 
+#sign-up-message {
+  font-size:1.5em
+}
+
 .sign-up {
   padding-left: 1em;
   padding-right: 1em;
