@@ -49,11 +49,11 @@
           <!-- page navigation -->
           <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav nav-pills navbar-right">
-              <li ui-sref-active="active"><a ui-sref="main">Home</a></li>
+              <li ui-sref-active="active"><a ui-sref="main" tabindex="5">Home</a></li>
               <li ng-class="{ active: $state.includes('wallet') }"><a ui-sref="wallet.overview">Wallet</a></li>
-              <li ui-sref-active="active"><a ui-sref="about">About</a></li>
-              <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
-              <li ui-sref-active="active" ng-click='toggleModal()'><a>Login</a></li>
+              <li ui-sref-active="active"><a ui-sref="about" tabindex="6">About</a></li>
+              <li ui-sref-active="active"><a ui-sref="contact" tabindex="7">Contact</a></li>
+              <li ui-sref-active="active" ng-click="toggleModal()" tabindex="4"><a href="#">Login</a></li>
             </ul>
           </nav>
         </div>
