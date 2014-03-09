@@ -130,26 +130,46 @@
   font-size: 1.5em;
 }
 
-.address {
-  float: left;
-}
-
 .address .phone-number,
 .email .email-address {
   color: #777;
 }
 
-.address-icon {
-  float: right;
+@media (max-width: 800px) {
+  .address-icon,
+  .email-icon {
+    display: none;
+    visibility: hidden;
+  }
+
+  .contact .spacer {
+    display: inline;
+    visibility: visible;
+  }  
 }
 
-.email {
-  float: right;
-  text-align: right;
-}
+@media (min-width: 800px) {
+  .contact .spacer {
+    display: none;
+    visibility: hidden;
+  }  
 
-.email-icon {
-  float: left;
+  .address {
+    float: left;
+  }
+
+  .address-icon {
+    float: right;
+  }
+
+  .email {
+    float: right;
+    text-align: right;
+  }
+
+  .email-icon {
+    float: left;
+  }
 }
 
 /*** modal window ***/
