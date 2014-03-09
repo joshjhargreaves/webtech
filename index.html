@@ -53,7 +53,7 @@
               <li ng-class="{ active: $state.includes('wallet') }"><a ui-sref="wallet.overview">Wallet</a></li>
               <li ui-sref-active="active"><a ui-sref="about" tabindex="6">About</a></li>
               <li ui-sref-active="active"><a ui-sref="contact" tabindex="7">Contact</a></li>
-              <li ui-sref-active="active" ng-click="toggleModal()" tabindex="4"><a href="#">Login</a></li>
+              <li ui-sref-active="active" ng-click="toggleModal()" tabindex="4"><a href="">Login</a></li>
             </ul>
           </nav>
         </div>
@@ -145,9 +145,9 @@
       <!-- end of section -->
 
       <!-- modal dialog (pop up window) -->
-      <modal-dialog show='modalShown' width='500px' height='60%'>
+      <modal-dialog show="modalShown" width="500px" height="60%">
         <h3>Login</h3>
-      <!-- pass in the variable if our form is valid or invalid -->
+        <!-- pass in the variable if our form is valid or invalid -->
         <form name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="">
             <!-- USERNAME -->
             <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }" required="">
