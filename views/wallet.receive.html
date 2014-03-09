@@ -1,18 +1,29 @@
-<h1>Receive Max</h1>
-<div ng-controller="qrcode">
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label class="col-sm-2 control-label">Label</label>
-      <div class="col-sm-10">
-        <input class="form-control" id="maxlabel" placeholder="label" ng-model="amount">></input>
+
+<div class="well">
+  <h1>Receive Max</h1>
+  <div ng-controller="qrcode">
+    <form class="form-horizontal" role="form">
+      <!-- form elements -->
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Label</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="maxlabel" placeholder="label" ng-model="amount">></input>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-2 control-label">Amount</label>
-      <div class="col-sm-10">
-        <input class="form-control" id="maxamount" placeholder="amount" ng-model="label"></input>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Amount</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="maxamount" placeholder="amount" ng-model="label"></input>
+        </div>
       </div>
-    </div>
-    <div id="qrcode1" class="col-sm-10"></div>
-  </form>
+      <!-- end of section -->
+
+      <!-- generated qr code and wrappr -->
+      <div style="height: 256px;">
+        <div id="qrcode1" class="col-sm-10"></div>
+      </div>
+      <!-- end of section -->
+    </form>
+  </div>
 </div>
+

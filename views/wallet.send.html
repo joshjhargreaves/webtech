@@ -1,28 +1,32 @@
-<h1>Send Max</h1>
-<form name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="" ng-controler="sendmax">
-    <!-- ADDRESS -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
-        <label>Address</label>
-        <input name="address" class="form-control" ng-model="user.address" required=""></input>
-        <p ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter an Address.</p>
-    </div>
-    <!-- AMOUNT -->
-    <!--TODO add number validation as native angular implementation is broken-->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
-        <label>Amount</label>
-        <input name="amount" class="form-control" ng-model="user.amount" required=""></input>
-        <p ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a amount.</p>
-        <p ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter an Amount.</p>
-    </div>
-    <!-- PASSWORD -->
-    <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
-        <label>Password</label>
-        <input type="number" name="password" class="form-control" ng-model="user.password" required=""></input>
-        <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
-        <p ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a Password.</p>
-    </div>
-    <div>
-      <button ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
-      <button ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
-    </div>
-</form>
+
+<div class="well">
+  <h1>Send Max</h1>
+  <form name="userForm" ng-submit="submitForm(userForm.$invalid)" novalidate="" ng-controler="sendmax">
+      <!-- ADDRESS -->
+      <div class="form-group" ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
+          <label>Address</label>
+          <input name="address" class="form-control" ng-model="user.address" required=""></input>
+          <p ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter an Address.</p>
+      </div>
+      <!-- AMOUNT -->
+      <!--TODO add number validation as native angular implementation is broken-->
+      <div class="form-group" ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
+          <label>Amount</label>
+          <input name="amount" class="form-control" ng-model="user.amount" required=""></input>
+          <p ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a amount.</p>
+          <p ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter an Amount.</p>
+      </div>
+      <!-- PASSWORD -->
+      <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
+          <label>Password</label>
+          <input type="number" name="password" class="form-control" ng-model="user.password" required=""></input>
+          <p ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
+          <p ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a Password.</p>
+      </div>
+      <div>
+        <button ng-if="!userForm.$invalid" type="submit" class="btn btn-primary" >Submit</button>
+        <button ng-if="userForm.$invalid" type="submit" class="btn btn-primary" disabled="true">Submit</button>
+      </div>
+  </form>
+</div>
+
