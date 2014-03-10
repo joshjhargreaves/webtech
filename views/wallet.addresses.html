@@ -7,5 +7,28 @@
   <!-- end of page introduction -->
 
   <!-- TODO -->
+  <div data-ng-controller="addressbookctrl">
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<td><strong>Name</strong></td>
+					<td><strong>Address</strong></td>
+				</tr>
+				<tr data-ng-repeat="data in tabledata">
+				  <td>{{data.name}}</td>
+				  <td>{{data.address}}</td> 
+				</tr>
+			</table>
+		</div>
+		<form class="form-inline" role="form" data-ng-submit="addData()">
+			<div class="form-group ">
+		    <input type="text" class="form-control" placeholder="Enter Name" data-ng-model="name"></input>
+			</div>
+		  <div class="form-group">
+		    <input type="text" class="form-control" placeholder="Enter Address" data-ng-model="address"></input>
+		  </div>
+		  <button type="submit" class="btn btn-default">Add</button>
+		</form>
+	</div>
 </div>
 

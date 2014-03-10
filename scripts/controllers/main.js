@@ -130,3 +130,13 @@ angular.module('webtechApp').directive('qrscan', function($document) {
       },
     };
 });
+angular.module('webtechApp').controller('addressbookctrl', ['$scope', function($scope) {
+ $scope.tabledata = [
+  {name:'Andrew', address:'mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK'},
+  {name:'Luke', address: 'mPQERLaEVcj1cBNMX5tyCcCdDeZCkm8GEK'}];
+$scope.addData = function() {
+  $scope.tabledata.push({name:$scope.name, address:$scope.address});
+  $scope.name = '';
+  $scope.address = '';
+};
+}]);
