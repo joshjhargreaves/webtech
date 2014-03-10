@@ -5,12 +5,12 @@
 <form name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
     <!-- USERNAME -->
     <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }">
-        <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email"></input>
+        <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email" required=""></input>
         <p data-ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Please enter a valid email.</p>
     </div>
     <!-- EMAIL -->
     <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
-        <input type="password" name="password" class="form-control" data-ng-model="user.password" placeholder="Password"></input>
+        <input type="password" name="password" class="form-control" data-ng-model="user.password" placeholder="Password" required=""></input>
         <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
     </div>
     <div style="width: 100%; margin: 0 auto; text-align: center;">
