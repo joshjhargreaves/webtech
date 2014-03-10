@@ -28,6 +28,37 @@ var myapp = angular.module('webtechApp', [
           templateUrl: "views/contact.html"
       })
 
+      .state('about', {
+          url: "/about",
+          templateUrl: "views/about.html"
+      })
+
+      // footer states
+      .state('press', {
+          url: "/press",
+          templateUrl: "views/press.html"
+      })
+
+      .state('tos', {
+          url: "/tos",
+          templateUrl: "views/tos.html"
+      })
+
+      .state('privacy', {
+          url: "/privacy",
+          templateUrl: "views/privacy-policy.html"
+      })
+
+      .state('api', {
+          url: "/api",
+          templateUrl: "views/api.html"
+      })
+
+      .state('support', {
+          url: "/support",
+          templateUrl: "views/support.html"
+      })
+
       // wallet states
       .state('wallet', {
           // With abstract set to true, that means this state can not be explicitly activated.
