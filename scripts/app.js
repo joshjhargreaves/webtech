@@ -1,27 +1,4 @@
-//'use strict';
-
-/*angular.module('webtechApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
-])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/contact', {
-        templateUrl : 'views/contact.html',
-        controller  : 'contactController'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });*/
-
-  var myapp = angular.module('webtechApp', [
+var myapp = angular.module('webtechApp', [
     'ui.router',
     'ngCookies',
     'ngResource',
@@ -59,18 +36,7 @@
       })
       .state('wallet.overview', {
           url: '',
-          templateUrl: "views/wallet.overview.html",
-          'menuTip': {
-              // templateProvider is the final method for supplying a template.
-              // There is: template, templateUrl, and templateProvider.
-              templateProvider: ['$stateParams',
-                function (        $stateParams) {
-                  // This is just to demonstrate that $stateParams injection works for templateProvider.
-                  // $stateParams are the parameters for the new state we're transitioning to, even
-                  // though the global '$stateParams' has not been updated yet.
-                  return '<hr><small class="muted">Contact ID: ' + $stateParams.contactId + '</small>';
-                }]
-            }
+          templateUrl: "views/wallet.overview.html"
       })
       .state('wallet.receive', {
         url: '/receive',
