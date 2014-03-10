@@ -10,15 +10,15 @@ angular.module('webtechApp')
   });
 angular.module('webtechApp')
   .controller('contactController', function ($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
+    $scope.message = 'Contact us! JK. This is just a demo.'; // SHOULD THIS BE HERE?
 });
 
 angular.module('webtechApp').controller('qrcode', function($scope) {
-  $scope.maxAddress = "maxcoin:mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK";
+  $scope.maxAddress = "mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK"; // CAN WE PULL THE maxcoin: PART OUT?
   $scope.qrcode = new QRCode(document.getElementById("qrcode1"), $scope.maxAddress);
   $scope.textinputs = ['label', 'amount']
   $scope.$watchCollection('[label, amount]', function(values) {
-      var code = $scope.maxAddress;
+      var code = "maxcoin: " + $scope.maxAddress;
       /*label (for some reason opposite way around)*/
       if(values[0] != null)
       {
@@ -37,54 +37,21 @@ angular.module('webtechApp').controller('qrcode', function($scope) {
       console.log('New code :', code);
     });
 });
-angular.module('webtechApp').directive('modalDialog', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      show: '='
-    },
-    replace: true, // Replace with the template below
-    transclude: true, // we want to insert custom content inside the directive
-    link: function(scope, element, attrs) {
-      scope.dialogStyle = {};
-      if (attrs.width)
-        scope.dialogStyle.width = attrs.width;
-      if (attrs.height)
-        scope.dialogStyle.height = attrs.height;
-      scope.hideModal = function() {
-        scope.show = false;
-      };
-    },
-    templateUrl: "views/modalwindow.html"
-  };
-});
-angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
-  $scope.modalShown = false;
-  $scope.toggleModal = function() {
-    $scope.modalShown = !$scope.modalShown;
-  };
-  $scope.submitForm = function(isValid) {
-    // check to make sure the form is completely valid
-    if (!isValid) { 
-      alert('This form has been submitted');
-    }
-  };
-}]);
-angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
-  $scope.submitForm = function(isValid) {
-    if (!isValid) { 
-        alert('This form has been submitted');
-    }
-  };
-}]);
+
+/* MaxCoin price section
+ * updates the current wallet valuation based upon ticker data */
 angular.module('webtechApp').controller('maxusdCtrl', ['$scope', 'Poller', function($scope, Poller) {
   $scope.data = Poller.data;
-  $scope.amountOfMax = 123481;
+  $scope.amountOfMax = 23481.849;
   $scope.visible = true;
-  $scope.showhide=function(){
+  $scope.showhide=function(){ // SHOULD THIS BE HERE?
     alert('This is a test');
   }
 }]);
+/* end of price section */
+
+/* MaxCoin price ticker
+ * pulls data on the current MaxCoin price from maxcointicker.com */
 angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFilter) {
   var data = { response: {}, calls: 0, time: 0};
   var format = 'd/M/yy h:mm:ss a';
@@ -103,8 +70,9 @@ angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFil
     data: data
   };
 });
+/* end of price ticker */
 
-
+/* QR code scanner */
 angular.module('webtechApp').directive('qrscan', function($document) {
   return {
       restrict: 'E',
@@ -130,13 +98,63 @@ angular.module('webtechApp').directive('qrscan', function($document) {
       },
     };
 });
+
+/* wallet address book */
 angular.module('webtechApp').controller('addressbookctrl', ['$scope', function($scope) {
- $scope.tabledata = [
+  // add some entries to the table
+  $scope.tabledata = [ 
   {name:'Andrew', address:'mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK'},
-  {name:'Luke', address: 'mPQERLaEVcj1cBNMX5tyCcCdDeZCkm8GEK'}];
-$scope.addData = function() {
-  $scope.tabledata.push({name:$scope.name, address:$scope.address});
-  $scope.name = '';
-  $scope.address = '';
-};
+  {name:'Luke', address: 'mLd65L1UUkjd1wVFCBEiuFLZBwFyV2R7np'}];
+
+  // update table when the user adds an entry
+  $scope.addData = function() {
+    $scope.tabledata.push({name:$scope.name, address:$scope.address});
+    $scope.name = '';
+    $scope.address = '';
+  };
 }]);
+/* end of wallet address book */
+
+/* modal pop-up window */
+angular.module('webtechApp').directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    templateUrl: "views/modalwindow.html"
+  };
+});
+
+angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.modalShown = !$scope.modalShown;
+  };
+  $scope.submitForm = function(isValid) {
+    // check to make sure the form is completely valid
+    if (!isValid) { 
+      alert('This form has been submitted');
+    }
+  };
+}]);
+angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
+  $scope.submitForm = function(isValid) {
+    if (!isValid) { 
+        alert('This form has been submitted');
+    }
+  };
+}]);
+/* end of modal section */
