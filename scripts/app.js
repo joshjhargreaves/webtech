@@ -22,7 +22,10 @@ var myapp = angular.module('webtechApp', [
           url: "/main",
           templateUrl: "views/main.html"
       })
-        
+      .state('about', {
+          url: "/about",
+          templateUrl: "views/about.html"
+      })
       .state('contact', {
           url: "/contact",
           templateUrl: "views/contact.html"
@@ -45,5 +48,27 @@ var myapp = angular.module('webtechApp', [
       .state('wallet.send', {
         url: '/send',
         templateUrl: "views/wallet.send.html"
+      })
+
+      // footer pages
+      .state('press', {
+          url: "/press",
+          templateUrl: "views/press.html"
+      })
+      .state('privacy', {
+          url: "/privacy",
+          templateUrl: "views/privacy-policy.html"
+      })
+      .state('tos', {
+          url: "/tos",
+          templateUrl: "views/tos.html"
+      })
+      .state('api', {
+          url: "/api",
+          templateUrl: "views/api.html"
+      })
+      .state('support', {
+          url: "/support",
+          templateUrl: "views/support.html"
       })
   })
