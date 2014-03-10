@@ -44,14 +44,10 @@ html, body {
   padding-bottom: 1%;
 }
 
-/* ensure the navigation and the logo don't overlap */
+/* Logo */
 .navbar-brand {
   position:absolute;
   left: 20%;
-}
-
-/* Logo */
-.navbar-brand {
   font-size: 3.6em;
 }
 
