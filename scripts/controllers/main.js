@@ -103,3 +103,30 @@ angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFil
     data: data
   };
 });
+
+
+angular.module('webtechApp').directive('qrscan', function($document) {
+  return {
+      restrict: 'E',
+      transclude: true, // we want to insert custom content inside the directive
+      link: function(scope, element, attrs) {
+        angular.element(element).html5_qrcode(function(data){
+              console.log(data);
+            },
+            function(error){
+                //show read errors 
+            }, function(videoError){
+                //the video stream could be opened
+            }
+        );
+        angular.element(element.children()[0]).css({
+          "min-height": '100%',
+          "min-width": '100%'
+        });
+        angular.element(element.children()[1]).css({
+          "min-height": '100%',
+          "min-width": '100%'
+        });
+      },
+    };
+});

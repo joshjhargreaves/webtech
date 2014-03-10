@@ -22,16 +22,11 @@ var myapp = angular.module('webtechApp', [
           url: "/main",
           templateUrl: "views/main.html"
       })
-      .state('about', {
-          url: "/about",
-          templateUrl: "views/about.html"
-      })
+        
       .state('contact', {
           url: "/contact",
           templateUrl: "views/contact.html"
       })
-
-      // wallet pages
       .state('wallet', {
           // With abstract set to true, that means this state can not be explicitly activated.
           // It can only be implicitly activated by activating one of it's children.
@@ -50,35 +45,5 @@ var myapp = angular.module('webtechApp', [
       .state('wallet.send', {
         url: '/send',
         templateUrl: "views/wallet.send.html"
-      })
-      .state('wallet.orders', {
-        url: '/orders',
-        templateUrl: "views/wallet.orders.html"
-      })
-      .state('wallet.addresses', {
-        url: '/addresses',
-        templateUrl: "views/wallet.addresses.html"
-      })
-
-      // footer pages
-      .state('press', {
-          url: "/press",
-          templateUrl: "views/press.html"
-      })
-      .state('privacy', {
-          url: "/privacy",
-          templateUrl: "views/privacy-policy.html"
-      })
-      .state('tos', {
-          url: "/tos",
-          templateUrl: "views/tos.html"
-      })
-      .state('api', {
-          url: "/api",
-          templateUrl: "views/api.html"
-      })
-      .state('support', {
-          url: "/support",
-          templateUrl: "views/support.html"
       })
   })
