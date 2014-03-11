@@ -56,9 +56,15 @@ var myapp = angular.module('webtechApp', [
           templateUrl: "views/api.html"
       })
 
+      // support states
       .state('support', {
           url: "/support",
           templateUrl: "views/support.html"
+      })
+
+      .state('tickets', {
+          url: "/tickets",
+          templateUrl: "views/tickets.html"
       })
 
       // wallet states
