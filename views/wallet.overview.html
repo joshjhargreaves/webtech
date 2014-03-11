@@ -19,9 +19,9 @@
   <!-- display balance and associated data -->
 	<form class="form-horizontal" role="form">
 		<div class="row">
-	    <div class="col-sm-4">
+	    <div class="col-sm-10">
         <!-- approximate conversion between MAX and USD -->
-	      <p data-ng-show="visible">{{amountOfMax}} &#8776; &#36;{{data.response.mpusd}}</p>
+	      <p data-ng-show="visible">{{amountOfMax}} &#8776; &#36;{{amountOfMax*data.response.mpusd}}</p>
 	    </div>
 	  </div>
 	  <div class="row">
