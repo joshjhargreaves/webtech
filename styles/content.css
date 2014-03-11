@@ -7,6 +7,14 @@
 .logo-left-colour { color: #777; }
 .logo-right-colour { color: #e5e5e5; }
 
+/* a non-indented, unstyled list */
+.simple-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  list-style: none;
+}
+
 /*** main.html ***/
 
 /* features */
@@ -202,13 +210,6 @@
 }
 
 /*** support.html ***/
-
-.previous-ticket {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  list-style: none;
-}
 
 .support-form {
   padding-left: 1em;
