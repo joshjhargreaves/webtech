@@ -201,6 +201,20 @@
 .btn-svg {
 }
 
+/*** support.html ***/
+
+.previous-ticket {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  list-style: none;
+}
+
+.support-form {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 /*** modal window ***/
 
 /* sign up button */

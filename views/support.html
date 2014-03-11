@@ -6,7 +6,61 @@
 <div class="container">
   <div class="well">
     <h1>Support</h1>
-    <p>Pop-up jean shorts YOLO raw denim, sriracha Schlitz occupy 8-bit selfies Portland vinyl. Shabby chic cred Banksy Vice stumptown. Wes Anderson Terry Richardson messenger bag, umami Vice bespoke Blue Bottle try-hard next level Carles viral Neutra pickled. Artisan Marfa Blue Bottle locavore. Polaroid Carles Tonx fashion axe. Seitan beard Echo Park authentic tofu Williamsburg cred, American Apparel brunch typewriter skateboard ennui organic pug Godard. Narwhal seitan literally vegan lomo.</p>
+    <p>If you are experiencing technical issues please use the following support form to contact our technical team. We will supply you with a support ticket so that you can track your request. To contact us about any other queries, please use the <a href="" data-ui-sref="contact">contact</a> page.</p>
+  </div>
+</div>
+<!-- end of section -->
+
+<!-- support contact form -->
+<div class="container">
+  <div class="row">
+    <!-- new ticket form -->
+    <div class="col-sm-7">
+      <div class="well">
+        <!-- colum header -->
+        <h3>Submit new ticket</h3>
+        <p>To submit a new ticket, fill out the form below.</p>
+        <hr></hr>
+        <!-- end of column header -->
+
+        <!-- form proper -->
+        <form class="form-horizontal" role="form" data-ng-submit="addData()">
+			    <div class="support-form  form-group">
+		        <input type="email" class="form-control" placeholder="Email" data-ng-model="email"><!--{{user.email}}--></input>
+			    </div>
+		      <div class="support-form form-group">
+		        <input type="text" class="form-control" placeholder="Summarise the problem" data-ng-model="summary"></input>
+		      </div>
+		      <div class="support-form form-group">
+		        <textarea rows="8" class="form-control" placeholder="Please add more detail here" data-ng-model="detail"></textarea>
+		      </div>
+		      <button type="submit" class="btn btn-success">Submit</button>
+		    </form>
+        <!-- end of section -->
+      </div>
+    </div>
+    <!-- end of form -->
+
+    <!-- right-hand column -->
+    <div class="col-sm-5">
+      <div class="well">
+        <!-- column header -->
+        <h3>Previous tickets</h3>
+        <p>Please consider reading these previously answered tickets. They may help you with your query.</p>
+        <hr></hr>
+        <!-- end of column header -->
+
+        <!-- tickets section -->
+        <ul class="previous-ticket">
+          <li><a href="" data-ui-sref="tickets.1">My hand got stuck in the blender</a></li>
+          <li><a href="" data-ui-sref="tickets.2">I think I've lost my dog</a></li>
+          <li><a href="" data-ui-sref="tickets.3">Lost and confused. What to do?</a></li>
+          <li><a href="" data-ui-sref="tickets.4">How much wood could a wood chuck chuck if a wood chuck could chuck wood?</a></li>
+        </ul>
+        <!-- end of tickets section -->
+      </div>
+    </div>
+    <!-- end of section -->
   </div>
 </div>
 <!-- end of section -->
