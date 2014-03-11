@@ -15,6 +15,17 @@
   list-style: none;
 }
 
+/* a centered element */
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* a padded element */
+.padded {
+  padding: 1em;
+}
+
 /*** main.html ***/
 
 /* features */
