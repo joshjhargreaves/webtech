@@ -3,7 +3,9 @@ var myapp = angular.module('webtechApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'ngAnimate',
+    'toaster'
     ]);
   myapp.run(function ($rootScope, $state, $stateParams, Poller) {
     $rootScope.$state = $state;

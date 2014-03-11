@@ -21,6 +21,7 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css"></link>
     <link rel="stylesheet" href="styles/content.css"></link>
+    <link rel="stylesheet" href="styles/toaster.css"/>
     <!-- endbuild -->
 
     <!-- font-awesome iconic web font -->
@@ -30,6 +31,7 @@
     <script src="js/modernizr.custom.js"></script>
   </head>
   <body data-ng-app="webtechApp" data-ng-controller='MyCtrl'>
+    <toaster-container data-toaster-options="{'position-class': 'toast-bottom-left', 'time-out': 2000}"></toaster-container>
       <!-- main content to fill screen -->
       <div id="wrap">
   	    <!-- navigation bar -->
@@ -139,9 +141,11 @@
       <script src="scripts/app.js"></script>
       <script src="scripts/controllers/main.js"></script>
       <!-- ui-router -->
-      <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+      <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+      <script src="http://code.angularjs.org/1.2.0/angular-animate.min.js" ></script>
       <!-- qr-code generator-->
       <script src="js/qrcode.js"></script>
+      <script src="js/toaster.js"></script>
       <!-- endbuild -->
       <!-- end of section -->
 

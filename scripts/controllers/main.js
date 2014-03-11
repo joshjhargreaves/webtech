@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('webtechApp')
+myapp
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
@@ -8,12 +8,12 @@ angular.module('webtechApp')
       'Karma'
     ];
   });
-angular.module('webtechApp')
+myapp
   .controller('contactController', function ($scope) {
     $scope.message = 'Contact us! JK. This is just a demo.'; // SHOULD THIS BE HERE?
 });
 
-angular.module('webtechApp').controller('qrcode', function($scope) {
+myapp.controller('qrcode', function($scope) {
   $scope.maxAddress = "mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK"; // CAN WE PULL THE maxcoin: PART OUT?
   $scope.qrcode = new QRCode(document.getElementById("qrcode1"), $scope.maxAddress);
   $scope.textinputs = ['label', 'amount']
@@ -40,7 +40,7 @@ angular.module('webtechApp').controller('qrcode', function($scope) {
 
 /* MaxCoin price section
  * updates the current wallet valuation based upon ticker data */
-angular.module('webtechApp').controller('maxusdCtrl', ['$scope', 'Poller', function($scope, Poller) {
+myapp.controller('maxusdCtrl', ['$scope', 'Poller', function($scope, Poller) {
   $scope.data = Poller.data;
   $scope.amountOfMax = 23481.849;
   $scope.visible = true;
@@ -52,7 +52,7 @@ angular.module('webtechApp').controller('maxusdCtrl', ['$scope', 'Poller', funct
 
 /* MaxCoin price ticker
  * pulls data on the current MaxCoin price from maxcointicker.com */
-angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFilter) {
+myapp.factory('Poller', function($http, $timeout, dateFilter) {
   var data = { response: {}, calls: 0, time: 0};
   var format = 'd/M/yy h:mm:ss a';
   var poller = function() {
@@ -73,7 +73,7 @@ angular.module('webtechApp').factory('Poller', function($http, $timeout, dateFil
 /* end of price ticker */
 
 /* QR code scanner */
-angular.module('webtechApp').directive('qrscan', function($document) {
+myapp.directive('qrscan', function($document) {
   return {
       restrict: 'E',
       transclude: true, // we want to insert custom content inside the directive
@@ -100,7 +100,7 @@ angular.module('webtechApp').directive('qrscan', function($document) {
 });
 
 /* wallet address book */
-angular.module('webtechApp').controller('addressbookctrl', ['$scope', function($scope) {
+myapp.controller('addressbookctrl', ['$scope', function($scope) {
   // add some entries to the table
   $scope.tabledata = [ 
   {name:'Andrew', address:'mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK'},
@@ -116,7 +116,7 @@ angular.module('webtechApp').controller('addressbookctrl', ['$scope', function($
 /* end of wallet address book */
 
 /* modal pop-up window */
-angular.module('webtechApp').directive('modalDialog', function() {
+myapp.directive('modalDialog', function() {
   return {
     restrict: 'E',
     scope: {
@@ -138,19 +138,21 @@ angular.module('webtechApp').directive('modalDialog', function() {
   };
 });
 
-angular.module('webtechApp').controller('MyCtrl', ['$scope', function($scope) {
+myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
+  $scope.pop = function(){
+    toaster.pop('success', "Success", "You have logged in");
+  };
   $scope.modalShown = false;
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
   };
   $scope.submitForm = function(isValid) {
     // check to make sure the form is completely valid
-    if (!isValid) { 
-      alert('This form has been submitted');
-    }
+    $scope.toggleModal();
+    $scope.pop();
   };
 }]);
-angular.module('webtechApp').controller('sendmax', ['$scope', function($scope) {
+myapp.controller('sendmax', ['$scope', function($scope) {
   $scope.submitForm = function(isValid) {
     if (!isValid) { 
         alert('This form has been submitted');
