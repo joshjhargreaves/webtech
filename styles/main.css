@@ -45,9 +45,12 @@ html, body {
 }
 
 /* Logo */
-.navbar-brand {
+/*
   position:absolute;
   left: 20%;
+*/
+
+.navbar-brand {
   font-size: 3.6em;
 }
 
