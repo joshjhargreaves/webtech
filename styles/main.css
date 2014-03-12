@@ -82,7 +82,7 @@ footer {
 
 footer .social {
   background-color: #3e7a8c;
-  border-top: 0.2em solid #e5e5e5;
+  padding-bottom: 10px;
 }
 
 footer .legal {
@@ -94,6 +94,7 @@ footer .legal {
 
 footer h1 {
   font-size: 2em;
+  margin-top: 10px;
   color: white;
   border-bottom: 0.08em dotted black;
 }
