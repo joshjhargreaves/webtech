@@ -80,6 +80,7 @@ myapp.directive('qrscan', function($document) {
         replace: false;
         angular.element(element).html5_qrcode(function(data){
           console.log(data);
+          $scope.data = data;
         },
         function(error){
             //show read errors 
