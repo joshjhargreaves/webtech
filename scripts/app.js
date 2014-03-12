@@ -91,6 +91,10 @@ var myapp = angular.module('webtechApp', [
         url: "/addresses",
         templateUrl: "views/wallet.addresses.html"
       })
+      .state('wallet.address', {
+        url: "/address",
+        templateUrl: "views/wallet.address.html"
+      })
       .state('wallet.orders', {
         url: "/orders",
         templateUrl: "views/wallet.orders.html"

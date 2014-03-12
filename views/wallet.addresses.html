@@ -2,7 +2,7 @@
 <div class="well">
   <!-- page introduction -->
   <h1>Address Book</h1>
-  <p>You can keep track of addresses you've sent to or received from here.</p>
+  <p>You can keep track of addresses you've sent to or received from here. Click on an address to send them funds.</p>
   <hr></hr>
   <!-- end of page introduction -->
 
@@ -17,9 +17,9 @@
 				  </tr>
         </thead>
         <tbody>
-				  <tr data-ng-repeat="data in tabledata">
+				  <tr class="address-book" data-ng-repeat="data in tabledata">
 				    <td>{{data.name}}</td>
-				    <td>{{data.address}}</td> 
+				    <td><a href="" data-ui-sref="wallet.send" title="Send funds to {{data.name}}">{{data.address}}</a></td> 
 				  </tr>
         </tbody>
 			</table>
