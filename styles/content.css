@@ -26,6 +26,15 @@
   padding: 1em;
 }
 
+.anchor {
+  color:  black;
+}
+
+.anchor:hover {
+  color:  black;
+  text-decoration: none;
+}
+
 /* a table that will resize well */
 .table-responsive {
   width: 100%;
