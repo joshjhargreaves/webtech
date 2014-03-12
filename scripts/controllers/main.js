@@ -79,7 +79,7 @@ myapp.directive('qrscan', function($document) {
       link: function(scope, element, attrs) {
         replace: false;
         angular.element(element).html5_qrcode(function(data){
-          console.log(scope);
+          console.log(data);
           scope.$parent.$parent.data = data;
         },
         function(error){
@@ -147,6 +147,7 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
   };
 }]);
 myapp.controller('sendmax', ['$scope', 'toaster', function($scope, toaster) {
+  $scope.data = "Waiting for qrcode to be scanned.........."
   $scope.modalShown = false;
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
