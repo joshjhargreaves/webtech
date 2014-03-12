@@ -79,8 +79,8 @@ myapp.directive('qrscan', function($document) {
       link: function(scope, element, attrs) {
         replace: false;
         angular.element(element).html5_qrcode(function(data){
-          console.log(data);
-          $scope.data = data;
+          console.log(scope);
+          scope.$parent.$parent.data = data;
         },
         function(error){
             //show read errors 

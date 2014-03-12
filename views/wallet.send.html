@@ -54,7 +54,8 @@
   <div data-ng-if="modalShown">
     <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
       <div qrscan="" id="reader" style="width:300px;height:250px"></div>
-      <p>data = {{data}}</p>
+      <label>data = {{data}}</label>
+      <button data-ng-if="!userForm.$invalid" class="btn btn-success" title="Send funds">Submit</button>
     </modal-dialog>
   </div>
 </div>
