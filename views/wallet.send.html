@@ -1,11 +1,11 @@
-<div class="well">
+<div class="well" data-ng-controller="sendmax">
   <!-- page introduction -->
   <h1>Send Funds</h1>
   <p>To send funds to another wallet, enter the address in the form below. The coins will be received after a small number of <span class="tt">confirmations</span>, usually between 12 and 20. You can track the status of the payment using the <a href="" data-ui-sref="wallet.transactions">transaction explorer</a>.</p>
   <hr></hr>
   <!-- end of page introduction -->
 
-  <form class="form-horizontal" name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="" data-ng-controller="sendmax">
+  <form class="form-horizontal" name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
       <!-- ADDRESS -->
       <div class="form-group" data-ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
           <label class="col-sm-3 control-label">Send to address</label>
@@ -45,11 +45,16 @@
         <!-- scan button -->
         <button type="button" class="btn btn-primary" style="margin:0 !important;">
           <svg width="3em" height="1em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      		  <image xlink:href="images/icons/camera.svg" src="images/icons/camera.png" width="3em" height="1em" />
+      		  <image xlink:href="images/icons/camera.svg" src="images/icons/camera.png" width="3em" height="1em" data-ng-click="toggleModal()"/>
         	</svg>
         </button>
         <!-- end of scan button -->
       </div>
   </form>
+  <div data-ng-if="modalShown">
+    <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
+      <div qrscan="" id="reader" style="width:300px;height:250px"></div>
+    </modal-dialog>
+  </div>
 </div>
 
