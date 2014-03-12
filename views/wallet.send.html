@@ -36,6 +36,10 @@
             <p data-ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
           </div>
       </div>
+      
+      <div class="spacer"></div>
+
+      <!-- buttons -->
       <div>
         <!-- submit button -->
         <button data-ng-if="!userForm.$invalid" class="btn btn-success" title="Send funds">Submit</button>
@@ -50,6 +54,7 @@
         </button>
         <!-- end of scan button -->
       </div>
+      <!-- end of buttons -->
   </form>
   <div data-ng-if="modalShown">
     <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
