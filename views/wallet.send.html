@@ -5,7 +5,7 @@
   <hr></hr>
   <!-- end of page introduction -->
 
-  <form class="form-horizontal" name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="" data-ng-controler="sendmax">
+  <form class="form-horizontal" name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="" data-ng-controller="sendmax">
       <!-- ADDRESS -->
       <div class="form-group" data-ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
           <label class="col-sm-3 control-label">Send to address</label>
@@ -38,7 +38,7 @@
       </div>
       <div>
         <!-- submit button -->
-        <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-success" data-ng-click="toggleModal()">Submit</button>
+        <button data-ng-if="!userForm.$invalid" class="btn btn-success">Submit</button>
         <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-success" disabled="disabled">Submit</button>
         <!-- end of submit button -->
 

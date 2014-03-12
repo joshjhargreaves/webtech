@@ -152,11 +152,11 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
     $scope.pop();
   };
 }]);
-myapp.controller('sendmax', ['$scope', function($scope) {
+myapp.controller('sendmax', ['$scope', 'toaster', function($scope, toaster) {
   $scope.submitForm = function(isValid) {
-    if (!isValid) { 
-        alert('This form has been submitted');
-    }
+    $scope.pop = function(){
+      toaster.pop('success', "Success", "Your maxcoin has been sent successfully");
+    };
   };
 }]);
 /* end of modal section */
