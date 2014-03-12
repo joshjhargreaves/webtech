@@ -32,7 +32,6 @@
   margin-bottom: 0.5em;
   overflow-x: auto;
   overflow-y: hidden;
-  border: 0.1em solid #dddddd;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
 }
