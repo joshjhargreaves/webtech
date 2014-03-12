@@ -1,3 +1,15 @@
+
+<!-- detect SVG -->
+<script>
+  if (!Modernizr.svg) { 
+    $("#camera-button").css("background-image", "url(images/icons/camera.png)");
+    $("#camera-button").css("background-repeat", "no-repeat");
+    $("#camera-button").css("background-size", "auto 75%");
+    $("#camera-button").css("background-position", "center");
+  }
+</script>
+<!-- end detect SVG -->
+
 <div class="well" data-ng-controller="sendmax">
   <!-- page introduction -->
   <h1>Send Funds</h1>
@@ -47,9 +59,9 @@
         <!-- end of submit button -->
 
         <!-- scan button -->
-        <button type="button" class="btn btn-primary" data-ng-click="toggleModal()" title="Scan QR code using camera">
+        <button id="camera-button" type="button" class="btn btn-primary" data-ng-click="toggleModal()" title="Scan QR code using camera">
           <svg width="3em" height="1em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      		  <image xlink:href="images/icons/camera.svg" src="images/icons/camera.png" width="3em" height="1em"/>
+      		  <image xlink:href="images/icons/camera.svg" src="images/icons/camera.png" width="3em" height="1em" />
         	</svg>
         </button>
         <!-- end of scan button -->
