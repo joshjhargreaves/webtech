@@ -60,7 +60,7 @@ myapp.factory('Poller', function($http, $timeout, dateFilter) {
       data.response = r.data;
       data.calls++;
       data.time = dateFilter(new Date(), format);
-      console.log(data);
+      //console.log(data);
       $timeout(poller, 10000);
     });
   };
@@ -75,26 +75,18 @@ myapp.factory('Poller', function($http, $timeout, dateFilter) {
 /* QR code scanner */
 myapp.directive('qrscan', function($document) {
   return {
-      restrict: 'E',
-      transclude: true, // we want to insert custom content inside the directive
+      restrict: 'A',
       link: function(scope, element, attrs) {
+        replace: false;
         angular.element(element).html5_qrcode(function(data){
-              console.log(data);
-            },
-            function(error){
-                //show read errors 
-            }, function(videoError){
-                //the video stream could be opened
-            }
-        );
-        angular.element(element.children()[0]).css({
-          "min-height": '100%',
-          "min-width": '100%'
-        });
-        angular.element(element.children()[1]).css({
-          "min-height": '100%',
-          "min-width": '100%'
-        });
+          console.log(data);
+        },
+        function(error){
+            //show read errors 
+        }, function(videoError){
+            //the video stream could be opened
+        }
+      );
       },
     };
 });
@@ -153,10 +145,14 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
   };
 }]);
 myapp.controller('sendmax', ['$scope', 'toaster', function($scope, toaster) {
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.modalShown = !$scope.modalShown;
+    console.log($scope.modal);
+  };
   $scope.submitForm = function(isValid) {
-    $scope.pop = function(){
-      toaster.pop('success', "Success", "Your maxcoin has been sent successfully");
-    };
+    toaster.pop('success', "Success", "Your maxcoin has been sent successfully");
+    $scope.modalShown = true;
   };
 }]);
 /* end of modal section */
