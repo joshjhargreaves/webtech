@@ -12,6 +12,7 @@
 				<a href="" data-ng-if="visible">(hide)</a>
 				<a href="" data-ng-if="!visible">(show)</a>
 			</span>
+      <a href="" title="Refresh conversion rate - last updated at {{data.time}}"><i class="fa fa-refresh"></i></a>
 		</p>
 	</div>
   <!-- end of section -->
@@ -21,13 +22,9 @@
 		<div class="row">
 	    <div class="col-sm-10">
         <!-- approximate conversion between MAX and USD -->
-	      <p data-ng-show="visible">{{amountOfMax}} &#8776; &#36;{{amountOfMax*data.response.mpusd}}</p>
-	    </div>
-	  </div>
-	  <div class="row">
-	    <label class="col-sm-4 control-label">Price Last updated:</label>
-	    <div class="col-sm-5">
-	      <label class="form-control" id="inputEmail3">{{data.time}}</label>
+	      <p data-ng-show="visible">
+          <span class="wallet-current-balance">{{amountOfMax}}</span> &#8776; <span class="wallet-current-balance-fiat">&#36;{{amountOfMax*data.response.mpusd}}</span>
+        </p>
 	    </div>
 	  </div>
 	</form>

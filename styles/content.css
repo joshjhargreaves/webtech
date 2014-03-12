@@ -228,6 +228,10 @@
   color: green;
 }
 
+.wallet-current-balance {
+  font-size: 1.8em;
+}
+
 /*** support.html ***/
 
 .support-form {
