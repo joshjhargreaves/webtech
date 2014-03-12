@@ -6,6 +6,17 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/content.css" />
+
+    <style type="text/css">
+      div .report-image {
+        max-height: 200px;
+        overflow: hidden;
+      }
+
+      img .report-image {
+        max-width: 100%;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -70,7 +81,31 @@
 
           <!-- Responsive Design -->
           <h4><a id="responsivedesign" class="anchor">Responsive Design</a></h4>
-          <p>Browser shots, works on all major browsers, modernizr.js feature detection, youtube video maintains aspect ratio, works on mobiles (screenshot)</p>
+          <p>The website we have created is fully responsive, working from all sizes of device from a widescreen, full HD screen (and larger) to a small mobile phone. The style sheets employed describe the widths as either percentages, for wrapping elements and containers, or ems, for anything related to text. Due to the use of a "sticky footer" and a "floating header", we have used pixel values in these areas; we have, however, used the <code>@media</code> CSS attributes to allow these to scale with the screen size.</p>
+          <p>Certain components display completely differently when presented at different screen resolutions. One example of this is the navigation bar in the page header: this is normally a horizontal bar containing navigation items but, at screen resolutions below 768px, this is displayed as a single menu icon. When the menu icon is clicked it toggles a drop down menu containing the navigation links, conserving space on mobile devices. Another example is the tables within the Wallet section of the website: this section features a number of wallets containing information on transactions and addresses, each of which are stored in a tabular format. The tables are styled such that when they begin to overflow the surrounding element they contract and display a horizontal scroll bar instead.</p>
+          <p>Below are some images showing the website being displayed at multiple resolutions.</p>
+
+          <!-- images at different resolutions -->
+          <div class="row">
+            <div class="col-sm-4 report-image">
+              <a href="images/report/keyfeatures/1.png"><img class="report-image" src="images/report/keyfeatures/1.png" alt="The default style of the website on a widescreen browser"></img></a>
+            </div>
+
+            <div class="col-sm-4 report-image">
+              <a href="images/report/keyfeatures/2.png"><img class="report-image" src="images/report/keyfeatures/2.png" alt="The table element with a scroll bar, shown on a resized browser"></img></a>
+            </div>
+
+            <div class="col-sm-4 report-image">
+              <a href="images/report/keyfeatures/3.png"><img class="report-image" src="images/report/keyfeatures/3.png" alt="The menu button shown on a mobile device"></img></a>
+            </div>
+          </div>
+          <p><span class="text-muted">Hover over the images for a description. You can click on the images for a higher resolution.</span></p>
+          <!-- end images -->
+
+          <p>On the home page of the website there is a "carousel", a series of 3 images than are animated and will cycle between themselves, each displaying a different message on a floating <code>div</code> element. The images displayed by the carousel are resized for a variety of common screen dimensions, from VGA to Full HD. These tailor the dimensions of the displayed image and also the source image to display; when a lower resolution is required a smaller image is served, reducing the amount of data required and saving the bandwidth of mobile users. The styling for this can be found in content.css.</p>
+
+          <p><em>Carousel, Browser shots, works on all major browsers, modernizr.js feature detection, youtube video maintains aspect ratio, works on mobiles (screenshot)</em></p>
+
 
           <!-- Search Engine Optimisation -->
           <h4><a id="seo" class="anchor">Search Engine Optimisation</a></h4>
