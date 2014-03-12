@@ -14,12 +14,14 @@
 				  <tr>
 					  <th>Name</th>
 					  <th>Address</th>
+            <th></th>
 				  </tr>
         </thead>
         <tbody>
 				  <tr class="address-book" data-ng-repeat="data in tabledata">
 				    <td>{{data.name}}</td>
-				    <td><a href="" data-ui-sref="wallet.send" title="Send funds to {{data.name}}">{{data.address}}</a></td> 
+				    <td><a href="" data-ui-sref="wallet.send" title="Send funds to {{data.name}}">{{data.address}}</a></td>
+            <td><a href="" data-ui-sref="wallet.address" title="View address book entry for {{data.name}}"><i class="fa fa-arrow-right"></i></a></td>
 				  </tr>
         </tbody>
 			</table>
