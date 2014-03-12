@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB">
+  <head>
+    <title>Web Technologies Assignment 1 Report - Luke Mitchell and Josh Hargreaves</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/content.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="spacer"></div>
+      <div class="well">
+        <!-- Title -->
+        <h1><a id="top" class="anchor">Web Technologies Assignment 1 Report</a></h1>
+        <h3>Luke Mitchell and Josh Hargreaves</h3>
+        <hr />
+        <!-- end of Title -->
+
+        <!-- Abstract -->
+        <p>This report describes the submission of Luke Mitchell and Josh Hargreaves for the first assignment of the Web Technologies unit. Our submission is a web application that allows a user to create an online wallet that enables them to send and receive MaxCoin, a Bitcoin-like cryptocurrency that we developed earlier this year.</p>
+        <p>Firstly, what is MaxCoin? MaxCoin is a cryptographic currency based upon the Bitcoin model. We created the currency to experiment with using algorithms with increased security that will enable us to utilise some very new technology, courtesy of Nigel Smart, and also to see what the effect of a media personality would have on the price of an altcoin. The coin was launched on the Keiser Report, a programme presented by Max Keiser, a proponent and namesake of the coin.</p>
+        <p>This submission shows the framework and the front end of the web application. We have tried to include sample data to give a realistic impression of what the final experience will be like, when using the website.</p>
+        <hr />
+        <!-- end of Abstract -->
+
+        <!-- Contents -->
+        <h3><a id="sections" class="anchor">Sections</a></h3>
+        <ol>
+          <li><a href="#introduction" title="Jump to Introduction">Introduction</a></li>
+          <li><a href="#keyfeatures" title="Jump to Key Features">Key Features</a></li>
+          <ol>
+            <li><a href="#angularjs" title="Jump to Angular JS">Angular JS</a></li>
+            <li><a href="#responsivedesign" title="Jump to Responsive Design">Responsive Design</a></li>
+            <li><a href="#seo" title="Jump to Search Engine Optimisation">Search Engine Optimisation</a></li>
+          </ol>
+          <li><a href="#content" title="Jump to Website Content">Website Content</a></li>
+          <ol>
+            <li><a href="#html" title="Jump to HTML">HTML</a></li>
+            <li><a href="#css" title="Jump to CSS">CSS</a></li>
+            <li><a href="#javascript" title="Jump to JavaScript">JavaScript</a></li>
+            <li><a href="#svg" title="Jump to SVG">SVG</a></li>
+            <li><a href="#gimp" title="Jump to GIMP">GIMP</a></li>
+          </ol>
+          <li><a href="#ee" title="Jump to Everything Else">Everything Else</a></li>
+        </ol>
+        <hr />
+        <!-- end of Contents -->
+        
+        <!-- Introduction -->
+        <div>
+          <h3><a id="introduction" class="anchor">Introduction</a></h3>
+          <p>The application we have developed is called maxwallet. As explained in the abstract, the aim of maxwallet is to allow users to create a "web wallet", an online interface that allows them to access their MaxCoin and to send it to other users or merchants. The advantage of using a web wallet is threefold: users don't have to download a piece of software which, additionally, downloads the blockchain - the public ledger of all the transactions within MaxCoin; users can access their wallet from anywhere, worldwide, with an Internet connection; and, finally, it allows additional functionality to be included, such as the Standing Orders present within maxwallet, a feature that the desktop client doesn't have.</p>
+          <p>Currently only a small handful of cryptocurrencies have web wallet services and it will be a great boon to MaxCoin once the service is launched. Additionally, we have taken great care to ensure the codebase is written in a modular manner so that it can be ported with ease to other currencies. Due to the financial nature of the web application, we have been vigilant to ensure that our code is as secure and well written as possible. If the service was to be hacked it would immediately lose it's credibility and become a detriment to the currency.</p>
+          <p>Existing services for storing and handling cryptocurrency online include <a target="_blank" href="http://www.blockchain.info/">blockchain.info</a> and <a target="_blank" href="https://secure.dogechain.info/wallet">dogechain.info</a>; these services typically allow a user to send and receive currency. With maxwallet, we will build upon this functionality by including the option to create regular payments to an address and to submit payment requests, much like a regular bank. We will also fully integrate with the upcoming MaxCoin Android wallet by allowing a user to interface with the web application using QR codes that we will both generate and read, using the client's camera.</p>
+        </div>
+        <!-- end of Introduction -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <div class="spacer" />
+
+        <!-- Key Features -->
+        <div>
+          <h3><a id="keyfeatures" class="anchor">Key Features</a></h3>
+          <p>web app with wallet, transaction history and details, address book, recurring payments, log in system (not yet implemented), support tickets and knowledgebase, QR generator and reader, modal windows and toasts</p>
+
+          <!-- Angular JS -->
+          <h4><a id="angularjs" class="anchor">Angular JS</a></h4>
+          <p>Rewrote directives for valid XHTML, powerful technology</p>
+
+          <!-- Responsive Design -->
+          <h4><a id="responsivedesign" class="anchor">Responsive Design</a></h4>
+          <p>Browser shots, works on all major browsers, modernizr.js feature detection, youtube video maintains aspect ratio, works on mobiles (screenshot)</p>
+
+          <!-- Search Engine Optimisation -->
+          <h4><a id="seo" class="anchor">Search Engine Optimisation</a></h4>
+          <p>meta tags, sitemap.xml</p>
+        </div>
+        <!-- end of Key Features -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <div class="spacer" />
+
+        <!-- Website Content -->
+        <div>
+          <h3><a id="content" class="anchor">Website Content</a></h3>
+          <p></p>
+
+          <!-- HTML -->
+          <h4><a id="html" class="anchor">HTML</a></h4>
+          <p>all code passes html5 verification (show screenshot), makes use of html5-specific tags (such as footer)</p>
+
+          <!-- CSS -->
+          <h4><a id="css" class="anchor">CSS</a></h4>
+          <p>custom theme for bootstrap, all stylesheets are valid css3, fallback for mobile devices and multiple screen sizes, fallback support where possible</p>
+
+          <!-- JavaScript -->
+          <h4><a id="javascript" class="anchor">JavaScript</a></h4>
+          <p>qr codes (rewrote qrcode.js to be valid XHTML/HTML5 and submitted pull request to github repo), show and hide current price of maxcoin, cross-site requests, loads of angular, scrolling, modal window, toasts</p>
+
+          <!-- SVG -->
+          <h4><a id="svg" class="anchor">SVG</a></h4>
+          <p>show picture of camera, talk about envelope</p>
+
+          <!-- GIMP -->
+          <h4><a id="gimp" class="anchor">GIMP</a></h4>
+          <p>envelope, pictures of me and josh</p>
+        </div>
+        <!-- end of Website Content -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <div class="spacer" />
+
+        <!-- Everything Else -->
+        <div>
+          <h3><a id="ee" class="anchor">Everything Else</a></h3>
+          <p></p>
+        </div>
+        <!-- end of Everything Else -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+      </div>
+    </div>
+  </body>
+</html>
