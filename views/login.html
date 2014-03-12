@@ -14,8 +14,8 @@
         <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
     </div>
     <div style="width: 100%; margin: 0 auto; text-align: center;">
-      <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-lg btn-success">Submit</button>
-      <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-lg btn-success" disabled="true">Submit</button>
-      <button type="button" class="btn btn-lg btn-primary" data-ng-click="toggleModal()">Cancel</button>
+      <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-lg btn-success" title="Login to wallet">Submit</button>
+      <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-lg btn-success" disabled="true" title="Login to wallet">Submit</button>
+      <button type="button" class="btn btn-lg btn-primary" data-ng-click="toggleModal()" title="Closes this window">Cancel</button>
     </div>
 </form>
