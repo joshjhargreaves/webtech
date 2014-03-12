@@ -220,6 +220,14 @@
 .btn-svg {
 }
 
+.transaction-send-amount {
+  color: red;
+}
+
+.transaction-receive-amount {
+  color: green;
+}
+
 /*** support.html ***/
 
 .support-form {
