@@ -293,6 +293,7 @@
   scrolling: no;
   marginheight: 0;
   marginwidth: 0;
+  width: 100%;
 
   /* borders */
   border: 1px solid #e3e3e3;
