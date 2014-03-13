@@ -231,6 +231,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
+  border: 0;
 }
 
 /*** contact.html ***/
@@ -244,7 +245,7 @@
   color: #777;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .address-icon,
   .email-icon {
     display: none;
@@ -257,7 +258,7 @@
   }  
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .contact .spacer {
     display: none;
     visibility: hidden;
@@ -279,6 +280,28 @@
   .email-icon {
     float: left;
   }
+
+  .address-icon img,
+  .email-icon img{
+    width: 30%;
+  }
+}
+
+/* Google maps */
+
+.googlemaps {
+  scrolling: no;
+  marginheight: 0;
+  marginwidth: 0;
+
+  /* borders */
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /*** wallet.html and associated states ***/
@@ -344,23 +367,28 @@
   opacity: 0.8;
 }
 .ng-modal-dialog {
-  /* A centered div above the overlay with a box shadow. */
+  /* a centered div above the overlay with a box shadow. */
   z-index:10000;
   position: fixed;
   width: 50%; /* Default */
 
-  /* Center the dialog */
+  /* center the dialog */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
 
+  /* borders */
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .ng-modal-dialog-content {
   padding:10px;
   text-align: left;
