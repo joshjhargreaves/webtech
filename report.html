@@ -58,6 +58,10 @@
                 <li><a href="#gimp" title="Jump to GIMP">GIMP</a></li>
               </ol>
               <li><a href="#ee" title="Jump to Everything Else">Everything Else</a></li>
+              <ol>
+                <li><a href="#html" title="Jump to HTML">HTML</a></li>
+                <li><a href="#css" title="Jump to CSS">CSS</a></li>
+              </ol>
             </ol>
           </div>
           <!-- end of Contents -->
@@ -259,7 +263,7 @@
         </div>
         <!-- end of Website Content -->
 
-          <div class="spacer" />          
+        <div class="spacer" />          
 
         <!-- image of camera -->
         <div class="row">
@@ -276,7 +280,25 @@
         <!-- Everything Else -->
         <div>
           <h3><a id="ee" class="anchor">Everything Else</a></h3>
+          
+          <!-- Mark Weighting -->
+          <h4><a id="marks" class="anchor">Mark Weightings</a></h4>
           <p>When we distributed the work, we initially decided that Luke was to undertake the look and feel of the application, along with lots of the content, whereas Josh was to become familiar with Angular JS and work on the application framework. This stayed large true throughout the project, however, as we expected, we often turned our hands to help the other person. As such, we feel that we have both contributed evenly and fairly to this project and request that our marks be weighted identically as such.</p>
+          <!-- end of Weightings -->
+
+          <div class="spacer" />      
+
+          <!-- Setting Up -->
+          <h4><a id="settingup" class="anchor">Setting up the Server</a></h4>
+          <p>As we have utilised Node JS extensively for our project, we have included instructions for delpoying our application. The following instructions will work from a Unix terminal and can be easily adapted to work from a Windows Command Prompt if needed. A script, <code>install.sh</code>, has been included that performs these steps.</p>
+          <p>
+            <code>$ cd maxwallet</code><br />
+            <code>$ npm install</code><br />
+            <code>$ sudo npm install -g yo grunt-cli bower</code><br />
+            <code>$ bower install</code><br />
+            <code>$ mv app/bower_components . &amp; &amp; rm -rf app</code>
+          </p>
+          <!-- end of Setting Up -->
         </div>
         <!-- end of Everything Else -->
 
