@@ -1,20 +1,17 @@
 'use strict';
 
-myapp
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
-myapp
-  .controller('contactController', function ($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.'; // SHOULD THIS BE HERE?
+/*Placeholder for dynamic contact elements such as a
+ *twitter feed */
+myapp.controller('contactController', function ($scope) {
 });
 
+/* This controller watches the two input fields
+ * in the recieve tab and updates the Qrcode 
+ * accordingly when any of them are changed.
+ * TODO: Move Qrcode insantiation logic into
+ * seperate service or directive to make it
+ * More 'Angular' like.*/
 myapp.controller('qrcode', function($scope) {
-  $scope.maxAddress = "mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK"; // CAN WE PULL THE maxcoin: PART OUT?
   $scope.qrcode = new QRCode(document.getElementById("qrcode1"), $scope.maxAddress);
   $scope.textinputs = ['label', 'amount']
   $scope.$watchCollection('[label, amount]', function(values) {
@@ -72,7 +69,8 @@ myapp.factory('Poller', function($http, $timeout, dateFilter) {
 });
 /* end of price ticker */
 
-/* QR code scanner */
+/* QR code scanner directive using qrcode
+ * scanner library */
 myapp.directive('qrscan', function($document) {
   return {
       restrict: 'A',
@@ -92,7 +90,8 @@ myapp.directive('qrscan', function($document) {
     };
 });
 
-/* wallet address book */
+/* wallet address book 
+ * TODO: Change data to results of api request when api reader*/
 myapp.controller('addressbookctrl', ['$scope', function($scope) {
   // add some entries to the table
   $scope.tabledata = [ 
@@ -132,6 +131,9 @@ myapp.directive('modalDialog', function() {
   };
 });
 
+/*
+ * Controller spanning all application. Toaster directive from imported
+ * module injected as a dependency to enable use of toaster messages */
 myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
   $scope.pop = function(){
     toaster.pop('success', "Success", "You have logged in");
@@ -146,16 +148,23 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
     $scope.pop();
   };
 }]);
+/* Main controller in send tab. Contains functions to show and hide the 
+ * modal window.
+ * */
 myapp.controller('sendmax', ['$scope', 'toaster', function($scope, toaster) {
   $scope.data = "Waiting for qrcode to be scanned.........."
   $scope.modalShown = false;
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
-    console.log($scope.modal);
   };
   $scope.submitForm = function(isValid) {
     toaster.pop('success', "Success", "Your maxcoin has been sent successfully");
-    $scope.modalShown = true;
+  };
+  $scope.updateAddress = function() {
+    //$scope.userForm.address.$modelValue= "testing";
+    console.log($scope.userForm);
+    $scope.toggleModal();
+    toaster.pop('success', "Success", "Qrcode successfully scanned");
   };
 }]);
 /* end of modal section */
