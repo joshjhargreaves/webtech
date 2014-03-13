@@ -90,6 +90,8 @@
           <p>Certain components display completely differently when presented at different screen resolutions. One example of this is the navigation bar in the page header: this is normally a horizontal bar containing navigation items but, at screen resolutions below 768px, this is displayed as a single menu icon. When the menu icon is clicked it toggles a drop down menu containing the navigation links, conserving space on mobile devices. Another example is the tables within the Wallet section of the website: this section features a number of wallets containing information on transactions and addresses, each of which are stored in a tabular format. The tables are styled such that when they begin to overflow the surrounding element they contract and display a horizontal scroll bar instead.</p>
           <p>Below are some images showing the website being displayed at multiple resolutions.</p>
 
+          <div class="spacer" />
+
           <!-- images at different resolutions -->
           <div class="row">
             <div class="col-sm-4 report-image">
@@ -109,8 +111,11 @@
 
           <p>On the home page of the website there is a "carousel", a series of 3 images than are animated and will cycle between themselves, each displaying a different message on a floating <code>div</code> element. The images displayed by the carousel are resized for a variety of common screen dimensions, from VGA to Full HD. These tailor the dimensions of the displayed image and also the source image to display; when a lower resolution is required a smaller image is served, reducing the amount of data required and saving the bandwidth of mobile users. There are 4 images of varying resolutions for this purpose. The styling for this can be found in content.css.</p>
           <p>We continually tested our website using a multitude of different browsers during development, in an effort to support as many as possible. Our website uses several HTML5-specific features (see <a href="#html" title="Go to HTML section">HTML</a>), along with several other features that aren't supported in older browsers, but we have attempted, where possible, to use the modernizr library to detect and substitute these for suitable replacements. One example of where modernizr is used is for SVG detection in the Send Funds section of the Wallet. Here an SVG of a camera (see <a href="#svg" title="Go to SVG section">SVG</a>) is used as a button icon; when modernizr detects a browser that cannot display SVG a fallback PNG image is used.</p>
-          <p>When testing, we used <a href="browsershots.org" title="Go to BrowserShots">browsershots.org</a> to view our website as displayed by over 100 different browsers of varying ages on a variety of platforms. Additionally, we developed using Google Chrome, Chromium, Firefox and Internet Explorer to ensure that our website was as cross-platform complient as possible. The results of submitted our final site to BrowserShots was very positive, with almost all of the browsers displaying the website correctly. Some older browsers, such as IE6, and text-based browsers such as Lynx do not work as expected with maxwallet. To deal with this, we print an error message for older browsers using a CSS conditional comment.</p>
+          <p>When testing, we used <a href="browsershots.org" title="Go to BrowserShots">browsershots.org</a> to view our website as displayed by over 100 different browsers of varying ages on a variety of platforms. Additionally, we developed using Google Chrome, Chromium, Firefox and Internet Explorer to ensure that our website was as cross-platform complient as possible. The results of submitted our final site to BrowserShots was very positive, with almost all of the browsers displaying the website correctly.</p>
+          <p>According to <a href="http://www.w3schools.com/browsers/browsers_stats.asp" title="Browser statistics">w3schools</a> over 50% of the web is browsed using recent versions of Chrome, with a further 25% using recent versions of Firefox. We support both of these browsers, including very old versions of them (we've tested back to version 10 for both, see below) along with Opera and a host of Linux-specific browsers, and are compatible with all of them. Some older browsers, such as IE6, and text-based browsers such as Lynx do not work as expected with maxwallet, however these represent a fractional amount of traffic on the web (around <a href="http://www.w3schools.com/browsers/browsers_explorer.asp" title="IE traffic by version">0.5% at worst</a>). To deal with this, we print an error message for older browsers using a CSS conditional comment.</p>
           <p>Some images of the home page running on a variety of early browsers, from BrowserShots, can be seen below.</p>          
+
+          <div class="spacer" />
 
           <!-- images on different browsers -->
           <div class="row">
@@ -164,13 +169,27 @@
           <!-- JavaScript -->
           <h4><a id="javascript" class="anchor">JavaScript</a></h4>
           <p>qr codes (rewrote qrcode.js to be valid XHTML/HTML5 and submitted pull request to github repo), show and hide current price of maxcoin, cross-site requests, loads of angular, scrolling, modal window, toasts</p>
+          <!-- end JavaScript -->
 
           <div class="spacer" />
 
           <!-- SVG -->
           <h4><a id="svg" class="anchor">SVG</a></h4>
-          <p></p>
-          <p>show picture of camera, talk about envelope</p>
+          <p>We employed Inkscape to create 2 SVG graphics. One of these, a camera icon, was created for use as a button on the Send Funds section of the Wallet; the other, an outline of an envelope, was imported into GIMP and used an image on the Contact page.</p>
+          <p>The camera icon was created solely within Inkscape. It was created by first making the lens using concentric circles, each with a small gap between it and the outer circle, varying the width of their strokes to create the effect of a zoomed camera lens. The centre of the lens was then given a radial blur and a highlight, using a low-opacity white layer that has been shaped using a Boolean difference operation. The rest of the camera was made using rectangles with a curved stroke, in varying shades. A line across the camera body was added for some interest and given a shadow, by duplicating it, moving it slightly down and right, then lowering the opacity. The same was done for the camera body itself to create some depth. Finally, a highlight was given to the camera viewport in the same way that the highlight to the lens was created.</p>
+          <p>The envelope was a much simpler creation as it was to be modified within GIMP. The envelope was created by using the rectangle tool to create the basic shape, again with a rounded stroke to give it a softer appearence. The shadows and the top flap were then created by using the rulers to mark the edges of the envelope and using the straight line tool.</p>          
+          <!-- end SVG -->      
+
+          <div class="spacer" />          
+
+          <!-- image of camera -->
+          <div class="row">
+            <div class="col-sm-4 report-image">
+              <a href="images/icons/camera.svg" title="SVG camera (displayed as PNG)"><img class="report-image" src="images/icons/camera.png" alt="SVG camera (displayed as PNG)"></img></a>
+            </div>
+          </div>
+          <p><span class="text-muted">You can click on the image for a higher resolution.</span></p>
+          <!-- end image -->
 
           <div class="spacer" />
 
