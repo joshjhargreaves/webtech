@@ -156,13 +156,39 @@
 
           <!-- HTML -->
           <h4><a id="html" class="anchor">HTML</a></h4>
-          <p>all code passes html5 verification (show screenshot), makes use of html5-specific tags (such as footer)</p>
+          <p>We opted to use HTML5 when writing maxwallet as it offers a range of useful features, such as the embedding of video, canvas elements and useful tag such as footer. We also felt that using the most up-to-date version was the most beneficial with regards to improving our skill set as web developers.</p>
+          <p>The HTML5-specific tags that we utilise are the <code>footer</code> tags, allowing for cleaner, more readable code; the <code>svg</code> tag to embed vector graphics such as the camera icon (see <a href="#svg" title="Go to SVG">SVG</a>); and, finally, the <code>canvas</code> tags, for creating the QR code within the Receive Funds section of the Wallet.</p>
+          <p>All the code used within the web application conform to HTML5 guidelines specified by the W3C and pass the W3C <a href="http://validator.w3.org/" title="Visit the W3C online validator">online validator</a>. A picture of the validation can be seen below.</p>
+          <!-- end of HTML -->
+
+          <div class="spacer" />
+
+          <!-- image of html5 validation -->
+          <div class="row">
+            <div class="col-sm-4 report-image">
+              <a href="images/report/validation/html5.png" title="Successful HTML5 validation"><img class="report-image" src="images/report/validation/html5.png" alt="Successful HTML5 validation"></img></a>
+            </div>
+          </div>
+          <p><span class="text-muted">You can click on the image for a higher resolution.</span></p>
+          <!-- end image -->
 
           <div class="spacer" />
 
           <!-- CSS -->
           <h4><a id="css" class="anchor">CSS</a></h4>
-          <p>custom theme for bootstrap, all stylesheets are valid css3, fallback for mobile devices and multiple screen sizes, fallback support where possible</p>
+          <p>nth-child, custom theme for bootstrap, all stylesheets are valid css3, fallback for mobile devices and multiple screen sizes, fallback support where possible</p>
+          <!-- end of CSS -->
+  
+          <div class="spacer" />
+
+          <!-- image of css3 validation -->
+          <div class="row">
+            <div class="col-sm-4 report-image">
+              <a href="images/report/validation/css3.png" title="Successful CSS3 validation"><img class="report-image" src="images/report/validation/css3.png" alt="Successful CSS3 validation"></img></a>
+            </div>
+          </div>
+          <p><span class="text-muted">You can click on the image for a higher resolution.</span></p>
+          <!-- end image -->
 
           <div class="spacer" />
 
@@ -176,7 +202,7 @@
           <!-- SVG -->
           <h4><a id="svg" class="anchor">SVG</a></h4>
           <p>We employed Inkscape to create 2 SVG graphics. One of these, a camera icon, was created for use as a button on the Send Funds section of the Wallet; the other, an outline of an envelope, was imported into GIMP and used an image on the Contact page.</p>
-          <p>The camera icon was created solely within Inkscape. It was created by first making the lens using concentric circles, each with a small gap between it and the outer circle, varying the width of their strokes to create the effect of a zoomed camera lens. The centre of the lens was then given a radial blur and a highlight, using a low-opacity white layer that has been shaped using a Boolean difference operation. The rest of the camera was made using rectangles with a curved stroke, in varying shades. A line across the camera body was added for some interest and given a shadow, by duplicating it, moving it slightly down and right, then lowering the opacity. The same was done for the camera body itself to create some depth. Finally, a highlight was given to the camera viewport in the same way that the highlight to the lens was created.</p>
+          <p>The camera icon was created solely within Inkscape. It was created by first making the lens using concentric circles, each with a small gap between it and the outer circle, varying the width of their strokes to create the effect of a zoomed camera lens. The centre of the lens was then given a radial blur and a highlight, using a low-opacity white layer that has been shaped using a Boolean difference operation. The rest of the camera was made using rectangles with a curved stroke, in varying shades. A line across the camera body was added for some interest and given a shadow, by duplicating it, moving it slightly down and right, then lowering the opacity. The same was done for the camera lens to create some depth. Finally, a highlight was given to the camera viewport in the same way that the highlight to the lens was created.</p>
           <p>The envelope was a much simpler creation as it was to be modified within GIMP. The envelope was created by using the rectangle tool to create the basic shape, again with a rounded stroke to give it a softer appearence. The shadows and the top flap were then created by using the rulers to mark the edges of the envelope and using the straight line tool.</p>          
           <!-- end SVG -->      
 
