@@ -248,7 +248,8 @@
 
           <!-- JavaScript -->
           <h4><a id="javascript" class="anchor">JavaScript</a></h4>
-          <p>qr codes (rewrote qrcode.js to be valid XHTML/HTML5 and submitted pull request to github repo), show and hide current price of maxcoin, cross-site requests, loads of Angular, scrolling, modal window, toasts, jQuery selectors</p>
+          <p>Most of the JavaScript complexity within maxwallet comes from our integration with Angular JS, as described <a href="#angularjs" title="Go to Angular JS section">previously</a>. We utilised this to allow content to be injected into forms, show modal windows, display notifications and retrieve the current price of MaxCoin using a cross-site request. We can also scan and generate a QR code, using two JavaScript libraries. The QR code generation, handled by <a href="http://davidshimjs.github.io/qrcodejs/" title="Go to the qrcode.js website">qrcode.js</a>, was rewritten slightly to ensure compliance with XHTML and HTML5. A patch with the fixed code was then submitted to GitHub as a pull request.</p>
+          <p>The website also features a few utility functions, such as smooth scrolling and replacement of CSS attributes. These are variously within the relevent file, where the function is very specific, or within <code>util.js</code>. These functions make use of the jQuery library.</p>
           <!-- end JavaScript -->
 
           <div class="spacer" />
