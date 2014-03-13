@@ -29,6 +29,7 @@
         <!-- end of Title -->
 
         <!-- Abstract -->
+        <h3><a id="abstract" class="anchor">Abstract</a></h3>
         <p>This report describes the submission of Luke Mitchell and Josh Hargreaves for the first assignment of the Web Technologies unit. Our submission is a web application that allows a user to create an online wallet that enables them to send and receive MaxCoin, a Bitcoin-like cryptocurrency that we developed earlier this year.</p>
         <p>Firstly, what is MaxCoin? MaxCoin is a cryptographic currency based upon the Bitcoin model. We created the currency to experiment with using algorithms with increased security that will enable us to utilise some very new technology, courtesy of Nigel Smart, and also to see what the effect of a media personality would have on the price of an altcoin. The coin was launched on the Keiser Report, a programme presented by Max Keiser, a proponent and namesake of the coin.</p>
         <p>This submission shows the framework and the front end of the web application. We have tried to include sample data to give a realistic impression of what the final experience will be like, when using the website.</p>
@@ -68,16 +69,20 @@
         <!-- end of Introduction -->
 
         <span class="text-muted">Back to <a href="#top">top</a></span>
-        <div class="spacer" />
+        <hr />
 
         <!-- Key Features -->
         <div>
           <h3><a id="keyfeatures" class="anchor">Key Features</a></h3>
           <p>web app with wallet, transaction history and details, address book, recurring payments, log in system (not yet implemented), support tickets and knowledgebase, QR generator and reader, modal windows and toasts</p>
 
+          <div class="spacer" />
+
           <!-- Angular JS -->
           <h4><a id="angularjs" class="anchor">Angular JS</a></h4>
           <p>Rewrote directives for valid XHTML, powerful technology</p>
+
+          <div class="spacer" />
 
           <!-- Responsive Design -->
           <h4><a id="responsivedesign" class="anchor">Responsive Design</a></h4>
@@ -88,33 +93,56 @@
           <!-- images at different resolutions -->
           <div class="row">
             <div class="col-sm-4 report-image">
-              <a href="images/report/keyfeatures/1.png"><img class="report-image" src="images/report/keyfeatures/1.png" alt="The default style of the website on a widescreen browser"></img></a>
+              <a href="images/report/keyfeatures/1.png" title="The default style of the website on a widescreen browser"><img class="report-image" src="images/report/keyfeatures/1.png" alt="The default style of the website on a widescreen browser"></img></a>
             </div>
 
             <div class="col-sm-4 report-image">
-              <a href="images/report/keyfeatures/2.png"><img class="report-image" src="images/report/keyfeatures/2.png" alt="The table element with a scroll bar, shown on a resized browser"></img></a>
+              <a href="images/report/keyfeatures/2.png" title="The table element with a scroll bar, shown on a resized browser"><img class="report-image" src="images/report/keyfeatures/2.png" alt="The table element with a scroll bar, shown on a resized browser"></img></a>
             </div>
 
             <div class="col-sm-4 report-image">
-              <a href="images/report/keyfeatures/3.png"><img class="report-image" src="images/report/keyfeatures/3.png" alt="The menu button shown on a mobile device"></img></a>
+              <a href="images/report/keyfeatures/3.png" title="The menu button shown on a mobile device"><img class="report-image" src="images/report/keyfeatures/3.png" alt="The menu button shown on a mobile device"></img></a>
             </div>
           </div>
           <p><span class="text-muted">Hover over the images for a description. You can click on the images for a higher resolution.</span></p>
           <!-- end images -->
 
-          <p>On the home page of the website there is a "carousel", a series of 3 images than are animated and will cycle between themselves, each displaying a different message on a floating <code>div</code> element. The images displayed by the carousel are resized for a variety of common screen dimensions, from VGA to Full HD. These tailor the dimensions of the displayed image and also the source image to display; when a lower resolution is required a smaller image is served, reducing the amount of data required and saving the bandwidth of mobile users. The styling for this can be found in content.css.</p>
+          <p>On the home page of the website there is a "carousel", a series of 3 images than are animated and will cycle between themselves, each displaying a different message on a floating <code>div</code> element. The images displayed by the carousel are resized for a variety of common screen dimensions, from VGA to Full HD. These tailor the dimensions of the displayed image and also the source image to display; when a lower resolution is required a smaller image is served, reducing the amount of data required and saving the bandwidth of mobile users. There are 4 images of varying resolutions for this purpose. The styling for this can be found in content.css.</p>
+          <p>We continually tested our website using a multitude of different browsers during development, in an effort to support as many as possible. Our website uses several HTML5-specific features (see <a href="#html" title="Go to HTML section">HTML</a>), along with several other features that aren't supported in older browsers, but we have attempted, where possible, to use the modernizr library to detect and substitute these for suitable replacements. One example of where modernizr is used is for SVG detection in the Send Funds section of the Wallet. Here an SVG of a camera (see <a href="#svg" title="Go to SVG section">SVG</a>) is used as a button icon; when modernizr detects a browser that cannot display SVG a fallback PNG image is used.</p>
+          <p>When testing, we used <a href="browsershots.org" title="Go to BrowserShots">browsershots.org</a> to view our website as displayed by over 100 different browsers of varying ages on a variety of platforms. Additionally, we developed using Google Chrome, Chromium, Firefox and Internet Explorer to ensure that our website was as cross-platform complient as possible. The results of submitted our final site to BrowserShots was very positive, with almost all of the browsers displaying the website correctly. Some older browsers, such as IE6, and text-based browsers such as Lynx do not work as expected with maxwallet. To deal with this, we print an error message for older browsers using a CSS conditional comment.</p>
+          <p>Some images of the home page running on a variety of early browsers, from BrowserShots, can be seen below.</p>          
 
-          <p><em>Carousel, Browser shots, works on all major browsers, modernizr.js feature detection, youtube video maintains aspect ratio, works on mobiles (screenshot)</em></p>
+          <!-- images on different browsers -->
+          <div class="row">
+            <div class="col-sm-4 report-image">
+              <a href="images/report/browsershots/chrome-10.png" title="Chrome 10 (current version is 34)"><img class="report-image" src="images/report/browsershots/chrome-10.png" alt="Chrome 10 (current version is 34)"></img></a>
+            </div>
 
+            <div class="col-sm-4 report-image">
+              <a href="images/report/browsershots/firefox-10.png" title="Firefox 10 (current version is 27)"><img class="report-image" src="images/report/browsershots/firefox-10.png" alt="Firefox 10 (current version is 27)"></img></a>
+            </div>
+
+            <div class="col-sm-4 report-image">
+              <a href="images/report/browsershots/opera-10.png" title="Opera 10 (current version is 20)"><img class="report-image" src="images/report/browsershots/opera-10.png" alt="Opera 10 (current version is 20)"></img></a>
+            </div>
+          </div>
+          <p><span class="text-muted">Hover over the images for a description. You can click on the images for a higher resolution.</span></p>
+          <!-- end images -->
+
+          <p>A final responsive element to our website is the dynamic resizing of YouTube videos. This was done in such a way that the aspect ratio of the video is maintained at 16:9, the ratio most videos use. This was achieved by wrapping the video <code>iframe</code> within a <code>div</code> and setting the padding to maintain the correct proportions using <code>padding-bottom: 56.25%;</code>. The About page features a YouTube video that uses this feature.</p>
+          <!-- end of Responsive Design -->
+
+          <div class="spacer" />
 
           <!-- Search Engine Optimisation -->
           <h4><a id="seo" class="anchor">Search Engine Optimisation</a></h4>
-          <p>meta tags, sitemap.xml</p>
+          <p>Our website is being designed for real-world deployment and, as such, we have included features such as Search Engine Optimisation. The index page of the website contains meta tags with keywords, a description and the authors. The index page injects the content of other pages into itself, meaning it will be the most frequently crawled and thus the most important. When the back-end is implemented, meta tags for other pages can be modified using JavaScript. We have also submitted a <code>robots.txt</code> file; this is used by web-crawlers such as Googlebot to determine where to crawl and index pages, along with where not to go. The robots file also contains a link to our XML Sitemap. The Sitemap, <code>sitemap.xml</code>, describes the change-frequency and the index priority of the pages within the website, along with allowing isolated pages to be indexed. Both our robots file and the Sitemap conform to the relevant standards and could be submitted to most modern search engines as they are.</p>
+          <p>Once the back-end of the website has been implemented, we will also include automatically-updating HTML "snapshots" of the dynamic content on the website, or that injected using JavaScript. This will allow these pages to be crawled by a traditional web-crawler and they will be added to the Sitemap when they are in place.</p>
         </div>
         <!-- end of Key Features -->
 
         <span class="text-muted">Back to <a href="#top">top</a></span>
-        <div class="spacer" />
+        <hr />
 
         <!-- Website Content -->
         <div>
@@ -125,17 +153,26 @@
           <h4><a id="html" class="anchor">HTML</a></h4>
           <p>all code passes html5 verification (show screenshot), makes use of html5-specific tags (such as footer)</p>
 
+          <div class="spacer" />
+
           <!-- CSS -->
           <h4><a id="css" class="anchor">CSS</a></h4>
           <p>custom theme for bootstrap, all stylesheets are valid css3, fallback for mobile devices and multiple screen sizes, fallback support where possible</p>
+
+          <div class="spacer" />
 
           <!-- JavaScript -->
           <h4><a id="javascript" class="anchor">JavaScript</a></h4>
           <p>qr codes (rewrote qrcode.js to be valid XHTML/HTML5 and submitted pull request to github repo), show and hide current price of maxcoin, cross-site requests, loads of angular, scrolling, modal window, toasts</p>
 
+          <div class="spacer" />
+
           <!-- SVG -->
           <h4><a id="svg" class="anchor">SVG</a></h4>
+          <p></p>
           <p>show picture of camera, talk about envelope</p>
+
+          <div class="spacer" />
 
           <!-- GIMP -->
           <h4><a id="gimp" class="anchor">GIMP</a></h4>
@@ -144,7 +181,7 @@
         <!-- end of Website Content -->
 
         <span class="text-muted">Back to <a href="#top">top</a></span>
-        <div class="spacer" />
+        <hr />
 
         <!-- Everything Else -->
         <div>
