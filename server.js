@@ -16,7 +16,7 @@
 
 var prefix = '/anywhere';
 var requester = 'localhost';
-var port = 8080; //443
+var port = 3000; //443
 var protocol = 'http'; //https
 var key = './server.key';
 var cert = './server.cert';
@@ -69,7 +69,7 @@ if (protocol == 'https') {
   server = web.createServer(options, serve);
 }
 else if (protocol == 'http') server = web.createServer(serve);
-server.listen(port, requester);
+server.listen(port);
 
 // Serve a single request.  Redirect / to add the prefix, but otherwise
 // insist that every URL should start with the prefix.  With the exception of
