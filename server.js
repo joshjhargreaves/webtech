@@ -13,10 +13,9 @@
 // appropriate to the publishing site should be switched on, and the set of
 // supported types should be set to those which are acceptable on the
 // publishing site.
-
 var prefix = '/anywhere';
 var requester = 'localhost';
-var port = 3000; //443
+var port = process.env.PORT;
 var protocol = 'http'; //https
 var key = './server.key';
 var cert = './server.cert';
