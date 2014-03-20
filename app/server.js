@@ -15,7 +15,7 @@
 // publishing site.
 var prefix = '/anywhere';
 var requester = 'localhost';
-var port = process.env.PORT;
+var port = 3000; //process.env.PORT;
 var protocol = 'http'; //https
 var key = './server.key';
 var cert = './server.cert';
