@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB" class="no-js">
+  <head>
+    <!-- meta tags -->
+    <meta charset="UTF-8"/>
+    <meta name="description" content="A free web wallet for MaxCoin. Store, send and receive MaxCoin online for free!" />
+    <meta name="keywords" content="bitcoin, litecoin, maxcoin, dogecoin, maxwallet, cryptocurrency, crypto, exchange, wallet, peer, p2p, decentralised, web, web wallet, webwallet" />
+    <meta name="author" content="maxwallet, Luke Mitchell, Josh Hargreaves" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- page title -->
+    <title>maxwallet - your free online MaxCoin wallet</title>
+
+    <!-- icons -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- cascading style sheets -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css"></link>
+    <link rel="stylesheet" href="styles/content.css"></link>
+    <link rel="stylesheet" href="styles/toaster.css"/>
+    <!-- endbuild -->
+
+    <!-- font-awesome iconic web font -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"></link>
+
+    <!-- detect browser features -->
+    <script type="text/javascript" src="js/modernizr-1.7.min.js"></script>
+  </head>
+  <body data-ng-app="webtechApp" data-ng-controller='MyCtrl'>
+    <toaster-container data-toaster-options="{'position-class': 'toast-bottom-left', 'time-out': 2000}"></toaster-container>
+      <!-- main content to fill screen -->
+      <div id="wrap">
+        <div class="container">
+  	    <!-- navigation bar -->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="navbar-header">
+            <!-- logo -->
+            <div class="navbar-brand">
+              <a href="#" title="Return to homepage"><span class="logo-left logo-left-colour">max</span><span class="logo-right logo-right-colour">wallet</span></a>
+            </div>
+            
+            <!-- compact navigation menu for mobiles -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle menu</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <!-- page navigation -->
+          <nav class="collapse navbar-collapse" role="navigation">
+            <ul class="nav nav-pills navbar-right">
+              <li data-ui-sref-active="active"><a data-ui-sref="main" tabindex="5">Home</a></li>
+              <li data-ng-class="{ active: $state.includes('wallet') }"><a data-ui-sref="wallet.overview">Wallet</a></li>
+              <li data-ui-sref-active="active"><a data-ui-sref="about" tabindex="6">About</a></li>
+              <li data-ui-sref-active="active"><a data-ui-sref="contact" tabindex="7">Contact</a></li>
+              <li data-ui-sref-active="active" data-ng-click="toggleModal()" tabindex="4" title="Login to your wallet"><a href="">Login</a></li>
+            </ul>
+          </nav>
+        </div>
+        </div>
+        <!-- end of section -->
+
+        <!-- ensure browser compatibility -->
+        <!--[if lt IE 7]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- end of section -->
+
+        <!-- main page content -->
+        <div class="view" data-ui-view="" data-autoscroll="false"></div>
+        <!-- end of section -->
+        
+        <div class="spacer"></div>
+      </div>
+      <!-- end of section -->
+
+  	  <!-- footer -->
+  	  <footer class="footer">
+        <div class="social">
+          <div class="container">
+            <!-- secondary page nav -->
+            <div class="col-sm-4">
+              <h1>Pages</h1>
+              <p>Find out more at:</p>
+              <ul>
+                <li><a href="" data-ui-sref="press">Press</a></li>
+                <li><a href="" data-ui-sref="privacy">Privacy Policy</a></li>
+                <li><a href="" data-ui-sref="tos">Terms of Service</a></li>
+            </ul>
+          </div>
+          <!-- end of section -->
+
+          <!-- Resources -->
+          <div class="col-sm-4">
+            <h1>Resources</h1>
+            <p>The following resources are available:</p>
+            <ul>
+              <li><a href="" data-ui-sref="api">API</a></li>
+              <li><a href="" data-ui-sref="support">Support</a></li>
+              <li><a href="sitemap.xml">Sitemap</a></li>
+              </ul>
+            </div>
+            <!-- end of section -->
+
+            <!-- social media -->
+            <div class="col-sm-4">
+              <h1>Social</h1>
+              <p>Follow us for updates at:</p>
+              <span class="btn"><a target="_blank" href="https://www.twitter.com/maxcoinwallet"><i class="fa fa-twitter"></i></a></span>
+              <span class="btn"><a target="_blank" href="https://www.facebook.com/maxcoinwallet"><i class="fa fa-facebook"></i></a></span>
+              <span class="btn"><a target="_blank" href="https://plus.google.com/+MaxCoin/"><i class="fa fa-google-plus"></i></a></span>
+            </div>
+            <!-- end of section -->
+          </div>
+        </div>
+        <div class="legal">
+  	      <span id="copyright">This website is copyright <span class="logo-left">max</span><span class="logo-right">wallet</span> 2014. All rights are reserved.</span>
+        </div>
+  	  </footer>
+      <!-- end of section -->
+
+      <!-- build:js scripts/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/jquery.min.js"></script>
+      <script src="bower_components/es5-shim/es5-shim.min.js"></script>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+      <script src="bower_components/angular-route/angular-route.min.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+      <!-- endbower -->
+      <!-- endbuild -->
+
+      <!-- javascript sources (last to improve page load time) -->
+      <!-- build:js({.tmp,app}) scripts/scripts.js -->
+      <script src="scripts/app.js"></script>
+      <script src="scripts/controllers/main.js"></script>
+      <!-- ui-router -->
+      <script src="js/angular-ui-router.min.js"></script>
+      <script src="js/angular-animate.min.js" ></script>
+      <!-- qr-code generator-->
+      <script src="js/qrcode.js"></script>
+      <!-- toast notifications -->
+      <script src="js/toaster.js"></script>
+      <!-- qr-code reader -->
+      <script src="js/htmlfiveqrcode.min.js"></script>
+      <!-- utility functions -->
+      <script src="js/util.js"></script>
+      <!-- endbuild -->
+      <!-- end of section -->
+
+      <!-- modal dialog (pop up window) -->
+      <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
+        <div data-ng-include="" data-src="'views/login.html'"></div>
+      </modal-dialog>
+      <!-- end of section -->
+  </body>
+</html>

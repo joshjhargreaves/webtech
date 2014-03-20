@@ -1,0 +1,15 @@
+# robotstxt.org
+
+Sitemap: http://www.maxwallet.co.uk/anywhere/sitemap.xml
+
+User-agent: *
+
+Disallow: /bower_components/
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /js/
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /text/
+Disallow: /views/

@@ -1,0 +1,86 @@
+
+<!-- detect SVG -->
+<script>
+  if (!Modernizr.svg) { 
+    $("#camera-button").css("background-image", "url(images/icons/camera.png)");
+    $("#camera-button").css("background-repeat", "no-repeat");
+    $("#camera-button").css("background-size", "auto 75%");
+    $("#camera-button").css("background-position", "center");
+  }
+</script>
+<!-- end detect SVG -->
+
+<div class="well" data-ng-controller="sendmax">
+  <!-- page introduction -->
+  <h1>Send Funds</h1>
+  <p>To send funds to another wallet, enter the address in the form below. The coins will be received after a small number of <span class="tt">confirmations</span>, usually between 12 and 20. You can track the status of the payment using the <a href="" data-ui-sref="wallet.transactions">transaction explorer</a>.</p>
+  <hr></hr>
+  <!-- end of page introduction -->
+
+  <form class="form-horizontal" name="userForm" data-ng-model="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
+      <!-- ADDRESS -->
+      <div class="form-group" data-ng-class="{ 'has-error' : userForm.address.$invalid &amp;&amp; !userForm.address.$pristine }">
+          <label class="col-sm-3 control-label">Send to address</label>
+          <div class="col-sm-9">
+            <input name="address" class="form-control" data-ng-model="user.address" required="" placeholder="MaxCoin Address i.e. mQ1MSBXTRvV4ArwDksPiUBLWCmt7t9AkDi"></input>
+            <p data-ng-show="userForm.address.$invalid &amp;&amp; !userForm.address.$pristine" class="help-block">Please enter a valid MaxCoin Address.</p>
+          </div>
+      </div>
+
+      <!-- AMOUNT -->
+      <!-- TODO add number validation as native angular implementation is broken
+           This should be a maximum of 8 decimal places -->
+      <div class="form-group" data-ng-class="{ 'has-error' : userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine }">
+          <label class="col-sm-3 control-label">Amount</label>
+          <div class="col-sm-9">
+            <input name="amount" type="number" class="form-control" data-ng-model="user.amount" required="" placeholder="14.0"></input>
+            <p data-ng-show="userForm.amount.$invalid &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
+            <p data-ng-show="userForm.amount.$error.number &amp;&amp; !userForm.amount.$pristine" class="help-block">Please enter a valid amount to send.</p>
+          </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
+          <label class="col-sm-3 control-label">Password</label>
+          <div class="col-sm-9">
+            <input type="password" name="password" class="form-control" data-ng-model="user.password" required=""></input>
+            <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
+            <p data-ng-show="userForm.password. &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter your password.</p>
+          </div>
+      </div>
+      
+      <div class="spacer"></div>
+
+      <!-- buttons -->
+      <div>
+        <!-- submit button -->
+        <button data-ng-if="!userForm.$invalid" class="btn btn-success" title="Send funds">Submit</button>
+        <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-success" disabled="disabled" title="Send funds">Submit</button>
+        <!-- end of submit button -->
+
+        <!-- scan button -->
+        <button id="camera-button" type="button" class="btn btn-primary" data-ng-click="toggleModal()" title="Scan QR code using camera">
+          <svg width="3em" height="1em" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      		  <image xlink:href="images/icons/camera.svg" width="3em" height="1em" />
+        	</svg>
+        </button>
+        <!-- end of scan button -->
+      </div>
+      <!-- end of buttons -->
+  </form>
+  <div data-ng-if="modalShown">
+    <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
+      <div class = "well" qrscan="" id="reader" style="width:300px;height:200px"></div>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <label class="form-control">{{data}}</label>
+        </div>
+        <div class="form-group pull-right">
+          <button type="submit" class="btn btn-success" title="Login to wallet" data-ng-click="updateAddress()">Submit</button>
+          <button type="button" class="btn btn-primary" data-ng-click="toggleModal()" title="Closes this window">Cancel</button>
+        </div>
+      </form>
+    </modal-dialog>
+  </div>
+</div>
+

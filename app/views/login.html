@@ -1,0 +1,21 @@
+<h1>Login</h1>
+<p>Enter your email address and password to log into your wallet. <a href="" data-ui-sref="password-reset">Forgotten your password?</a></p>
+<hr></hr>
+<!-- pass in the variable if our form is valid or invalid -->
+<form name="userForm" data-ng-submit="submitForm(userForm.$invalid)" novalidate="">
+    <!-- USERNAME -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.email.$invalid &amp;&amp; !userForm.email.$pristine }">
+        <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email" required=""></input>
+        <p data-ng-show="userForm.email.$invalid &amp;&amp; !userForm.email.$pristine" class="help-block">Please enter a valid email.</p>
+    </div>
+    <!-- EMAIL -->
+    <div class="form-group" data-ng-class="{ 'has-error' : userForm.password.$invalid &amp;&amp; !userForm.password.$pristine }">
+        <input type="password" name="password" class="form-control" data-ng-model="user.password" placeholder="Password" required=""></input>
+        <p data-ng-show="userForm.password.$invalid &amp;&amp; !userForm.password.$pristine" class="help-block">Please enter a password.</p>
+    </div>
+    <div style="width: 100%; margin: 0 auto; text-align: center;">
+      <button data-ng-if="!userForm.$invalid" type="submit" class="btn btn-lg btn-success" title="Login to wallet">Submit</button>
+      <button data-ng-if="userForm.$invalid" type="submit" class="btn btn-lg btn-success" disabled="disabled" title="Login to wallet">Submit</button>
+      <button type="button" class="btn btn-lg btn-primary" data-ng-click="toggleModal()" title="Closes this window">Cancel</button>
+    </div>
+</form>

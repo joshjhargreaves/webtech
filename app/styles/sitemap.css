@@ -1,0 +1,22 @@
+/* Sitemap XML */
+
+url {
+  display: block;
+  border-bottom: 0.1em solid black;
+  padding: 1em;
+}
+
+loc {
+  display: block;
+  font-weight: bold;
+}
+
+changefreq {
+  display: block;
+  padding-left: 1em;
+}
+
+priority {
+  display: block;
+  padding-left: 1em;
+}

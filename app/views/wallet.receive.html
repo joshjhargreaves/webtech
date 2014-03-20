@@ -1,0 +1,36 @@
+<div class="well">
+  <!-- page introduction -->
+  <h1>Receive Funds</h1>
+  <p>A fund request allows you to request payment using a <span class="tt"><a target="_blank" href="https://en.wikipedia.org/wiki/QR_code">QR code</a></span>. The payee should scan the code using their wallet and they will be given the details of the payment.</p>
+  <hr></hr>
+  <!-- end of page introduction -->
+
+  <!-- auto-updating qr code generator -->  
+  <div data-ng-controller="qrcode">
+    <form class="form-horizontal" role="form">
+      <!-- form elements -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Label <span class="text-muted">(optional)</span></label>
+        <div class="col-sm-9">
+          <input class="form-control" id="maxlabel" placeholder="Coins for Luke" data-ng-model="amount"></input>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Amount</label>
+        <div class="col-sm-9">
+          <input class="form-control" id="maxamount" placeholder="18.055" data-ng-model="label"></input>
+        </div>
+      </div>
+      <!-- end of section -->
+
+      <!-- generated qr code and wrapper -->
+      <div class="center padded qrcode-wrapper">
+        <div id="qrcode1" class="col-sm-10"></div>
+      </div>
+      <div class="spacer"></div>
+      <!-- end of section -->
+    </form>
+  </div>
+  <!-- end of qr code -->
+</div>
+

@@ -1,0 +1,29 @@
+
+<div class="top"></div>
+<div class="spacer"></div>
+
+<!-- wallet -->
+<div class="container">
+  <div class="row">
+      <!-- wallet navigation -->
+      <div class="well well-sm col-12 col-sm-4 col-lg-4 left">
+        <ul class="nav nav-pills nav-stacked">
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.overview">Overview</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.transactions">View all transactions</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.send">Send funds</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.receive">Recieve funds</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.orders">Standing orders</a></li>
+            <li data-ui-sref-active="active"><a data-ui-sref="wallet.addresses">Address book</a></li>
+        </ul>
+        <hr></hr>
+      </div>
+      <!-- end of section -->
+
+      <!-- wallet content -->
+      <div data-ui-view="" class="col-12 col-sm-8 col-lg-8 main" data-autoscroll="false"></div>
+      <!-- end of section -->
+  </div>
+  <div data-ui-view="menuTip"></div>
+</div>
+<!-- end of section -->
+
