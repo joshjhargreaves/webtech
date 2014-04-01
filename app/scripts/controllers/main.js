@@ -134,7 +134,8 @@ myapp.directive('modalDialog', function() {
 /*
  * Controller spanning all application. Toaster directive from imported
  * module injected as a dependency to enable use of toaster messages */
-myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
+myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($scope, toaster, Auth, $location) {
+  $scope.user = {};
   $scope.pop = function(){
     toaster.pop('success', "Success", "You have logged in");
   };
@@ -146,7 +147,30 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', function($scope, toaster) {
     // check to make sure the form is completely valid
     $scope.toggleModal();
     $scope.pop();
-  };
+    console.log($scope.user);
+    Auth.login('password', {
+          'email': $scope.user.email,
+          'password': $scope.user.password
+        },
+        function(err) {
+          $scope.errors = {};
+
+          if (!err) {
+            console.log("Login Success");
+            //$location.path('/');
+          } else {
+            console.log("Login Failed");
+            $scope.error.other = err.message;
+          }
+      });
+    };
+    $scope.logout = function() {
+      Auth.logout(function(err) {
+        if(!err) {
+          $location.path('/login');
+        }
+      });
+    };
 }]);
 /* Main controller in send tab. Contains functions to show and hide the 
  * modal window.

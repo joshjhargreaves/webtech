@@ -7,9 +7,17 @@ var myapp = angular.module('webtechApp', [
     'ngAnimate',
     'toaster'
     ]);
-  myapp.run(function ($rootScope, $state, $stateParams, Poller) {
+  myapp.run(function ($rootScope, $state, $stateParams, Poller, Auth, $location) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+        //watching the value of the currentUser variable.
+    $rootScope.$watch('currentUser', function(currentUser) {
+      // if no currentUser and on a page that requires authorization then try to update it
+      // will trigger 401s if user does not have a valid session
+      if (!currentUser && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) == -1 )) {
+        Auth.currentUser();
+      }
+    });
   });
   myapp.config(function($stateProvider, $urlRouterProvider, $httpProvider){
     $httpProvider.defaults.useXDomain = true;

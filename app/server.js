@@ -1,3 +1,4 @@
+'use strict';
 // Run a minimal node.js web server for local development of a web site.
 // Put this program in the site folder and start it with "node server.js".
 // Then visit the site at the address printed on the console.

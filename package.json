@@ -2,8 +2,11 @@
   "name": "webtech",
   "version": "0.0.0",
   "dependencies": {
-    "bower": "0.6.x"
-    },
+    "bower": "0.6.x",
+    "express": ">=2.4.5",
+    "pg": ">=0.5.7",
+    "sequelize": "~1.7.0"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",

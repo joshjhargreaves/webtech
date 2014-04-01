@@ -60,10 +60,16 @@
           <nav class="collapse navbar-collapse" role="navigation">
             <ul class="nav nav-pills navbar-right">
               <li data-ui-sref-active="active"><a data-ui-sref="main" tabindex="5">Home</a></li>
-              <li data-ng-class="{ active: $state.includes('wallet') }"><a data-ui-sref="wallet.overview">Wallet</a></li>
+              <li data-ng-class="{ active: $state.includes('wallet') }" ng-show="currentUser"><a data-ui-sref="wallet.overview">Wallet</a></li>
               <li data-ui-sref-active="active"><a data-ui-sref="about" tabindex="6">About</a></li>
               <li data-ui-sref-active="active"><a data-ui-sref="contact" tabindex="7">Contact</a></li>
-              <li data-ui-sref-active="active" data-ng-click="toggleModal()" tabindex="4" title="Login to your wallet"><a href="">Login</a></li>
+              <li data-ui-sref-active="active" data-ng-hide="currentUser" data-ng-click="toggleModal()" tabindex="4" title="Login to your wallet"><a href="">Login</a></li>
+              <li class="dropdown" data-ng-show="currentUser">
+                  <a data-toggle="dropdown" href="#">Welcome, {{ currentUser.email }} <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a ng-click="logout()"><span class="glyphicon-log-out"></span> Logout</a></li>
+                  </ul>
+              </li>
             </ul>
           </nav>
         </div>
@@ -159,6 +165,9 @@
       <script src="js/htmlfiveqrcode.min.js"></script>
       <!-- utility functions -->
       <script src="js/util.js"></script>
+      <script src="scripts/services/Auth.js"></script>
+      <script src="scripts/services/User.js"></script>
+      <script src="scripts/services/Session.js"></script>
       <!-- endbuild -->
       <!-- end of section -->
 
