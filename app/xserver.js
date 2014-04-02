@@ -29,13 +29,29 @@ sequelize
   })
 //Defines Model for login
 var User = sequelize.define('User', {
-  email: Sequelize.STRING,
+  email: {
+    type: Sequelize.STRING,
+    validate: {
+      isEmail: true
+    }
+  },
   password: Sequelize.STRING
 })
+var AddressBookEntries = sequelize.define('AddressBookEntries', {
+  name: Sequelize.STRING,
+  address: Sequelize.STRING,
+  notes: Sequelize.STRING
+});
+User.hasMany(AddressBookEntries);
 //Adds some dummy data the table
 sequelize.sync({ force: true }).complete(function(err) {
   User.create({ email: 'john@google.com', password: '1111' }).complete(function(err, user1) {
-    User.find({ email: 'john'}).complete(function(err, user2) {
+    User.find({where: { email: 'john'}}).complete(function(err, user2) {
+    //Do some testing here?
+    })
+  })
+  User.create({ email: 'admin@google.com', password: '1234' }).complete(function(err, user1) {
+    User.find({where: { email: 'admin@google.com'}}).complete(function(err, user2) {
     //Do some testing here?
     })
   })
@@ -46,7 +62,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.find({ _id: id }).complete(function(err, user) {
+  User.find({where: {id: id }}).complete(function(err, user) {
     done(err, user);
   });
 });
@@ -56,11 +72,11 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },
   function(email, password, done) {
-    User.find({ email: email }).complete(function (err, user) {
+    User.find({where: { email: email }}).complete(function (err, user) {
       if (err) {
         return done(err);
       }
-      if (email !== user.email) {
+      if (!user) {
         return done(null, false, {
           'errors': {
             'email': { type: 'Email is not registered.' }
@@ -146,10 +162,46 @@ var login = function (req, res, next) {
     });
   })(req, res, next);
 }
-// route to log in
+/**
+ * addressbook.create
+ * requires: {name, address, notes}
+ */
+var create = function(req, res) {
+  var entry = AddressBookEntries.build(req.body)
+  entry.UserId = req.user.id;
+  entry.save(function(err) {
+    if (err) {
+      console.log("Erorrrr");
+      res.json(500, err);
+    } else {
+      console.log("Added to the table fine");
+      res.json(entry);
+    }
+  });
+};
+/*
+ * addressbook.all
+ * requires: {} 
+ */
+var all = function(req, res) {
+  AddressBookEntries.findAll({where: { UserId: req.user.id}}).complete(function(err, entries) {
+    console.log(entries);
+    if (err) {
+      console.log(err);
+      res.json(500, err);
+    } else {
+      res.json(entries);
+    }
+  });
+};
+// route to log in and get session
 app.post('/auth/session', login);
 app.get('/auth/session', ensureAuthenticated, session);
 app.del('/auth/session', logout);
+
+// routes to add/del entries to address book
+app.post('/api/addressbook', ensureAuthenticated, create);
+app.get('/api/addressbook', ensureAuthenticated, all);
 
 /* serves main page */
 app.get("/", function(req, res) {

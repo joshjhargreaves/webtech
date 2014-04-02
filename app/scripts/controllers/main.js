@@ -92,17 +92,34 @@ myapp.directive('qrscan', function($document) {
 
 /* wallet address book 
  * TODO: Change data to results of api request when api reader*/
-myapp.controller('addressbookctrl', ['$scope', function($scope) {
-  // add some entries to the table
-  $scope.tabledata = [ 
-  {name:'Andrew', address:'mPQERLaEVcj1cMSMX5tyCcCdBeZCkm6GEK'},
-  {name:'Luke', address: 'mLd65L1UUkjd1wVFCBEiuFLZBwFyV2R7np'}];
+myapp.controller('addressbookctrl', ['$scope', 'addressbook', function($scope, addressbook) {
+  // add some entries to the table 
+
 
   // update table when the user adds an entry
   $scope.addData = function() {
+    $scope.addAddress();
     $scope.tabledata.push({name:$scope.name, address:$scope.address});
     $scope.name = '';
     $scope.address = '';
+  };
+  $scope.addAddress = function() {
+    var entry = new addressbook({
+      name: this.name,
+      address: this.address
+    });
+    entry.$save(function(response) {
+      console.log(response)
+      //$location.path("blogs/" + response._id);
+    });
+    this.title = "";
+    this.content = "";
+  };
+  $scope.find = function() {
+    addressbook.query(function(entries) {
+      console.log(entries);
+      $scope.tabledata = entries;
+    });
   };
 }]);
 /* end of wallet address book */
@@ -142,6 +159,8 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($
   };
   $scope.modalShown = false;
   $scope.toggleModal = function() {
+    $scope.user.email = "";
+    $scope.user.password = "";
     $scope.modalShown = !$scope.modalShown;
   };
   $scope.submitForm = function(isValid) {
@@ -157,10 +176,13 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($
           $scope.errors = {};
 
           if (!err) {
-            console.log("Login Success");
-            //$location.path('/');
+            $location.path('/');
           } else {
-            console.log("Login Failed");
+            angular.forEach(err.errors, function(error, field) {
+              //form[field].$setValidity('mongoose', false);
+              $scope.errors[field] = error.type;
+              console.log(field);
+            });
             $scope.error.other = err.message;
           }
       });
