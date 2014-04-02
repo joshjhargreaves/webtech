@@ -35,8 +35,8 @@ var User = sequelize.define('User', {
 //Adds some dummy data the table
 sequelize.sync({ force: true }).complete(function(err) {
   User.create({ email: 'john@google.com', password: '1111' }).complete(function(err, user1) {
-    User.find({ email: 'john@google.com', password: '1111' }).complete(function(err, user2) {
-      //Test logic here?
+    User.find({ email: 'john'}).complete(function(err, user2) {
+    //Do some testing here?
     })
   })
 })
@@ -60,7 +60,7 @@ passport.use(new LocalStrategy({
       if (err) {
         return done(err);
       }
-      if (!user) {
+      if (email !== user.email) {
         return done(null, false, {
           'errors': {
             'email': { type: 'Email is not registered.' }
