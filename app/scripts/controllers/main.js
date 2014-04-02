@@ -136,6 +136,7 @@ myapp.directive('modalDialog', function() {
  * module injected as a dependency to enable use of toaster messages */
 myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($scope, toaster, Auth, $location) {
   $scope.user = {};
+  $scope.error = {};
   $scope.pop = function(){
     toaster.pop('success', "Success", "You have logged in");
   };

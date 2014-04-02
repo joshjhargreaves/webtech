@@ -9,6 +9,7 @@ myapp
 
       login: function(provider, user, callback) {
         var cb = callback || angular.noop;
+        console.log("Logging in with", user.email, " ", user.password);
         Session.save({
           provider: provider,
           email: user.email,
@@ -33,7 +34,7 @@ myapp
       },
       currentUser: function() {
         Session.get(function(user) {
-          console.log(user);
+          console.log(user.email);
           $rootScope.currentUser = user;
         });
       }

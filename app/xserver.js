@@ -111,7 +111,7 @@ if ('development' == app.get('env')) {
  * returns info on authenticated user
  */
 var session = function session (req, res) {
-  res.json(req.user.user_info);
+  res.json(req.user);
 };
 
 var ensureAuthenticated = function ensureAuthenticated(req, res, next) {
@@ -124,9 +124,11 @@ var ensureAuthenticated = function ensureAuthenticated(req, res, next) {
  */
 var logout = function logout (req, res) {
   if(req.user) {
+    console.log("Logging out?");
     req.logout();
     res.send(200);
   } else {
+    console.log("Not logged in");
     res.send(400, "Not logged in");
   }
 };
