@@ -132,10 +132,22 @@ var logout = function logout (req, res) {
     res.send(400, "Not logged in");
   }
 };
+/**
+ *  Login
+ *  requires: {email, password}
+ */
+var login = function (req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    var error = err || info;
+    if (error) { return res.json(400, error); }
+    req.logIn(user, function(err) {
+      if (err) { return res.send(err); }
+      res.json(req.user.user_info);
+    });
+  })(req, res, next);
+}
 // route to log in
-app.post('/auth/session', passport.authenticate('local'), function(req, res) {
-  res.send(req.user);
-});
+app.post('/auth/session', login);
 app.get('/auth/session', ensureAuthenticated, session);
 app.del('/auth/session', logout);
 
