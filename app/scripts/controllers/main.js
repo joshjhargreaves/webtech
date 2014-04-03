@@ -208,6 +208,7 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($
       });
     };
 }]);
+
 /* Main controller in send tab. Contains functions to show and hide the 
  * modal window.
  * */

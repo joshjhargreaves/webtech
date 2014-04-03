@@ -44,7 +44,7 @@ var AddressBookEntries = sequelize.define('AddressBookEntries', {
 });
 User.hasMany(AddressBookEntries);
 //Adds some dummy data the table
-sequelize.sync({ force: true }).complete(function(err) {
+sequelize.sync({ force: false}).complete(function(err) {
   User.create({ email: 'john@google.com', password: '1111' }).complete(function(err, user1) {
     User.find({where: { email: 'john'}}).complete(function(err, user2) {
     //Do some testing here?
@@ -162,6 +162,7 @@ var login = function (req, res, next) {
     });
   })(req, res, next);
 }
+
 /**
  * addressbook.create
  * requires: {name, address, notes}
