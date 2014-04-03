@@ -1,0 +1,1 @@
+cmd_Release/obj.target/KeyModule.node := flock ./Release/linker.lock g++ -shared -pthread -rdynamic -m64  -Wl,-soname=KeyModule.node -o Release/obj.target/KeyModule.node -Wl,--start-group Release/obj.target/KeyModule/src/eckey.o -Wl,--end-group 
