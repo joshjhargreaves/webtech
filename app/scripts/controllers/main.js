@@ -95,11 +95,12 @@ myapp.directive('qrscan', function($document) {
 myapp.controller('addressbookctrl', ['$scope', 'addressbook', function($scope, addressbook) {
   // add some entries to the table 
 
-
+  //$scope.tabledata = {};
+  //$scope.find();
   // update table when the user adds an entry
   $scope.addData = function() {
     $scope.addAddress();
-    $scope.tabledata.push({name:$scope.name, address:$scope.address});
+    //$scope.tabledata.push({name:$scope.name, address:$scope.address});
     $scope.name = '';
     $scope.address = '';
   };
@@ -109,11 +110,8 @@ myapp.controller('addressbookctrl', ['$scope', 'addressbook', function($scope, a
       address: this.address
     });
     entry.$save(function(response) {
-      console.log(response)
-      //$location.path("blogs/" + response._id);
+      $scope.tabledata.push(response);
     });
-    this.title = "";
-    this.content = "";
   };
   $scope.find = function() {
     addressbook.query(function(entries) {
@@ -121,6 +119,7 @@ myapp.controller('addressbookctrl', ['$scope', 'addressbook', function($scope, a
       $scope.tabledata = entries;
     });
   };
+  $scope.find();
 }]);
 /* end of wallet address book */
 
@@ -154,34 +153,48 @@ myapp.directive('modalDialog', function() {
 myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($scope, toaster, Auth, $location) {
   $scope.user = {};
   $scope.error = {};
+  /*Fix accessing form. Problem is due to AngularJs' 
+   *transclude scoping error with forms*/
+  $scope.con = {};
+  $scope.formNames = ['email', 'password'];
+  $scope.inputs = [$scope.user.email, $scope.user.password];
+  $scope.$watchCollection('[user.email, user.password]', function(values) {
+    $scope.setValidityOfForms();
+  });
   $scope.pop = function(){
     toaster.pop('success', "Success", "You have logged in");
   };
+  $scope.setValidityOfForms = function(){
+    angular.forEach($scope.formNames, function(error, field) {
+      if($scope.con.userForm)
+        console.log($scope.con.userForm[$scope.formNames[field]].$setValidity('server', true));
+    });
+  }
   $scope.modalShown = false;
   $scope.toggleModal = function() {
+    $scope.setValidityOfForms();
     $scope.user.email = "";
     $scope.user.password = "";
     $scope.modalShown = !$scope.modalShown;
+    $scope.con.userForm.$setPristine();
   };
   $scope.submitForm = function(isValid) {
     // check to make sure the form is completely valid
-    $scope.toggleModal();
-    $scope.pop();
-    console.log($scope.user);
     Auth.login('password', {
           'email': $scope.user.email,
           'password': $scope.user.password
         },
         function(err) {
           $scope.errors = {};
-
           if (!err) {
+            $scope.toggleModal();
+            $scope.pop();
             $location.path('/');
           } else {
             angular.forEach(err.errors, function(error, field) {
-              //form[field].$setValidity('mongoose', false);
+              $scope.con.userForm[field].$setValidity('server', false);
               $scope.errors[field] = error.type;
-              console.log(field);
+              toaster.pop('error', "Error", "You have not been logged in");
             });
             $scope.error.other = err.message;
           }
@@ -198,9 +211,11 @@ myapp.controller('MyCtrl', ['$scope', 'toaster', 'Auth', '$location', function($
 /* Main controller in send tab. Contains functions to show and hide the 
  * modal window.
  * */
-myapp.controller('sendmax', ['$scope', 'toaster', function($scope, toaster) {
+myapp.controller('sendmax', ['$scope', '$stateParams','toaster', function($scope, $stateParams, toaster) {
   $scope.data = "Waiting for qrcode to be scanned.........."
   $scope.modalShown = false;
+  $scope.user = {};
+  $scope.user.address = $stateParams.addr;
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
   };

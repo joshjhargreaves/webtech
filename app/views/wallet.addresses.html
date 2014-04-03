@@ -7,7 +7,7 @@
   <!-- end of page introduction -->
 
   <!-- address book component -->
-  <div data-ng-controller="addressbookctrl" ng-init="find()">
+  <div data-ng-controller="addressbookctrl">
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
         <thead>
@@ -20,8 +20,8 @@
         <tbody>
 				  <tr class="address-book" data-ng-repeat="data in tabledata">
 				    <td>{{data.name}}</td>
-				    <td><a href="" data-ui-sref="wallet.send" title="Send funds to {{data.name}}">{{data.address}}</a></td>
-            <td><a href="" data-ui-sref="wallet.address" title="View address book entry for {{data.name}}"><i class="fa fa-arrow-right"></i></a></td>
+				    <td><a href="" data-ui-sref="wallet.send.info({addr:data.address})" title="Send funds to {{data.name}}">{{data.address}}</a></td>
+            <td><a href="" data-ui-sref="wallet.info({id:data.id})" title="View address book entry for {{data.name}}"><i class="fa fa-arrow-right"></i></a></td>
 				  </tr>
         </tbody>
 			</table>

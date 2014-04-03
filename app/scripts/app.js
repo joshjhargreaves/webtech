@@ -95,13 +95,13 @@ var myapp = angular.module('webtechApp', [
         url: "/send",
         templateUrl: "views/wallet.send.html"
       })
+      .state('wallet.send.info', {
+        url: "/:addr",
+        templateUrl: "views/wallet.send.html"
+      })
       .state('wallet.addresses', {
         url: "/addresses",
         templateUrl: "views/wallet.addresses.html"
-      })
-      .state('wallet.address', {
-        url: "/address",
-        templateUrl: "views/wallet.address.html"
       })
       .state('wallet.orders', {
         url: "/orders",
@@ -111,4 +111,40 @@ var myapp = angular.module('webtechApp', [
         url: "/transactions",
         templateUrl: "views/wallet.transactions.html"
       })
+      .state('wallet.info', {
+        url: '/info/{id:[0-9]{1,4}}',
+
+          // If there is more than a single ui-view in the parent template, or you would
+          // like to target a ui-view from even higher up the state tree, you can use the
+          // views object to configure multiple views. Each view can get its own template,
+          // controller, and resolve data.
+
+          // View names can be relative or absolute. Relative view names do not use an '@'
+          // symbol. They always refer to views within this state's parent template.
+          // Absolute view names use a '@' symbol to distinguish the view and the state.
+          // So 'foo@bar' means the ui-view named 'foo' within the 'bar' state's template.
+          views: {
+            // So this one is targeting the unnamed view within the parent state's template.
+            '': {
+              templateUrl: 'views/wallet.address.html',
+              controller: ['$scope', '$state','$stateParams', 'addressbook',
+                function ($scope, $state, $stateParams,   addressbook) {
+                  addressbook.get({
+                    id: $stateParams.id
+                  }, function(entry) {
+                    $scope.entry = entry;
+                    $scope.name = entry.name;
+                  });
+                  $scope.update = function() {
+                    var entry = $scope.entry;
+                    entry.$update(function() {
+                      /* Waits for data to be added to database 
+                       * before changing*/
+                      $state.go('wallet.addresses', $stateParams);
+                    });
+                  };
+                }]
+            }
+          }
+        })
   })

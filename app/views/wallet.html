@@ -8,12 +8,12 @@
       <!-- wallet navigation -->
       <div class="well well-sm col-12 col-sm-4 col-lg-4 left">
         <ul class="nav nav-pills nav-stacked">
-            <li data-ui-sref-active="active"><a data-ui-sref="wallet.overview">Overview</a></li>
+            <li data-ng-class="{ active: $state.includes('wallet.overview') }"><a data-ui-sref="wallet.overview">Overview</a></li>
             <li data-ui-sref-active="active"><a data-ui-sref="wallet.transactions">View all transactions</a></li>
-            <li data-ui-sref-active="active"><a data-ui-sref="wallet.send">Send funds</a></li>
+            <li data-ng-class="{ active: $state.includes('wallet.send') }"><a data-ui-sref="wallet.send">Send funds</a></li>
             <li data-ui-sref-active="active"><a data-ui-sref="wallet.receive">Recieve funds</a></li>
             <li data-ui-sref-active="active"><a data-ui-sref="wallet.orders">Standing orders</a></li>
-            <li data-ui-sref-active="active"><a data-ui-sref="wallet.addresses">Address book</a></li>
+            <li data-ng-class="{ active: $state.includes('wallet.addresses') }"><a data-ui-sref="wallet.addresses">Address book</a></li>
         </ul>
         <hr></hr>
       </div>

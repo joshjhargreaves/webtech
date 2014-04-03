@@ -169,7 +169,7 @@ var login = function (req, res, next) {
 var create = function(req, res) {
   var entry = AddressBookEntries.build(req.body)
   entry.UserId = req.user.id;
-  entry.save(function(err) {
+  entry.save().complete(function(err, entries) {
     if (err) {
       console.log("Erorrrr");
       res.json(500, err);
@@ -185,12 +185,43 @@ var create = function(req, res) {
  */
 var all = function(req, res) {
   AddressBookEntries.findAll({where: { UserId: req.user.id}}).complete(function(err, entries) {
-    console.log(entries);
     if (err) {
-      console.log(err);
       res.json(500, err);
     } else {
+      console.log(entries);
       res.json(entries);
+    }
+  });
+};
+
+/* Finds a single addressbook entry
+ * requires {id}
+ */
+var addrBkId = function(req, res, next, id) {
+  AddressBookEntries.find({where: { UserId: req.user.id, id: id}}).complete(function(err, entry) {
+    if (err) return next(err);
+    if (!entry) return next(new Error('Failed to load addressbook entry ' + id));
+    req.entry = entry;
+    next();
+  });
+};
+
+var show = function(req, res) {
+  res.json(req.entry);
+};
+
+/* Updates an existing blog entry
+ * requires an addresbook antry
+ */
+var update = function(req, res) {
+  var entry = req.body;
+  console.log(req.body);
+  AddressBookEntries.find({where: { UserId: entry.UserId, id: entry.id}}).complete(function(err, item) {
+    if (err) {
+      res.json(500, err);
+    } else {
+      item.updateAttributes({name: entry.name, address: entry.address, notes: entry.notes})
+        .success(function(){res.json(entry);});
     }
   });
 };
@@ -202,6 +233,10 @@ app.del('/auth/session', logout);
 // routes to add/del entries to address book
 app.post('/api/addressbook', ensureAuthenticated, create);
 app.get('/api/addressbook', ensureAuthenticated, all);
+app.get('/api/addressbook/:addrBkId', ensureAuthenticated, show);
+app.put('/api/addressbook', ensureAuthenticated, update);
+//Setting up the blogId param
+app.param('addrBkId', addrBkId);
 
 /* serves main page */
 app.get("/", function(req, res) {
