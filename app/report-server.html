@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  lang="en-GB" xml:lang="en-GB">
+  <head>
+    <title>Web Technologies Assignment 1 Report - Luke Mitchell and Josh Hargreaves</title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/content.css" />
+
+    <style type="text/css">
+      div .report-image {
+        max-height: 200px;
+        overflow: hidden;
+      }
+
+      img .report-image {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="spacer"></div>
+      <div class="well">
+        <!-- Title -->
+        <h1><a id="top" class="anchor">Web Technologies Assignment 2 Report</a></h1>
+        <h3>Luke Mitchell and Josh Hargreaves</h3>
+        <hr />
+        <!-- end of Title -->
+
+        <!-- Abstract -->
+        <h3><a id="abstract" class="anchor">Abstract</a></h3>
+        <p>This report describes the submission of Luke Mitchell and Josh Hargreaves for the second assignment of the Web Technologies unit. Our submission is a web application that allows a user to create an online wallet that enables them to send and receive MaxCoin, a Bitcoin-like cryptocurrency that we developed earlier this year.</p>
+        <p>Firstly, what is MaxCoin? MaxCoin is a cryptographic currency based upon the Bitcoin model. We created the currency to experiment with using algorithms with increased security that will enable us to utilise some very new technology, courtesy of Nigel Smart, and also to see what the effect of a media personality would have on the price of an altcoin. The coin was launched on the Keiser Report, a television programme presented by Max Keiser, a proponent and namesake of the coin.</p>
+        <p>This submission shows the application in it's final stage of development, with much of the functionality in place, and the framework for implementing the final features solidified. The application allows a user to create an account and authenticate themselves with the server, add and view dynamic content and, using a back-end node application, communicate with the MaxCoin blockchain.</p>
+        <hr />
+        <!-- end of Abstract -->
+
+        <!-- Contents and Image -->
+        <h3><a id="sections" class="anchor">Sections</a></h3> 
+        <div class="row">
+          <!-- Contents --> 
+          <div class="col-sm-5">
+            <ol>
+              <li><a href="#introduction" title="Jump to Introduction">Introduction</a></li>
+              <li><a href="#keyfeatures" title="Jump to Key Features">Key Features</a></li>
+              <li><a href="#content" title="Jump to Dynamic Content">Dynamic Content</a></li>
+              <li><a href="#maxcoin" title="Jump to MaxCoin client">MaxCoin Client</a></li>
+              <li><a href="#serverconfig" title="Jump to Server Configuration">Server Configuration</a></li>
+              <li><a href="#security" title="Jump to Security">Security</a></li>
+              <li><a href="#ee" title="Jump to Everything Else">Everything Else</a></li>
+              <ol>
+                <li><a href="#marks" title="Jump to Mark Weightings">Mark Weightings</a></li>
+                <li><a href="#settingup" title="Jump to Setting up the Server">Setting up the Server</a></li>
+              </ol>
+            </ol>
+          </div>
+          <!-- end of Contents -->
+
+          <!-- Image -->
+          <div class="col-sm-7 report-image pull-right">
+            <a href="images/report/keyfeatures/0.png" title="A screenshot demonstrating maxwallet"><img class="report-image  pull-right" src="images/report/keyfeatures/0.png" alt="A screenshot demonstrating maxwallet"></img></a>
+          </div>
+          <!-- end of Image -->
+        </div>
+        <hr />
+        <!-- end of section -->
+
+        
+        <!-- Introduction -->
+        <div>
+          <h3><a id="introduction" class="anchor">Introduction</a></h3>
+          <p>For this assignment we have implemented a "web wallet" for use with the MaxCoin cryptocurrency. This is an online interface, or web application, that allows a user to securely interact with the MaxCoin network to access and move their coins, similar to an online banking application. There are many advantages to using a web wallet for this purpose, as opposed to the traditional desktop client: users can access their coins on-the-go, from anywhere in the world; there is no lengthy download or synchronisation of the blockchain - the public ledger detailing every transaction on the MaxCoin network - and, finally, we build upon the functionality available in a desktop wallet by allowing users to analyse the coins they receive, track their progress across the network, set up standing orders and request payments.</p>
+          <p>The code we have produced for this assignment was written to the highest standard possible as we intend to continue development and launch the application in the near future. With this in mind, we have taken every precaution possible to ensure that the application is secure and stable, as well as being fully-featured and easy to use. The code, additionally, has been written in such a manner that it will be easy to port it to another cryptocurrency if required.</p>
+          <p>Existing services for storing and handling cryptocurrency online include <a target="_blank" href="http://www.blockchain.info/">blockchain.info</a> and <a target="_blank" href="https://secure.dogechain.info/wallet">dogechain.info</a>; these services typically allow a user to send and receive currency. With maxwallet, we will build upon this functionality by including the option to create regular payments to an address and to submit payment requests, much like a regular bank. We will also fully integrate with the upcoming MaxCoin Android wallet by allowing a user to interface with the web application using QR codes that we will both generate and read, using the client's camera.</p>
+          
+        </div>
+        <!-- end of Introduction -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <hr />
+
+        <!-- Key Features -->
+        <div>
+          <h3><a id="keyfeatures" class="anchor">Key Features</a></h3>
+          <p>As previously mentioned, we have endeavoured to create a slick, professional looking web application that allows a novice user to quickly and easily get started with cryptocurrency. Our aims with maxwallet were to create a production-quality piece of software that allows a front-end website to communicate with the MaxCoin network, something we feel we have achieved to a high standard.</p>
+          <p>The website is written using HTML5, CSS3 and the Angular JS framework, all cutting-edge, modern web technologies. We also utilised Node JS to create our web server and a back-end, custom implementation of a MaxCoin client. The application dynamically updates by injecting HTML into the page, allowing content to be updated and refreshed without reloading, whilst saving network and server resources simultaneously. Much of the content is served from a Postgres database, constantly being updated by our custom MaxCoin implementation, as well as by the user navigating and interacting with the application front-end.</p>
+          <p>A great deal of time and thought has been invested into populating the website with all the features expected from a financial web application. The website features a secure authentication system, a control panel for setting up payments, standing orders and for viewing historical transaction data, a fully interactive address book, a private support-ticket system with the ability for administrators to post replies, a wealth of information, FAQs and even additional features such as the ability to create and scan QR codes using the webcam or mobile camera of the user. This last point is particularly interesting as it takes advantage of the hardware used for browsing - and works particularly well on smart phones - and, importantly, enables us to stand out amongst our competitors who lack this feature.</p>
+<p>All of these features, along with a more technical description of how they were implemented, will be discussed in depth later in this report. Below are several GIF images that showcase the interactive elements of maxwallet.</p>
+        </div>
+        <!-- end of Key Features -->
+
+        <div class="spacer" />
+
+        <!-- gifs -->
+        <div class="row">
+          <div class="col-sm-4 report-image">
+            <a href="" title=""><img class="report-image" src="" alt=""></img></a>
+          </div>
+
+          <div class="col-sm-4 report-image">
+            <a href="" title=""><img class="report-image" src="" alt=""></img></a>
+          </div>
+
+          <div class="col-sm-4 report-image">
+            <a href="" title=""><img class="report-image" src="" alt=""></img></a>
+          </div>
+        </div>
+        <p><span class="text-muted">Hover over the images for a description. You can click on the images for a higher resolution.</span></p>
+        <!-- end gifs -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <hr />
+
+        <!-- Dynamic Content -->
+        <h3><a id="content" class="anchor">Dynamic Content</a></h3>
+        <p>TODO</p>
+
+        <div class="spacer" />
+
+        <!-- images at different resolutions -->
+        <div class="row">
+          <div class="col-sm-4 report-image">
+            <a href="images/report/keyfeatures/1.png" title="The default style of the website on a widescreen browser"><img class="report-image" src="images/report/keyfeatures/1.png" alt="The default style of the website on a widescreen browser"></img></a>
+          </div>
+
+          <div class="col-sm-4 report-image">
+            <a href="images/report/keyfeatures/2.png" title="The table element with a scroll bar, shown on a resized browser"><img class="report-image" src="images/report/keyfeatures/2.png" alt="The table element with a scroll bar, shown on a resized browser"></img></a>
+          </div>
+
+          <div class="col-sm-4 report-image">
+            <a href="images/report/keyfeatures/3.png" title="The menu button shown on a mobile device"><img class="report-image" src="images/report/keyfeatures/3.png" alt="The menu button shown on a mobile device"></img></a>
+          </div>
+        </div>
+        <p><span class="text-muted">Hover over the images for a description. You can click on the images for a higher resolution.</span></p>
+        <!-- end images -->
+
+        <!-- end of Dynamic Content  -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <hr />
+
+        <!-- MaxCoin Client -->
+        <h3><a id="maxcoin" class="anchor">MaxCoin Client</a></h3>
+        <p>The MaxCoin client is a standalone Node application that allows a peer-to-peer connection to be made to the MaxCoin network. The client was written by first porting an existing library, <a href="http://www.bitcore.io/" title="Visit the Bitcore website">Bitcore</a>, to MaxCoin: a job that required a large rewrite of much of the library in order to modularise it and allow other cryptocurrencies to be added with ease. The rewrite took about 5 working days and has been submitted as a node package, still named Bitcore. There are plans to complete the port, tidy up several of the files and then release it as a standalone library named Altcore, available to download from NPM. Bitcore allows for a Node application to connect to the Bitcoin network, a binary protocol requiring a large mount of cryptographic functionality. Porting this to MaxCoin required the rewriting of many of the cryptographic functions, the addition of an interface to allow currency-specific parameters to be effectively passed around and an in-depth understanding of the Bitcoin protocol.</p>
+        <p>The client itself works by connecting to one or more peers on the MaxCoin network and then passively receiving "blocks", collections of transactions that have been determined to be valid via a complex, cryptographic proof-of-work. Connecting to the network proved to be a difficult task based upon the large number of differences in cryptography between MaxCoin and Bitcoin: I had to write and test new areas of functionality to create and verify network addresses, proof-of-work algorithms, the hashing of messages using the SHA-3 algorithm and the computation and verification of message checksums.</p>
+        <p>When connected, the client accepts a variety of network messages, as per the MaxCoin protocol. The most important of these is when new blocks are received. Blocks contain lists of transactions, which, in turn, are comprised of a list of inputs and a list of outputs. There is a protocol governing how these inputs and outputs must behave (namely, without going into much detail, the entire input's value must be spent in one or more outputs, giving rise to a complex system of spend-and-receive-change transactions), which the client parses, inspecting each transaction for an address known to belong to a user of the website. When a known address is found, the client will then extract the sender or the receiving address, usually by parsing the script within the transaction, the value of the transaction and any other useful information, before storing it in the database. Doing this keeps track of any sends or receives the user makes (of which the sends can be verified from within the database, they too are added by the front-end interface) and allows the correct balance to be verified.</p>
+        <p>If a user wishes to send their coins to another address, be it a person, a merchant or otherwise, the client must construct a transaction to broadcast to the MaxCoin network. This is a convoluted process that involves tracking the previous inputs to the user's address, finding those that best sum to the value wishing to be spent, then cryptographically signing the script within the transaction that accomplishes this. The signing process, using an algorithm known as Schnorr, requires the user's private key; this is not stored on our server as a security precaution and is, instead, computed deterministically from a password and a long string of words (please see the <a href="#security">Security</a> section). Please note that most of the sending functionality has not been put into place, although much of the framework has been ported to allow this to happen.</p>
+
+        <div class="spacer" />
+
+        <!-- images at different resolutions -->
+        <div class="row">
+          <div class="col-sm-4 report-image">
+            <a href="images/report/maxcoin/1.png" title="The client showing incoming, encoded scripts within transactions"><img class="report-image" src="images/report/maxcoin/1.png" alt="The client showing incoming, encoded scripts within transactions"></img></a>
+          </div>
+
+          <div class="col-sm-4 report-image">
+            <a href="images/report/maxcoin/2.png" title="The client showing decoded scripts from a transaction"><img class="report-image" src="images/report/maxcoin/2.png" alt="The client showing decoded scripts from a transaction"></img></a>
+          </div>
+
+          <div class="col-sm-4 report-image">
+            <a href="images/report/maxcoin/3.png" title="The newly populated database showing a transaction from a block"><img class="report-image" src="images/report/maxcoin/3.png" alt="The newly populated database showing a transaction from a block"></img></a>
+          </div>
+        </div>
+        <p><span class="text-muted">Hover over the images for a description. You can click on the images for a higher resolution.</span></p>
+        <!-- end images -->
+
+        <div class="spacer" />
+
+        <p>TODO</p>
+        <!-- end of MaxCoin Client  -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <hr />
+
+        <!-- Server Configuration -->
+        <div>
+          <h3><a id="serverconfig" class="anchor">Server Configuration</a></h3>
+          <p>The design of maxwallet was considered with a real-world deployment in mind from the beginning. The website and the Node application that serves it have been designed to be easily scalable so that, in the event that the website is a large success, we can easily upgrade our infrastructure. The main components required for maxwallet are a server running the Node webserver application, a server running a Postgres database and a server running the Node MaxCoin client. These can all be hosted in a single, small VPS for a small deployment, as all of the components run with a relatively small memory footprint and require little processing, however, everything has been designed so that it will work equally well when run across a large, load-balanced cluster.</p>
+          <p>The website content is served via a Node application, written using the Express package. <b>TODO</b></p>
+          <p>The content within the website is stored in a Postgres database. We opted to use Postgres as it is a fast and lean DBMS that scales extremely well and can be used in large-scale deployments. Crucially, it is also an ACID-complient database, something that is a "must-have" for financial software. We access the database, from both the MaxCoin client and the web application, using the Sequelize ORM (object-relational mapping) package; this acts as a wrapper between the application code and the database and handles the creation and modification of the database structure, whilst also allowing for very clear and concise data-manipulation code to be used; it can be much clearer than using complex SQL statements. Postgres is currently run on the same server as the web server and the MaxCoin client. We also run an open-source program called <a href="http://memcached.org/" title="Visit the memcached website">memcached</a>. This caches database queries in memory during high-load periods and can dramatically increase the performance of database interaction, whilst still ensuring persistence of data.</p>
+          <p>The MaxCoin client runs as an independant process, updating the database to interact with the website. The client watches incoming data on the MaxCoin peer-to-peer network and will populate the database with relevant transactions, causing the users' wallets to update as they browse the website. The relevant data extracted from the network is the transactions for the addresses associated with each user, updating their balance and their history. The client can be run locally, via a LAN or a WAN connection; the database credentials and provided and it will work from any location, as long as it is connected to at least one MaxCoin node.</p>
+          <p>Due to the financial nature of the application, we decided that using SSL/HTTPS was essential. We generated our own certificates using the OpenSSL command line tools on a Linux testing machine. The server will accept connections to both unsecured HTTP and HTTPS, as specified in our Node web server application.</p>
+          <p>As a slight aside, the ideal deployment for the website would feature a load-balanced cluster of front-end servers, each running the Node web server application. The load balancing would be implemented using a combination of nginx and Amazon's Route53, routing requests to the closest geographical server with available capacity. The back-end would then have a cluster of database servers, all running memcached for additional performance gains, connected to the front-end via a private WAN. The MaxCoin client could be run on a single server, or several simultaneously, and would also connect to the databse via a high-speed, private WAN.</p>
+        </div>
+
+        <div class="spacer" />
+
+        <!-- images at different resolutions -->
+        <div class="row">
+          <div class="col-sm-4 report-image">
+            <a href="images/report/maxcoin/maxwallet.svg" title="The database schema used within maxwallet"><img class="report-image" src="images/report/maxcoin/maxwallet.svg" alt="The database schema used within maxwallet"></img></a>
+          </div>
+          </div>
+        </div>
+        <p><span class="text-muted">Hover over the image for a description. You can click on the image for a higher resolution.</span></p>
+        <!-- end images -->
+
+        <!-- end of Server Configuration -->
+
+        <!-- Security -->
+        <div>
+          <h3><a id="security" class="anchor">Server Configuration</a></h3>
+          <p>The security of the application is one of our most pressing concerns and we considered it with every design decision made. The authentication process required to log into the website performs a double SHA-256 hash of the user's password, on the client side, before it is sent over HTTPS to our server. The hashed password is then compared with a hashed version stored in our database before granting, or denying, them access to their wallet. The password is hashed twice to prevent a <a href="http://en.wikipedia.org/wiki/Length_extension_attack" title="Read more about length extension attacks">length-extension attack</a> from being performed on the password hashes, as well as halving the hashrate of a potential brute-force attempt.</p>
+          <p>The applications themselves, the Node web server and the MaxCoin client, can both be run in safety from a server. The web server will need access to two privileged ports, 80 and 443, for serving the website over HTTP and HTTPS respectively; as such, the application would need to be run as root, providing a potential security vulnerability. To combat this, we established two IPTABLES rules that forward incoming traffic on these ports to non-privileged ports, 8080 and 4443, allowing the application to be run from a non-privileged user. The MaxCoin client only requires access to the home directory of the user and 2 non-priviliged ports, 8668 and 8669; it too can be run from a non-privileged user because of this.</p>
+          <p>The website itself has also been designed so that the coins cannot be accessed until the user has signed in. This functionality is currently missing from the website but the MaxCoin client has been designed in such a way that, in order to make a transaction, the private key must be supplied by the user. This provides a problem in that a private key is a 64-character string and, thus, inherently difficult to memorise. The solution to this is to create a deterministic function that, when fed with a long identifying string and the user's password, will yeild the private key; this can be easily remembered by the user and will allow them to authorise transactions, client-side, so that at no time an attacker compromising our servers will be able to steal users' coins.</p>
+        </div>
+        <!-- end of Security -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+        <hr />
+
+        <!-- Everything Else -->
+        <div>
+          <h3><a id="ee" class="anchor">Everything Else</a></h3>
+          
+          <!-- Mark Weighting -->
+          <h4><a id="marks" class="anchor">Mark Weightings</a></h4>
+          <p>As with the first assignment, we feel that the split of workload has been fair and we would like to receive the same mark for this assignment. Luke worked mainly on the MaxCoin implementation, as this was more suited to his expertise, whereas Josh continued to develop the interface using AngularJS. There was some crossover when using both Node and the Postgres database as both the website interface and the MaxCoin client are built using these technologies.</p>
+          <!-- end of Weightings -->
+
+          <div class="spacer" />      
+
+          <!-- Setting Up -->
+          <h4><a id="settingup" class="anchor">Installing the dependencies</a></h4>
+          <p>As we have utilised the Bower component for our project, we have included instructions for delpoying our application. This shouldn't be a problem for our submission, as we have included the dependencies will download, however, we have included the commands for completeness. The following instructions will work from a Unix terminal and can be easily adapted to work from a Windows Command Prompt if needed.</p>
+          <p>
+            <code>$ cd maxwallet</code><br />
+            <code>$ npm install</code><br />
+            <code>$ sudo npm install -g yo grunt-cli bower</code><br />
+            <code>$ bower install</code><br />
+          </p>
+          <p>One of the node packages, the Bitcore library, has been heavily modified for use within the MaxCoin network. This will eventually be submitted to the NPM repository, however, in the meantime, it is not possible to completely fulfil the dependencies using the package manager. The package has been included with the submission.</p>
+          <!-- end of Setting Up -->
+        </div>
+        <!-- end of Everything Else -->
+
+        <span class="text-muted">Back to <a href="#top">top</a></span>
+      </div>
+    </div>
+  </body>
+</html>
