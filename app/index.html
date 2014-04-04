@@ -31,6 +31,7 @@
 
     <!-- font-awesome iconic web font -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"></link>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha512.js"></script>
 
     <!-- detect browser features -->
     <script type="text/javascript" src="js/modernizr-1.7.min.js"></script>
@@ -64,9 +65,9 @@
               <li data-ui-sref-active="active"><a data-ui-sref="about" tabindex="6">About</a></li>
               <li data-ui-sref-active="active"><a data-ui-sref="contact" tabindex="7">Contact</a></li>
               <li data-ui-sref-active="active" data-ng-hide="currentUser" data-ng-click="toggleModal()" tabindex="4" title="Login to your wallet"><a href="">Login</a></li>
-              <li data-ui-sref-active="active" data-ng-hide="currentUser" data-ng-click="toggleModal()" tabindex="4" title="Login to your wallet"><a href="">Create Wallet</a></li>
+              <!--<li data-ui-sref-active="active" data-ng-hide="currentUser" data-ng-click="toggleModal()" tabindex="4" title="Login to your wallet"><a href="">Create Wallet</a></li>-->
               <li class="dropdown" data-ng-show="currentUser">
-                  <a data-toggle="dropdown" href="#">Welcome, {{ currentUser.email }} <span class="caret"></span></a>
+                  <a data-toggle="dropdown" href="#">{{ currentUser.email }} <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                     <li><a ng-click="logout()"><span class="glyphicon-log-out"></span> Logout</a></li>
                   </ul>
@@ -113,7 +114,7 @@
             <p>The following resources are available:</p>
             <ul>
               <li><a href="" data-ui-sref="api">API</a></li>
-              <li><a href="" data-ui-sref="support">Support</a></li>
+              <li><a href="" data-ui-sref="support.new">Support</a></li>
               <li><a href="sitemap.xml">Sitemap</a></li>
               </ul>
             </div>
@@ -170,6 +171,7 @@
       <script src="scripts/services/User.js"></script>
       <script src="scripts/services/Session.js"></script>
       <script src="scripts/services/addressbook.js"></script>
+      <script src="scripts/services/tickets.js"></script>
       <!-- endbuild -->
       <!-- end of section -->
 

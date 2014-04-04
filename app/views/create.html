@@ -1,0 +1,23 @@
+<h1>Create Account</h1>
+<p>Enter your email address and password to create an online wallet</p>
+<hr></hr>
+<!-- pass in the variable if our form is valid or invalid -->
+<form name="con.userForm" data-ng-submit="submitForm(con.userForm.$invalid)" novalidate="">
+    <!-- USERNAME -->
+    <div class="form-group" data-ng-class="{ 'has-error' : con.userForm.email.$invalid &amp;&amp; !con.userForm.email.$pristine }">
+        <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email" required=""></input>
+        <p data-ng-show="con.userForm.email.$invalid &amp;&amp; !con.userForm.email.$error.server &amp;&amp; !con.userForm.email.$pristine" class="help-block">Please Enter a valid email</p>
+        <p class="help-block" ng-show="con.userForm.email.$error.server">{{ errors.email }}</p>
+    </div>
+    <!-- EMAIL -->
+    <div class="form-group" data-ng-class="{ 'has-error' : con.userForm.password.$invalid &amp;&amp; !con.userForm.password.$pristine }">
+        <input type="password" name="password" class="form-control" data-ng-model="user.password" placeholder="Password" required=""></input>
+        <p data-ng-show="con.userForm.password.$invalid &amp;&amp; !con.userForm.password.$error.server &amp;&amp;!con.userForm.password.$pristine" class="help-block">Please enter a password.</p>
+        <p class="help-block" ng-show="con.userForm.password.$error.server">{{ errors.password }}</p>
+    </div>
+    <div style="width: 100%; margin: 0 auto; text-align: center;">
+      <button data-ng-if="!con.userForm.$invalid" type="submit" class="btn btn-lg btn-success" title="Login to wallet">Create</button>
+      <button data-ng-if="con.userForm.$invalid" type="submit" class="btn btn-lg btn-success" disabled="disabled" title="Login to wallet">Create</button>
+      <button type="button" class="btn btn-lg btn-primary" data-ng-click="toggleModal()" title="Closes this window">Cancel</button>
+    </div>
+</form>

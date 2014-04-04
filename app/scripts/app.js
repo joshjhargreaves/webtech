@@ -66,15 +66,35 @@ var myapp = angular.module('webtechApp', [
 
       // support states
       .state('support', {
+          abstract: true,
           url: "/support",
           templateUrl: "views/support.html"
       })
-
-      .state('tickets', {
-          url: "/tickets",
-          templateUrl: "views/tickets.html"
+      // support states
+      .state('support.new', {
+          url: "/new",
+          views: {
+            // So this one is targeting the unnamed view within the parent state's template.
+          '': {
+            templateUrl: "views/support.new.html"
+          },
+          'supportSummary' : {
+            templateUrl: "views/support.ticket.summary.html"
+          }
+        }
       })
-
+      .state('support.ticket', {
+        url: "/ticket/:id",
+        views: {
+            // So this one is targeting the unnamed view within the parent state's template.
+          '': {
+            templateUrl: "views/support.ticket.html"
+          },
+          'supportSummary' : {
+            templateUrl: "views/support.ticket.summary1.html"
+          }
+        }
+      })
       // wallet states
       .state('wallet', {
           // With abstract set to true, that means this state can not be explicitly activated.

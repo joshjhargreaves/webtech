@@ -43,8 +43,16 @@ var AddressBookEntries = sequelize.define('AddressBookEntries', {
   notes: Sequelize.STRING
 });
 User.hasMany(AddressBookEntries);
+
+var Tickets = sequelize.define('Tickets', {
+  email: Sequelize.STRING,
+  summary: Sequelize.TEXT,
+  notes: Sequelize.TEXT
+});
+
+User.hasMany(Tickets);
 //Adds some dummy data the table
-sequelize.sync({ force: false}).complete(function(err) {
+sequelize.sync({ force: true}).complete(function(err) {
   User.create({ email: 'john@google.com', password: '1111' }).complete(function(err, user1) {
     User.find({where: { email: 'john'}}).complete(function(err, user2) {
     //Do some testing here?
@@ -54,6 +62,24 @@ sequelize.sync({ force: false}).complete(function(err) {
     User.find({where: { email: 'admin@google.com'}}).complete(function(err, user2) {
     //Do some testing here?
     })
+  })
+  Tickets.create({ UserId: '1', email: 'john@google.com', summary: 'Woooo Skiing', notes: 'When are we going to finish this coursework' }).complete(function(err, ticket) {
+    //console.log(ticket);
+  })
+  Tickets.create({ UserId: '1', email: 'john@google.com', summary: 'My hand got stuck in a blender', notes: 'How am I supposed to code now?' }).complete(function(err, ticket) {
+    //console.log(ticket);
+  })
+  Tickets.create({ UserId: '2', email: 'admin@google.com', summary: 'Woooo Skiing', notes: 'When are we going to finish this coursework' }).complete(function(err, ticket) {
+    //console.log(ticket);
+  })
+  Tickets.create({ UserId: '2', email: 'admin@google.com', summary: 'My hand got stuck in a blender', notes: 'How am I supposed to code now?' }).complete(function(err, ticket) {
+    //console.log(ticket);
+  })
+  Tickets.create({ UserId: '1', email: 'john@google.com', summary: 'I forgot how to JavaScript', notes: 'Am I not a l33t coder?' }).complete(function(err, ticket) {
+    //console.log(ticket);
+  })
+  Tickets.create({ UserId: '2', email: 'admin@google.com', summary: 'I forgot how to JavaScript', notes: 'Am I not a l33t coder?' }).complete(function(err, ticket) {
+    //console.log(ticket);
   })
 })
 // Serialize sessions
@@ -163,6 +189,20 @@ var login = function (req, res, next) {
   })(req, res, next);
 }
 
+var userCreate = function (req, res, next) {
+  var newUser = User.build(req.body);
+  console.log(req.body);
+  newUser.save().complete(function(err) {
+    if (err) {
+      return res.json(400, err);
+    }
+    req.logIn(newUser, function(err) {
+      if (err) return next(err);
+      return res.json(newUser);
+    });
+  });
+};
+
 /**
  * addressbook.create
  * requires: {name, address, notes}
@@ -189,7 +229,6 @@ var all = function(req, res) {
     if (err) {
       res.json(500, err);
     } else {
-      console.log(entries);
       res.json(entries);
     }
   });
@@ -216,7 +255,6 @@ var show = function(req, res) {
  */
 var update = function(req, res) {
   var entry = req.body;
-  console.log(req.body);
   AddressBookEntries.find({where: { UserId: entry.UserId, id: entry.id}}).complete(function(err, item) {
     if (err) {
       res.json(500, err);
@@ -226,10 +264,77 @@ var update = function(req, res) {
     }
   });
 };
+
+/*Functions for tickets below. TODO needs to be put in seperate module*/
+/**
+ * addressbook.create
+ * requires: {name, address, notes}
+ */
+var tkcreate = function(req, res) {
+  var ticket = Tickets.build(req.body)
+  //console.log(req.body);
+  ticket.UserId = req.user.id;
+  ticket.save().complete(function(err, entries) {
+    if (err) {
+      console.log("Erorrrr");
+      res.json(500, err);
+    } else {
+      console.log("Added to the table fine");
+      res.json(entries);
+    }
+  });
+};
+/*
+ * addressbook.all
+ * requires: {} 
+ */
+var tkall = function(req, res) {
+  Tickets.findAll({where: { UserId: req.user.id}}).complete(function(err, entries) {
+    if (err) {
+      res.json(500, err);
+    } else {
+      res.json(entries);
+    }
+  });
+};
+
+/* Finds a single addressbook entry
+ * requires {id}
+ */
+var ticketId = function(req, res, next, id) {
+  console.log("RRrrrrrrrrrrrrrrrrrUNNNNNNNNNNNNINGGGG");
+  Tickets.find({where: {UserId: req.user.id, id: id}}).complete(function(err, entry) {
+    console.log(entry);
+    if (err) return next(err);
+    if (!entry) return next(new Error('Failed to load addressbook entry ' + id));
+    req.entry = entry;
+    next();
+  });
+};
+
+var tkshow = function(req, res) {
+  res.json(req.entry);
+};
+
+/* Updates an existing blog entry
+ * requires an addresbook antry
+ */
+var tkupdate = function(req, res) {
+  var entry = req.body;
+  Tickets.find({where: { UserId: entry.UserId, id: entry.id}}).complete(function(err, item) {
+    if (err) {
+      res.json(500, err);
+    } else {
+      item.updateAttributes({email: entry.email, summay: entry.summary, notes: entry.notes})
+        .success(function(){res.json(entry);});
+    }
+  });
+};
 // route to log in and get session
 app.post('/auth/session', login);
 app.get('/auth/session', ensureAuthenticated, session);
-app.del('/auth/session', logout);
+app.del('/auth/session', ensureAuthenticated, logout);
+app.post('/auth/users', userCreate);
 
 // routes to add/del entries to address book
 app.post('/api/addressbook', ensureAuthenticated, create);
@@ -238,6 +343,14 @@ app.get('/api/addressbook/:addrBkId', ensureAuthenticated, show);
 app.put('/api/addressbook', ensureAuthenticated, update);
 //Setting up the blogId param
 app.param('addrBkId', addrBkId);
+
+//Routes for tickets
+app.post('/api/tickets', ensureAuthenticated, tkcreate);
+app.get('/api/tickets', ensureAuthenticated, tkall);
+app.get('/api/tickets/:ticketId', ensureAuthenticated, tkshow);
+app.put('/api/tickets', ensureAuthenticated, tkupdate);
+
+app.param('ticketId', ticketId);
 
 /* serves main page */
 app.get("/", function(req, res) {
