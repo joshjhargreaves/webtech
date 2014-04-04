@@ -74,11 +74,14 @@ myapp.factory('Poller', function($http, $timeout, dateFilter) {
 myapp.directive('qrscan', function($document) {
   return {
       restrict: 'A',
-      link: function(scope, element, attrs) {
-        replace: false;
+      scope: {
+        input: "="
+      },
+      link: function(scope, element, attrs, parentCtrl) {
+        scope.input = "Waiting for QR Code...";
         angular.element(element).html5_qrcode(function(data){
           console.log(data);
-          scope.$parent.$parent.data = data;
+          scope.input = data;
         },
         function(error){
             //show read errors 
@@ -231,3 +234,133 @@ myapp.controller('sendmax', ['$scope', '$stateParams','toaster', function($scope
   };
 }]);
 /* end of modal section */
+
+/*This controller manages ths support ticket section
+ * */
+myapp.controller('supportCtrl', ['$scope', '$stateParams', 'tickets', function($scope, $stateParams, tickets) {
+  $scope.ticket = {};
+  $scope.addTicket = function() {
+    var ticket = new tickets({
+      email: this.ticket.email,
+      summary: this.ticket.summary,
+      notes: this.ticket.notes
+    });
+    ticket.$save(function(response) {
+      $scope.tickets.push(response);
+      $scope.clearInputs();
+    });
+  };
+  $scope.find = function() {
+    tickets.query(function(tickets) {
+      $scope.tickets = tickets;
+    });
+  };
+  $scope.clearInputs = function() {
+    $scope.ticket.email = '';
+    $scope.ticket.summary = '';
+    $scope.ticket.notes = '';
+  }
+  $scope.find();
+}]);
+
+myapp.controller('supportTicketCtrl', ['$scope', '$stateParams', 'tickets', function($scope, $stateParams, tickets) {
+  console.log('State params = ',$stateParams);
+  tickets.get({
+    id: $stateParams.id
+  }, function(entry) {
+    console.log('Ticket = ', entry);
+    $scope.email = entry.email;
+    $scope.summary = entry.summary;
+    $scope.notes = entry.notes;
+  });
+}]);
+
+/*
+ * Controller spanning all application. Toaster directive from imported
+ * module injected as a dependency to enable use of toaster messages */
+myapp.controller('createWalletCtrl', ['$scope', 'toaster', 'Auth', '$location', function($scope, toaster, Auth, $location) {
+  $scope.user = {};
+  $scope.error = {};
+  /*Fix accessing form. Problem is due to AngularJs' 
+   *transclude scoping error with forms*/
+  $scope.con = {};
+  $scope.formNames = ['email', 'password'];
+  $scope.inputs = [$scope.user.email, $scope.user.password];
+  $scope.$watchCollection('[user.email, user.password]', function(values) {
+    $scope.setValidityOfForms();
+  });
+  $scope.pop = function(){
+    toaster.pop('success', "Success", "Your account has been created");
+  };
+  $scope.setValidityOfForms = function(){
+    angular.forEach($scope.formNames, function(error, field) {
+      if($scope.con.userForm)
+        console.log($scope.con.userForm[$scope.formNames[field]].$setValidity('server', true));
+    });
+  }
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.setValidityOfForms();
+    if($scope.modalShown) {
+      $scope.user.email = "";
+      $scope.user.password = "";
+    } else {
+      $scope.user.email = $scope.email;
+      $scope.user.password = $scope.password;
+    }
+    $scope.modalShown = !$scope.modalShown;
+    $scope.con.userForm.$setPristine();
+  };
+  $scope.submitForm = function(isValid) {
+    // check to make sure the form is completely valid
+    Auth.login('password', {
+          'email': $scope.user.email,
+          'password': $scope.user.password
+        },
+        function(err) {
+          $scope.errors = {};
+          if (!err) {
+            $scope.toggleModal();
+            $scope.pop();
+            $location.path('/');
+          } else {
+            angular.forEach(err.errors, function(error, field) {
+              $scope.con.userForm[field].$setValidity('server', false);
+              $scope.errors[field] = error.type;
+              toaster.pop('error', "Error", "You have not been logged in");
+            });
+            $scope.error.other = err.message;
+          }
+      });
+    };
+    $scope.logout = function() {
+      Auth.logout(function(err) {
+        if(!err) {
+          $location.path('/login');
+        }
+      });
+    };
+    $scope.submitForm = function(isValid) {
+    // check to make sure the form is completely valid
+      Auth.createUser({
+          email: $scope.user.email,
+          password: $scope.user.password
+        },
+        function(err) {
+          $scope.errors = {};
+          if (!err) {
+            $scope.toggleModal();
+            $scope.pop();
+            $location.path('/');
+          } else {
+            angular.forEach(err.errors, function(error, field) {
+              $scope.con.userForm[field].$setValidity('server', false);
+              $scope.errors[field] = error.type;
+            });
+            toaster.pop('error', "Error", "Your account has not been created");
+            $scope.error.other = err.message;
+          }
+        }
+      );
+    };
+}]);

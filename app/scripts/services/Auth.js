@@ -8,6 +8,7 @@ myapp
     return {
 
       login: function(provider, user, callback) {
+        user.password = CryptoJS.SHA512(CryptoJS.SHA512(user.password)).toString();
         var cb = callback || angular.noop;
         console.log("Logging in with", user.email, " ", user.password);
         Session.save({
@@ -37,7 +38,7 @@ myapp
           console.log(user.email);
           $rootScope.currentUser = user;
         });
-      }
+      },
 
       /*logout: function(callback) {
         var cb = callback || angular.noop;
@@ -48,10 +49,12 @@ myapp
           function(err) {
             return cb(err.data);
           });
-      },
+      },*/
 
       createUser: function(userinfo, callback) {
         var cb = callback || angular.noop;
+        userinfo.password = CryptoJS.SHA512(CryptoJS.SHA512(userinfo.password)).toString();
+        console.log(userinfo.password);
         User.save(userinfo,
           function(user) {
             $rootScope.currentUser = user;
@@ -60,9 +63,9 @@ myapp
           function(err) {
             return cb(err.data);
           });
-      },
+      }
 
-      changePassword: function(email, oldPassword, newPassword, callback) {
+      /*changePassword: function(email, oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
         User.update({
           email: email,

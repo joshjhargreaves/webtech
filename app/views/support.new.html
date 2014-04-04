@@ -1,0 +1,22 @@
+<div class="well">
+  <!-- colum header -->
+  <h3>Submit new ticket</h3>
+  <p>To submit a new ticket, fill out the form below.</p>
+  <hr></hr>
+  <!-- end of column header -->
+
+  <!-- form proper -->
+  <form class="form-horizontal" name="con.form" role="form">
+    <div class="support-form  form-group">
+      <input type="email" class="form-control" placeholder="Email" data-ng-model="ticket.email"></input>
+    </div>
+    <div class="support-form form-group">
+      <input type="text" class="form-control" placeholder="Summarise the problem" data-ng-model="ticket.summary"></input>
+    </div>
+    <div class="support-form form-group">
+      <textarea rows="8" class="form-control" placeholder="Please add more detail here" data-ng-model="ticket.notes"></textarea>
+    </div>
+    <button type="submit" data-ng-click="addTicket()" class="btn btn-success" title="Submit a new support ticket">Submit</button>
+  </form>
+  <!-- end of section -->
+</div>

@@ -60,22 +60,25 @@
 <div class="spacer"></div>
 
 <!-- create wallet (sign up) section -->
-<div class="container well sign-up">
+<div class="container well sign-up" data-ng-controller="createWalletCtrl" data-ng-hide="currentUser">
   <div class="form-inline" role="form">
     <p id="sign-up-message">Create your free wallet now, it only takes a few moments to sign up!</p>
     <!-- username and password form -->
     <div class="form-group text-input">
-      <input type="email" class="form-control input-lg ng-pristine ng-invalid ng-invalid-required ng-valid-email" id="inputCreateEmail" placeholder="Email" required="" tabindex="1" />
+      <input type="email" class="form-control input-lg ng-pristine ng-invalid ng-invalid-required ng-valid-email" id="inputCreateEmail" placeholder="Email" data-ng-model="email" required=""  tabindex="1" />
     </div>
     <div class="form-group text-input">
-      <input type="password" class="form-control input-lg ng-invalid ng-invalid-required" id="inputCreatePassword" placeholder="Password" required="" tabindex="2" />
+      <input type="password" class="form-control input-lg ng-invalid ng-invalid-required" data-ng-model="password" id="inputCreatePassword" placeholder="Password" required="" tabindex="2" />
     </div>
     <!-- end of section -->
   
     <!-- submit button -->
-    <a class="btn btn-lg btn-success" data-ng-href="#create-wallet" tabindex="3" title="Create your wallet!">Create Wallet</a>
+    <a class="btn btn-lg btn-success" data-ng-click="toggleModal()" data-ng-href="#create-wallet" tabindex="3" title="Create your wallet!">Create Wallet</a>
     <!-- end of section -->
   </div>
+    <modal-dialog id="modal-dialog" data-show="modalShown" data-width="500px">
+      <div data-ng-include="" data-src="'views/create.html'"></div>
+    </modal-dialog>
 </div>
 <!-- end of section -->
 
