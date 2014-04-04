@@ -245,13 +245,15 @@ var handleBlock = function(info) {
     } // end of tx.outs
 
     // are any of the addresses within the tx tracked?
+    // TODO - why is this still finding duplicates?
     tableAddress.findAll({ where: { address: addresses } }).success(function(knownAddresses) {
-      if (knownAddresses.length > 0) {
-        // set the date variable
-        var date = new Date();
-
+      if (knownAddresses.length >= 0) {
         // look for matching transactions in our database
         tableTx.findAll({where: { txid: txHashes[i]}}).success(function(retrievedTxs) {
+          // global variables
+          var date = new Date();
+          var tid = null;
+
           if (retrievedTxs.length > 0) {
             // check for duplicated txids
             // possible due to a quirk in the protocol
@@ -264,119 +266,115 @@ var handleBlock = function(info) {
             //tableTx.find().increment().success(function(res) {
             //});
             console.log('TODO','increment confirmations');
-            return;
-          }
+            tid = retrievedTxs[0].tid;
+          } else {
+            console.log('could not find a matching tx');
 
-          // TODO - check for similar transactions
-          // this can be done by examining the scripts and the amounts
-          // inside a tx, and checking the timestamp
-          // if it's close to that of a transaction we have just made
-          // we assume foul-play (malleability exploit)
-          // TODO - IMPROVEMENT - check for modified PUSH_DATA opcodes
-          // update to set txid to confirmed txid
+            // TODO - check for similar transactions
+            // this can be done by examining the scripts and the amounts
+            // inside a tx, and checking the timestamp
+            // if it's close to that of a transaction we have just made
+            // we assume foul-play (malleability exploit)
+            // TODO - IMPROVEMENT - check for modified PUSH_DATA opcodes
+            // update to set txid to confirmed txid
 
-          // create a new database entry
-          var txQuery = {
-            txid: txHashes[i],
-            generatedTxid: null, 
-            blockHash: blkHash,
-            timestamp: date.getTime(),
-          };
-
-          sequelize.sync({ force: false }).complete(function(err) {
-            tableTx.create(txQuery).complete(function(err, tx) {
-              if (err) {
-                console.log('Error creating tx',err);
-                return;
-              }
-              console.log('created tx');
-            });
-          });
-        });
-
-        // TODO - add the input and output txs
-        // inputs
-        for (var j in tx.ins) {
-          var intx = new TransactionIn(tx.ins[j]);
-          //console.log('intx', intx);
-
-          // regular transaction?
-          // coinbase transactions don't have inputs
-          if (!intx.isCoinBase()) {
-            // extract the scriptSig
-            // <sig> <pubkey>
-            var scriptSig = txStandarized.in[j].scriptSig;
-
-            // TODO - if there are loads of inputs, this can screw up.
-            //console.log(scriptSig);
-
-            // extract the input address
-            var pubkey = new Buffer(scriptSig.split(' ')[1].slice(2), 'hex');
-            var inputAddr = new Address(network.addressPubkey, coinUtil.namedHash(network.hashes.addrHash, pubkey));
-            //console.log('input address',inputAddr.toString());
-
-            // extract output tx
-            var prevOut = txStandarized.in[j].prev_out;
-            //console.log('input txid',prevOut.hash);
-
-            // do we care about this address?
-            tableAddress.find({where: { address: inputAddr.toString() }}).complete(function(err, retrievedAddress) {
-              if (err) {
-                console.log('Error retrieving address',err);
-                return;
-              }
-
-              if (retrievedAddress) {
-                console.log('Transaction does exist in database!');
-              }
-            });
-
-            // create a sample query
-            var txInputQuery = {
-              tid: 'TODO - transaction id',
-              address: inputAddr.toString(),
-              txid: prevOut,
+            // create a new database entry
+            // TODO - on occasion this will break and it seems it gets nulled
+            var txQuery = {
+              txid: txHashes[i],
+              blockHash: blkHash,
+              timestamp: date.getTime(),
             };
-          }
-        }
 
-        // outputs
-        for (var j in tx.outs) {
-          var outtx = new TransactionOut(tx.outs[j]);
-          //console.log('outtx', outtx);
+            console.log('');
+            console.log('Adding this to db', txQuery);        
+            console.log('');    
 
-          // extract the address
-          var scriptPubKey = outtx.getScript();
-          var addrs = getAddrStr(scriptPubKey);
-
-          // ensure transaction type is supported
-          // TODO - improve this for multisig txs
-          if (addrs.length > 1) {
-            console.log('[Connection] cannot handle multiple addresses','tx',txHashes[i],'output index',j);
-            throw new Error("Could not handle transaction ouputs with multiple addresses");
+            tableTx.create(txQuery).success(function(res) {
+              console.log('Added new tx to database');
+            });
+            tid = 'TODO - tid from new database entry';
           }
 
-          //console.log('send',readableValue(outtx.getValue()),'MAX','to',addrs[0]);
 
-          // TODO - IF addrs[0] IS IN OUR DATABASE
-          var type = (tx.isCoinBase()) ? 'mining' : 'receive';
-          var uid = 'SELECT * FROM user, address WHERE user.uid = address.uid AND address.address = ' + addrs[0];
+          console.log('Moving on...');
 
-          var txUserQuery = {
-            uid: 'TODO - user id foreign key', // uid
-            tid: 'TODO - transaction id',
-            type: type,
-          };
+          // inputs
+          for (var j in tx.ins) {
+            var intx = new TransactionIn(tx.ins[j]);
+            //console.log('intx', intx);
 
-          var txOutputQuery = {
-            tid: 'TODO - transaction id',
-            address: addrs[0],
-            value: outtx.getValue(),
-            script: txStandarized.out[j].scriptPubKey,
-          };
-        }
+            // regular transaction?
+            // coinbase transactions don't have inputs
+            if (!intx.isCoinBase()) {
+              // extract the scriptSig
+              // <sig> <pubkey>
+              var scriptSig = txStandarized.in[j].scriptSig;
 
-        // TOOD - add the user txs
+              // TODO - if there are loads of inputs, this can screw up.
+              //console.log(scriptSig);
+
+              // extract the input address
+              var pubkey = new Buffer(scriptSig.split(' ')[1].slice(2), 'hex');
+              var inputAddr = new Address(network.addressPubkey, coinUtil.namedHash(network.hashes.addrHash, pubkey));
+              //console.log('input address',inputAddr.toString());
+
+              // TODO - is this a users address?
+              // check against knownAddresses array
+              // if so, create a send txUserQuery
+
+              // add the input to the database
+              var txInputQuery = {
+                tid: tid,
+                address: inputAddr.toString(),
+                txid: txStandarized.in[j].prev_out,
+              };
+              // tx.has(txInputQuery);
+
+              sequelize.sync({ force: false }).complete(function(err) {
+                tableTxInput.create(txInputQuery).success(function(res) {
+                  console.log('Added new tx input to database');
+                });
+              });
+            }
+          }
+
+          // outputs
+          for (var j in tx.outs) {
+            var outtx = new TransactionOut(tx.outs[j]);
+            //console.log('outtx', outtx);
+
+            // extract the address
+            var scriptPubKey = outtx.getScript();
+            var addrs = getAddrStr(scriptPubKey);
+
+            // ensure transaction type is supported
+            // TODO - improve this for multisig txs
+            if (addrs.length > 1) {
+              console.log('[Connection] cannot handle multiple addresses','tx',txHashes[i],'output index',j);
+              throw new Error("Could not handle transaction ouputs with multiple addresses");
+            }
+
+            //console.log('send',readableValue(outtx.getValue()),'MAX','to',addrs[0]);
+
+            // TODO - IF addrs[0] IS IN OUR DATABASE
+            var txUserQuery = {
+              uid: 'TODO - user id foreign key', // uid
+              tid: tid,
+              type: (tx.isCoinBase()) ? 'mining' : 'receive',
+            };
+            // tx.has(txUserQuery);
+            // User.has(txUserQuery);
+
+            var txOutputQuery = {
+              tid: tid,
+              address: addrs[0],
+              value: outtx.getValue(),
+              script: txStandarized.out[j].scriptPubKey,
+            };
+            // tx.has(txOutputQuery);
+          }
+        });
       }
     }); // end of tableAddress.findAll
   } // end of blk.txs
@@ -459,7 +457,6 @@ var createTx = function(value) {
 
 // set up the p2p connection to the network
 var peerman = new PeerManager();
-//peerman.addPeer(new Peer('127.0.0.1', 8333)); // BITCOIN
 peerman.addPeer(new Peer('127.0.0.1', 8668)); // MAXCOIN
 
 // set up callback functions
