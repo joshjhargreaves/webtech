@@ -8,7 +8,7 @@ myapp
     return {
 
       login: function(provider, user, callback) {
-        user.password = CryptoJS.SHA512(CryptoJS.SHA512(user.password)).toString();
+        //user.password = CryptoJS.SHA512(CryptoJS.SHA512(user.password)).toString();
         var cb = callback || angular.noop;
         console.log("Logging in with", user.email, " ", user.password);
         Session.save({
@@ -53,7 +53,7 @@ myapp
 
       createUser: function(userinfo, callback) {
         var cb = callback || angular.noop;
-        userinfo.password = CryptoJS.SHA512(CryptoJS.SHA512(userinfo.password)).toString();
+        //userinfo.password = CryptoJS.SHA512(CryptoJS.SHA512(userinfo.password)).toString();
         console.log(userinfo.password);
         User.save(userinfo,
           function(user) {

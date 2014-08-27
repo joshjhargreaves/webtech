@@ -9,11 +9,18 @@ var express = require('express'),
     LocalStrategy = require('passport-local').Strategy;
     //LocalStrategy = require('passport-local').Strategy;
 var app = express();
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var errorhandler = require('errorhandler');
 //Logic to connect to database
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     Sequelize = require('sequelize'), 
-    sequelize = new Sequelize('maxwallet', 'postgres', 'Compost12!', {
+    sequelize = new Sequelize('fullstack', 'postgres', 'compost12', {
       dialect: "postgres", // or 'sqlite', 'postgres', 'mariadb'
       port:    5432, // or 5432 (for postgres)
     })
@@ -133,20 +140,18 @@ var auth = function(req, res, next){
 // all environments
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.cookieParser()); 
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.session({ secret: 'securedsession' }));
+app.use(logger('dev'));
+app.use(cookieParser()); 
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(session({ secret: 'securedsession' }));
 app.use(passport.initialize()); // Add passport initialization
 app.use(passport.session());    // Add passport initialization
-app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorhandler());
 }
 /**
  * Session
