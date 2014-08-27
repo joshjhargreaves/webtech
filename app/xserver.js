@@ -20,7 +20,7 @@ var errorhandler = require('errorhandler');
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     Sequelize = require('sequelize'), 
-    sequelize = new Sequelize('fullstack', 'postgres', 'compost12', {
+    sequelize = new Sequelize('wallet', 'postgres', 'compost12', {
       dialect: "postgres", // or 'sqlite', 'postgres', 'mariadb'
       port:    5432, // or 5432 (for postgres)
     })
@@ -359,7 +359,7 @@ app.param('ticketId', ticketId);
 
 /* serves main page */
 app.get("/", function(req, res) {
-  res.sendfile('index.html')
+  res.sendfile('app/index.html')
 });
 
 app.post("/user/add", function(req, res) { 
