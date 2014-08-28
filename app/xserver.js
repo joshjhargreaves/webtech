@@ -22,8 +22,8 @@ var passport = require('passport'),
     Sequelize = require('sequelize');
 var sequelize;
 if(process.env.DATABASE_URL) {
-  console.log("DATABASE_URL set");
-  var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
+  console.log("DATABASE_URL: " + process.env.DATABASE_URL);
+  var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
   sequelize = new Sequelize(match[5], match[1], match[2], {
     dialect:  'postgres',
     protocol: 'postgres',
