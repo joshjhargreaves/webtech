@@ -20,7 +20,7 @@ var errorhandler = require('errorhandler');
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     Sequelize = require('sequelize');
-
+var sequelize;
 if(process.env.DATABASE_URL) {
   var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
   sequelize = new Sequelize(match[5], match[1], match[2], {
@@ -29,6 +29,11 @@ if(process.env.DATABASE_URL) {
     port:     match[4],
     host:     match[3],
     logging:  true //false
+  })
+} else {
+  sequelize = new Sequelize('fullstack', 'postgres', 'compost12', {
+    dialect: "postgres", // or 'sqlite', 'postgres', 'mariadb'
+    port:    5432, // or 5432 (for postgres)
   })
 }
 //Connects to postgres database
