@@ -31,7 +31,7 @@ if(process.env.DATABASE_URL) {
     host:     match[3],
     logging:  true //false
   })
-} else {*/
+} else {
   sequelize = new Sequelize('fullstack', 'postgres', 'compost12', {
     dialect: "postgres", // or 'sqlite', 'postgres', 'mariadb'
     port:    5432, // or 5432 (for postgres)
